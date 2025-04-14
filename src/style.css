@@ -1,0 +1,109 @@
+/* fonts families */
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap');
+
+@import "tailwindcss";
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+
+a {
+    cursor: pointer !important;
+}
+
+body {
+    font-family: "Ropa Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    background: #FFFFFF;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    cursor: grab !important;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888888b3;
+    border-radius: 8px;
+}
+
+@theme {
+    /* fonts */
+    --font-londrinasolid: "Londrina Solid", sans-serif;
+
+    /* colors */
+    --color-cus-white-transparent: rgba(255, 255, 255, 0.4);
+    --color-cus-black-transparent: rgba(0, 0, 0, 0.4);
+    --color-cus-black-low: #1C1C21;
+    --color-cus-dark-blue: #5C1CB2;
+    --color-cus-dark-purple: #7118B4;
+    --color-cus-dark-pink: #A90FB9;
+    --color-cus-light-pink-low: #FF00C1;
+    --color-cus-light-pink-high: #FE15AD;
+    --color-cus-light-orange: #FA4D7B;
+    --color-cus-light-yellow-low: #F4AC24;
+    --color-cus-light-yellow-high: #F4A52A;
+}
+
+@layer utilities {
+
+    .cus-btn-con {
+        @apply flex flex-col transition-all duration-300 ease-in-out hover:scale-105 relative;
+    }
+
+    .cus-btn-front {
+        @apply ml-0 flex flex-row justify-center items-center text-xl font-semibold rounded-md px-4 py-0.5 z-20 cursor-pointer;
+    }
+
+    .cus-btn-back {
+        @apply ml-1 -mt-9 rounded-md z-10 cursor-pointer;
+    }
+}
+
+
+.bg-blur {
+    inset: 0;
+    background-color: #ffffff33;
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+    transition: 250ms;
+    transform-style: preserve-3d;
+}
+
+.clip-custom {
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.cus-text-style {
+    -webkit-text-stroke: 1px #FFFFFF;
+    background: transparent;
+    -webkit-background-clip: text;
+}
+
+.cus-text-style-black {
+    -webkit-text-stroke: 1px #000000;
+}
+
+.cus-text-style-dark-purple {
+    -webkit-text-stroke: 1px var(--color-cus-dark-purple);
+}
+
+.cus-text-style-light-yellow-high {
+    -webkit-text-stroke: 1px var(--color-cus-light-yellow-high);
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--color-cus-white-transparent) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #000000 !important;
+}
