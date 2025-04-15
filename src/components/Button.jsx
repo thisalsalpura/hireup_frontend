@@ -1,11 +1,16 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-const Button = ({ name, containerClass, frontClasses, backClasses }) => {
+const Button = ({ name, icon, href, containerClass, frontClasses, backClasses }) => {
     return (
-        <a href="/" className={`cus-btn-con ${containerClass}`}>
-            <button className={`cus-btn-front ${frontClasses} clip-custom cursor-pointer`}>{name}</button>
+        <NavLink to={href} className={`cus-btn-con ${containerClass}`}>
+            <button className={`cus-btn-front ${frontClasses} clip-custom cursor-pointer`}>
+                {icon && <FontAwesomeIcon icon={icon} className="text-lg mr-3.5" />}
+                {name}
+            </button>
             <button className={`cus-btn-back ${backClasses} clip-custom cursor-pointer`}></button>
-        </a>
+        </NavLink>
     )
 }
 

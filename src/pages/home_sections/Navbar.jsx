@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/icons/logo.svg";
 import menuIcon from "../../assets/icons/menu.svg";
 import closeIcon from "../../assets/icons/close.svg";
 import Button from "../../components/Button";
@@ -16,7 +16,7 @@ const Navbar = () => {
         return (
             <div className="flex flex-col items-center gap-5">
                 <Button name="Register" frontClasses="text-black h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-light-yellow-high" />
-                <Button name="SignIn" frontClasses="text-white h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-dark-purple" />
+                <Button href="/login" name="SignIn" frontClasses="text-white h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-dark-purple" />
             </div>
         )
     }
@@ -30,7 +30,7 @@ const Navbar = () => {
 
                 <div className="hidden md:flex flex-row items-center gap-8">
                     <Button name="Register" frontClasses="text-black h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-light-yellow-high" />
-                    <Button name="SignIn" frontClasses="text-white h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-dark-purple" />
+                    <Button href="/login" name="SignIn" frontClasses="text-white h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-dark-purple" />
                 </div>
 
                 <div className="flex md:hidden transition-all duration-300 ease-in-out">

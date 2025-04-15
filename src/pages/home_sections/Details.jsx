@@ -28,13 +28,13 @@ const Details = () => {
                         className="h-64 lg:h-80 bg-transparent flex items-center justify-center"
                     >
                         {paths.map(({ id, title, icon }) => (
-                            <SwiperSlide key={id} className="bg-cus-white-transparent rounded-xl flex items-center justify-center">
+                            <SwiperSlide key={id} className="bg-blur rounded-xl flex items-center justify-center">
                                 <div className="absolute h-full w-full flex items-center justify-center z-10 opacity-25">
                                     <FontAwesomeIcon icon={icon} className="text-9xl text-black" />
                                 </div>
 
                                 <div className="h-full w-full flex items-center justify-center p-5 z-20">
-                                    <p className="text-center text-4xl sm:text-5xl lg:text-9xl font-londrinasolid bg-transparent text-transparent cus-text-style cus-text-style-black">{title}</p>
+                                    <p className="text-center text-4xl sm:text-5xl lg:text-9xl font-londrinasolid bg-transparent text-transparent cus-text-style">{title}</p>
                                 </div>
                             </SwiperSlide>
                         ))}
@@ -43,9 +43,9 @@ const Details = () => {
             </div >
 
             <div className="h-full bg-cus-black-low rounded-xl p-5 mt-12">
-                <div className="bg-cus-white-transparent grid grid-cols-12 grid-rows-12 h-full w-full rounded-xl items-center justify-center px-0 sm:px-3">
+                <div className="bg-blur grid grid-cols-12 grid-rows-12 h-full w-full rounded-xl items-center justify-center px-0 sm:px-3">
                     <div className="col-span-12 lg:col-span-4 row-span-2 lg:row-span-12 h-full py-6 px-3 flex items-center justify-center">
-                        <p className="text-4xl lg:text-7xl text-center lg:text-left font-londrinasolid tracking-wider font-medium bg-transparent text-transparent cus-text-style cus-text-style-black">Let's work Together!</p>
+                        <p className="text-4xl lg:text-7xl text-center lg:text-left font-londrinasolid tracking-wider font-medium bg-transparent text-transparent cus-text-style">Let's work Together!</p>
                     </div>
 
                     <div className="col-span-12 lg:col-span-4 row-span-5 lg:row-span-12 h-full py-6 px-4 flex items-center justify-center">
@@ -79,7 +79,7 @@ const Details = () => {
             </div>
 
             <div className="h-full bg-cus-black-low rounded-xl p-5 mt-12">
-                <div className="h-full w-full bg-cus-white-transparent rounded-xl flex flex-col items-center justify-center p-8">
+                <div className="h-full w-full bg-blur rounded-xl flex flex-col items-center justify-center p-8">
                     <h2 className="text-3xl lg:text-5xl text-white text-center">Freelance services at your fingertips</h2>
 
                     <Button name="Join HireUp" containerClass="mt-8" frontClasses="text-black h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-white" />
@@ -93,7 +93,7 @@ const Details = () => {
                     <p className="text-xl lg:text-2xl text-cus-white-transparent text-center tracking-wide mt-3">Stay up to date and move work forward with Flowbite on iOS & Android. Download the app today.</p>
 
                     <div className="flex flex-col md:flex-row gap-3.5 mt-6">
-                        <div className="inline-flex items-center justify-center gap-3.5 bg-cus-white-transparent rounded-lg p-2 w-44 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out">
+                        <div className="inline-flex items-center justify-center gap-3.5 bg-blur rounded-lg shadow-xl p-2 w-44 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out">
                             <FontAwesomeIcon icon={faApple} className="text-white text-3xl" />
 
                             <div className="flex flex-col">
@@ -102,7 +102,7 @@ const Details = () => {
                             </div>
                         </div>
 
-                        <div className="inline-flex items-center justify-center gap-3.5 bg-cus-white-transparent rounded-lg p-2 w-44 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out">
+                        <div className="inline-flex items-center justify-center gap-3.5 bg-blur rounded-lg shadow-xl p-2 w-44 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out">
                             <FontAwesomeIcon icon={faGooglePlay} className="text-white text-3xl" />
 
                             <div className="flex flex-col">
@@ -121,7 +121,7 @@ const Details = () => {
                     <p className="text-white text-base md:text-lg text-left tracking-wider mt-2.5">Subscribe to our newsletter and never miss an opportunity—whether you're hiring or offering your skills.</p>
 
                     <div className="mt-5 w-full flex flex-col md:flex-row gap-4">
-                        <input type="email" className="w-full md:w-72 bg-cus-white-transparent rounded-md text-lg text-white border border-white px-2 py-1" placeholder="Your email address..." />
+                        <input type="email" id="email" name="email" className="w-full md:w-72 bg-blur rounded-md text-lg text-white border border-white px-2 py-1" placeholder="Your email address..." required />
 
                         <Button name="Subscribe" frontClasses="text-white h-10 w-full md:w-40 border-2 border-white" backClasses="h-10 w-full md:w-40 bg-blue-700" />
                     </div>
