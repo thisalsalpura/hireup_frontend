@@ -65,7 +65,7 @@ const Login = () => {
                                             <label className="text-blue-700 text-sm sm:text-base"><a href="/">Forgot Password?</a></label>
                                         </div>
 
-                                        <Button name="SignIn" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
+                                        <Button href="/home" name="SignIn" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Not registered? <a className="text-blue-700" onClick={toggleSlide}>Register</a></p>
 

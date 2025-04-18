@@ -1,6 +1,7 @@
 import React from "react";
-import Home from "./pages/home";
+import Index from "./pages/Index";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const App = () => {
@@ -8,8 +9,9 @@ const App = () => {
         <main className="bg-white h-full">
             <Router>
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Index />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/home" element={<Home />} />
                 </Routes>
             </Router>
         </main>

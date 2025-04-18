@@ -1,20 +1,16 @@
 import React from "react";
-import Navbar from "./home_sections/Navbar";
-import Hero from "./home_sections/Hero";
-import Details from "./home_sections/Details";
-import Footer from "./home_sections/Footer";
+import Navbar from "./Navbar";
 
 const Home = () => {
     return (
         <section className="bg-white">
+
             <Navbar />
 
-            <div className="max-w-7xl mx-auto h-full mt-24 bg-black p-5">
-                <Hero />
-                <Details />
+            <div className="max-w-7xl mx-auto h-[1600px] pt-24 bg-black p-5">
+                <div></div>
             </div>
 
-            <Footer />
         </section>
     )
 }

@@ -67,8 +67,20 @@ body {
     .cus-btn-back {
         @apply ml-1 -mt-9 rounded-md z-10 cursor-pointer;
     }
-}
 
+    .cus-btn-set {
+        @apply relative rounded-3xl text-center bg-transparent border-2 border-black hover:border-cus-black-low w-auto px-8 py-1.5 transition-all duration-1000 ease-linear overflow-hidden cursor-pointer z-20;
+    }
+
+    .cus-btn-set::after {
+        @apply absolute content-[''] h-full w-full bg-cus-light-yellow-high left-0 -bottom-full rounded-full transition-all ease-in-out z-[-1];
+    }
+
+    .cus-btn-set:hover::after {
+        @apply bottom-0 rounded-none;
+    }
+
+}
 
 .bg-blur {
     inset: 0;
@@ -77,6 +89,10 @@ body {
     backdrop-filter: blur(25px);
     transition: 250ms;
     transform-style: preserve-3d;
+}
+
+.linear-gradient {
+    background: linear-gradient(180deg, var(--color-cus-dark-blue) 0%, var(--color-cus-dark-purple) 9%, var(--color-cus-dark-pink) 28%, var(--color-cus-light-pink-low) 55%, var(--color-cus-light-pink-high) 62%, var(--color-cus-light-orange) 77%, var(--color-cus-light-yellow-low) 98%, var(--color-cus-light-yellow-high) 100%);
 }
 
 .clip-custom {
