@@ -14,10 +14,31 @@ const Navbar = () => {
 
     const navItems = () => {
         return (
-            <div className="flex flex-col items-center gap-5">
-                <Button name="Register" frontClasses="text-black h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-light-yellow-high" />
-                <Button href="/login" name="SignIn" frontClasses="text-white h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-dark-purple" />
-            </div>
+            <>
+                {false && (
+                    <div className="flex flex-col items-center gap-5">
+                        <Button name="Register" frontClasses="text-black h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-light-yellow-high" />
+                        <Button href="/login" name="SignIn" frontClasses="text-white h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-cus-dark-purple" />
+                    </div>
+                )}
+
+                {true && (
+                    <div className="flex flex-col items-center gap-5">
+                        <div className="cus-btn-set w-full flex md:hidden">
+                            <a className="text-lg font-semibold text-black">Switch to Selling</a>
+                        </div>
+                        <div className="cus-btn-set w-full">
+                            <a className="text-lg font-semibold text-black">Cart</a>
+                        </div>
+                        <div className="cus-btn-set w-full">
+                            <a className="text-lg font-semibold text-black">Wishlist</a>
+                        </div>
+                        <div className="cus-btn-set w-full">
+                            <a className="text-lg font-semibold text-black">Notifications</a>
+                        </div>
+                    </div>
+                )}
+            </>
         )
     }
 
@@ -40,7 +61,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className={`absolute mt-2 w-11/12 mx-auto bg-cus-white-transparent shadow-2xl rounded-lg transition-all duration-300 ease-in-out py-6 backdrop:blur-2xl ${isOpen ? "right-0 left-0" : "right-[-100%]"} flex md:hidden justify-center items-center`}>
+                    <div className={`absolute mt-4 w-11/12 mx-auto bg-cus-white-transparent shadow-2xl rounded-lg transition-all duration-300 ease-in-out py-6 backdrop:blur-2xl ${isOpen ? "right-0 left-0" : "right-[-100%]"} flex md:hidden justify-center items-center`}>
                         {navItems()}
                     </div>
                 </nav>
@@ -50,22 +71,26 @@ const Navbar = () => {
                 <nav className="fixed top-0 left-0 right-0 z-50">
                     <div className="max-w-7xl mx-auto h-24 bg-white flex items-center justify-between px-7">
                         <a href="/">
-                            <img className="h-12" src={logo} alt="logo" />
+                            <img className="h-10 sm:h-12" src={logo} alt="logo" />
                         </a>
 
-                        <div className="flex flex-row items-center justify-center gap-8">
-                            <div className="cus-btn-set">
+                        <div className="flex flex-row items-center justify-center gap-5 sm:gap-8">
+                            <div className="cus-btn-set w-auto hidden md:flex">
                                 <a className="text-lg font-semibold text-black">Switch to Selling</a>
                             </div>
 
-                            <div className="h-12 w-12 rounded-full border-2 border-black flex items-center justify-center p-0.5">
+                            <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full border-2 border-black flex items-center justify-center p-0.5">
                                 <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
                             </div>
 
                             <div className="flex items-center justify-center transition-all duration-300 ease-in-out">
-                                <img className="h-9 cursor-pointer" src={menuIcon} />
+                                <img onClick={toggleMenu} className="h-8 sm:h-9 cursor-pointer" src={isOpen ? closeIcon : menuIcon} alt="toggle" />
                             </div>
                         </div>
+                    </div>
+
+                    <div className={`absolute mt-2 w-11/12 mx-auto bg-cus-white-transparent shadow-lg transition-all duration-300 ease-in-out py-6 backdrop:blur-2xl ${isOpen ? "right-0 left-0" : "right-[-100%]"} flex justify-center items-center`}>
+                        {navItems()}
                     </div>
                 </nav>
             )}
