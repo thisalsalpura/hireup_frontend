@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../components/Button";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import signinImg from "../assets/images/signin.svg";
@@ -12,6 +12,11 @@ const Login = () => {
     const toggleSlide = () => {
         setIsOpen((previousOpen) => !previousOpen)
     }
+
+    useEffect(() => {
+        document.body.classList.add("custom2");
+        return () => document.body.classList.remove("custom2");
+    }, []);
 
     return (
         <section className="bg-white h-full">

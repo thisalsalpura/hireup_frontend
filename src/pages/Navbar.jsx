@@ -25,16 +25,16 @@ const Navbar = () => {
                 {true && (
                     <div className="flex flex-col items-center gap-5">
                         <div className="cus-btn-set w-full flex md:hidden">
-                            <a className="text-lg font-semibold text-black">Switch to Selling</a>
+                            <a className="text-lg font-bold text-black">Switch to Selling</a>
                         </div>
                         <div className="cus-btn-set w-full">
-                            <a className="text-lg font-semibold text-black">Cart</a>
+                            <a className="text-lg font-bold text-black">Cart</a>
                         </div>
                         <div className="cus-btn-set w-full">
-                            <a className="text-lg font-semibold text-black">Wishlist</a>
+                            <a className="text-lg font-bold text-black">Wishlist</a>
                         </div>
                         <div className="cus-btn-set w-full">
-                            <a className="text-lg font-semibold text-black">Notifications</a>
+                            <a className="text-lg font-bold text-black">Notifications</a>
                         </div>
                     </div>
                 )}
@@ -76,7 +76,7 @@ const Navbar = () => {
 
                         <div className="flex flex-row items-center justify-center gap-5 sm:gap-8">
                             <div className="cus-btn-set w-auto hidden md:flex">
-                                <a className="text-lg font-semibold text-black">Switch to Selling</a>
+                                <a className="text-lg font-bold text-black">Switch to Selling</a>
                             </div>
 
                             <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full border-2 border-black flex items-center justify-center p-0.5">
@@ -89,7 +89,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className={`absolute mt-2 w-11/12 mx-auto bg-cus-white-transparent shadow-lg transition-all duration-300 ease-in-out py-6 backdrop:blur-2xl ${isOpen ? "right-0 left-0" : "right-[-100%]"} flex justify-center items-center`}>
+                    <div className={`absolute mt-2 w-11/12 mx-auto bg-cus-white-transparent shadow-lg rounded-lg sm:rounded-none transition-all duration-300 ease-in-out py-6 backdrop:blur-2xl ${isOpen ? "right-0 left-0" : "right-[-100%]"} flex justify-center items-center`}>
                         {navItems()}
                     </div>
                 </nav>
