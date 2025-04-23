@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes, faStar, faLeftLong, faRightLong } from "@fortawesome/free-solid-svg-icons";
 
 const SingleGigView = () => {
+
+    const scrollRef = useRef(null);
+
+    const scrollLeft = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({
+                left: -300,
+                behavior: "smooth",
+            });
+        }
+    };
+
+    const scrollRight = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({
+                left: 300,
+                behavior: "smooth",
+            });
+        }
+    };
+
     return (
         <section className="bg-white custom2">
 
@@ -40,8 +61,8 @@ const SingleGigView = () => {
                         </div>
 
                         <div className="relative flex items-center mt-8">
-                            <div className="absolute items-center justify-start ml-3">
-                                <div className="h-full w-full bg-white flex items-center justify-center rounded-full p-2">
+                            <div className="absolute left-0 items-center justify-start ml-3">
+                                <div className="h-full w-full bg-white flex items-center justify-center rounded-full p-2 cursor-pointer">
                                     <FontAwesomeIcon icon={faLeftLong} className="text-black text-lg" />
                                 </div>
                             </div>
@@ -50,11 +71,68 @@ const SingleGigView = () => {
 
                             </div>
 
-                            <div className="absolute items-center justify-end mr-3">
-                                <div className="h-full w-full bg-white flex items-center justify-center rounded-full p-2">
+                            <div className="absolute right-0 items-center justify-end mr-3">
+                                <div className="h-full w-full bg-white flex items-center justify-center rounded-full p-2 cursor-pointer">
                                     <FontAwesomeIcon icon={faRightLong} className="text-black text-lg" />
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="relative w-full h-full mt-2.5">
+                            <div onClick={scrollLeft} className="absolute left-0 top-1/2 -translate-y-1/2 ml-3">
+                                <div className="h-full w-full bg-cus-black-low flex items-center justify-center rounded-lg p-2 cursor-pointer">
+                                    <FontAwesomeIcon icon={faLeftLong} className="text-white text-lg" />
+                                </div>
+                            </div>
+
+                            <div ref={scrollRef} className="w-full overflow-x-auto hide-scrollbar flex items-center gap-1.5">
+                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
+
+                                </div>
+
+                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
+
+                                </div>
+
+                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
+
+                                </div>
+
+                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
+
+                                </div>
+
+                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
+
+                                </div>
+
+                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
+
+                                </div>
+                            </div>
+
+                            <div onClick={scrollRight} className="absolute right-0 top-1/2 -translate-y-1/2 mr-3">
+                                <div className="h-full w-full bg-cus-black-low flex items-center justify-center rounded-lg p-2 cursor-pointer">
+                                    <FontAwesomeIcon icon={faRightLong} className="text-white text-lg" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <p className="text-3xl text-black text-left mt-10">Reviews</p>
+
+                        <div className="h-full w-full flex flex-col p-2.5 border border-black rounded-md mt-4">
+                            <div className="flex flex-row items-center justify-start gap-3.5">
+                                <div className="h-12 w-12 flex items-center justify-center rounded-full border-2 border-black p-0.5">
+                                    <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                </div>
+
+                                <div className="flex flex-col justify-start">
+                                    <p className="text-md text-black font-semibold text-left">Ben Stokes</p>
+                                    <p className="text-md text-black font-semibold text-left"><FontAwesomeIcon icon={faStar} className="text-md mr-2" />4.9</p>
+                                </div>
+                            </div>
+
+                            <p className="mt-3.5 text-black">SMCSE was wonderful to work with! They understood my business needs and expectations and went above and beyond with their deliverables. I will hire them again</p>
                         </div>
                     </div>
 
