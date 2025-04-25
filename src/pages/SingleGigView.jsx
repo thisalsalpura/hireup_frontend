@@ -137,7 +137,7 @@ const SingleGigView = () => {
 
                         <p className="text-3xl text-black text-left mt-10">About this Gig</p>
 
-                        <div className="h-full w-full mt-10">
+                        <div className="h-full w-full mt-4">
                             <div className="relative overflow-x-auto">
 
                                 <table class="h-full w-full">
@@ -148,16 +148,16 @@ const SingleGigView = () => {
 
                                     <thead className="bg-gray-500">
                                         <tr>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold">
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
                                                 Package
                                             </th>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold">
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
                                                 Bronze
                                             </th>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold">
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
                                                 Silver
                                             </th>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold">
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
                                                 Gold
                                             </th>
                                         </tr>
@@ -165,44 +165,44 @@ const SingleGigView = () => {
 
                                     <tbody>
                                         <tr className="bg-cus-black-low border-b border-gray-500">
-                                            <th className="px-6 py-4 text-white text-base">
+                                            <th className="px-6 py-4 text-white text-base text-left">
                                                 Apple MacBook Pro 17
                                             </th>
-                                            <td className="px-6 py-4 text-white text-base">
+                                            <td className="px-6 py-4 text-white text-base text-left">
                                                 Silver
                                             </td>
-                                            <td className="px-6 py-4 text-white text-base">
+                                            <td className="px-6 py-4 text-white text-base text-left">
                                                 Laptop
                                             </td>
-                                            <td className="px-6 py-4 text-white text-base">
+                                            <td className="px-6 py-4 text-white text-base text-left">
                                                 $2999
                                             </td>
                                         </tr>
                                         <tr className="bg-cus-black-low border-b border-gray-500">
-                                            <th className="px-6 py-4 text-white text-base">
+                                            <th className="px-6 py-4 text-white text-base text-left">
                                                 Apple MacBook Pro 17
                                             </th>
-                                            <td className="px-6 py-4 text-white text-base">
+                                            <td className="px-6 py-4 text-white text-base text-left">
                                                 Silver
                                             </td>
-                                            <td className="px-6 py-4 text-white text-base">
+                                            <td className="px-6 py-4 text-white text-base text-left">
                                                 Laptop
                                             </td>
-                                            <td className="px-6 py-4 text-white text-base">
+                                            <td className="px-6 py-4 text-white text-base text-left">
                                                 $2999
                                             </td>
                                         </tr>
                                         <tr className="bg-cus-black-low border-b border-gray-500">
-                                            <th className="px-6 py-4 text-white text-base">
+                                            <th className="px-6 py-4 text-white text-base text-left">
                                                 Apple MacBook Pro 17
                                             </th>
-                                            <td className="px-6 py-4 text-white text-base">
+                                            <td className="px-6 py-4 text-white text-base text-left">
                                                 Silver
                                             </td>
-                                            <td className="px-6 py-4 text-white text-base">
+                                            <td className="px-6 py-4 text-white text-base text-left">
                                                 Laptop
                                             </td>
-                                            <td className="px-6 py-4 text-white text-base">
+                                            <td className="px-6 py-4 text-white text-base text-left">
                                                 $2999
                                             </td>
                                         </tr>
