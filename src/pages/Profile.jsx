@@ -1,5 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Dropdown from "../components/DropDown";
+import SecondaryButton from "../components/SecondaryButton";
 
 const Profile = () => {
     return (
@@ -18,19 +20,23 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className="h-full w-full bg-cus-black-low grid grid-cols-12 rounded-md shadow-md mt-12">
+                <div className="h-full w-full bg-cus-black-low grid grid-cols-12 rounded-md shadow-md mt-12 p-5">
 
-                    <div className="col-span-6 flex items-center justify-center h-full pt-5 pl-5 pr-5 pb-3">
-                        <div className="h-36 w-36 flex items-center justify-center border border-white rounded-md cursor-pointer">
-                            <div className="h-32 w-32 bg-white rounded-md"></div>
+                    <div className="col-span-12 bg-cus-white-transparent flex flex-col items-center justify-center gap-6 pt-5 pl-5 pr-5 pb-5 mt-4 mb-4 rounded-md">
+                        <div className="h-36 w-36 flex items-center justify-center border border-white rounded-full cursor-pointer">
+                            <div className="h-32 w-32 bg-white rounded-full"></div>
                         </div>
+                        <SecondaryButton containerClass="w-1/3 bg-black text-white" name="Upload Profile Picture" />
                     </div>
 
-                    <div className="col-span-6 flex flex-col items-center justify-center gap-6 pt-5 pl-5 pr-5 pb-3">
+                    <div className="col-span-6 flex items-center justify-center pt-5 pl-5 pr-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="fname" className="text-white text-sm">First Name</label>
                             <input id="fname" name="fname" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="John" required />
                         </div>
+                    </div>
+
+                    <div className="col-span-6 flex items-center justify-center pt-5 pl-5 pr-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="lname" className="text-white text-sm">Last Name</label>
                             <input id="lname" name="lname" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Doily" required />
@@ -60,7 +66,7 @@ const Profile = () => {
 
                     <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
-                            <label htmlFor="dob" className="text-white text-sm">Password</label>
+                            <label htmlFor="dob" className="text-white text-sm">Date of Birth</label>
                             <input id="dob" name="dob" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="date" required />
                         </div>
                     </div>
@@ -81,33 +87,27 @@ const Profile = () => {
 
                     <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
-                            <label htmlFor="city" className="text-white text-sm">City</label>
-                            <select id="city" name="city" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" required>
-                                <option value="" className="text-black text-base">Select City</option>
-                                <option value="" className="text-black text-base">Colombo</option>
-                                <option value="" className="text-black text-base">Kandy</option>
-                                <option value="" className="text-black text-base">Galle</option>
-                            </select>
+                            <label className="text-white text-sm">City</label>
+                            <Dropdown name="Select Country" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
                         </div>
                     </div>
 
                     <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
-                            <label htmlFor="country" className="text-white text-sm">Country</label>
-                            <select id="country" name="country" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" required>
-                                <option value="" className="text-black text-base">Select Country</option>
-                                <option value="" className="text-black text-base">Sri Lanka</option>
-                                <option value="" className="text-black text-base">Austarlia</option>
-                                <option value="" className="text-black text-base">England</option>
-                            </select>
+                            <label className="text-white text-sm">Country</label>
+                            <Dropdown name="Select Country" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
                         </div>
                     </div>
 
                     <div className="col-span-12 flex items-center justify-center p-5 mt-4">
-                        <button className="w-1/3 text-xl text-black font-bold py-1.5 px-2.5 bg-white rounded-md cursor-pointer">Save</button>
+                        <SecondaryButton containerClass="w-1/3 bg-black text-white" name="Save" />
                     </div>
 
                 </div>
+
+                <br />
+                <br />
+                <br />
 
             </div>
 
