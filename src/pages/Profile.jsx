@@ -26,79 +26,79 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className="h-full w-full bg-cus-black-low grid grid-cols-12 rounded-md shadow-md mt-12 p-5">
+                <div className="h-full w-full bg-cus-black-low grid grid-cols-12 rounded-md shadow-md mt-12 p-3 sm:p-5">
 
-                    <div className="col-span-12 bg-cus-white-transparent flex flex-col items-center justify-center gap-6 pt-5 pl-5 pr-5 pb-5 mt-4 mb-4 rounded-md">
+                    <div className="col-span-12 bg-cus-white-transparent flex flex-col items-center justify-center gap-6 p-3 sm:p-5 mt-4 mb-4 rounded-md">
                         <div className="h-36 w-36 flex items-center justify-center border border-white rounded-full cursor-pointer">
                             <div className="h-32 w-32 bg-white rounded-full"></div>
                         </div>
-                        <SecondaryButton containerClass="w-1/3 bg-black text-white" name="Upload Profile Picture" />
+                        <SecondaryButton containerClass="w-full md:w-2/3 lg:w-1/3 bg-black text-white" name="Upload Profile Picture" />
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-5 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-5 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="fname" className="text-white text-sm">First Name</label>
                             <input id="fname" name="fname" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="John" required />
                         </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-5 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-5 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="lname" className="text-white text-sm">Last Name</label>
                             <input id="lname" name="lname" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Doily" required />
                         </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="email" className="text-white text-sm">Email</label>
                             <input id="email" name="email" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="email" placeholder="name@gmail.com" required />
                         </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="password" className="text-white text-sm">Password</label>
                             <input id="password" name="password" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
                         </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="mobile" className="text-white text-sm">Mobile Number</label>
                             <input id="mobile" name="mobile" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="tel" placeholder="0712345678" required />
                         </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="dob" className="text-white text-sm">Date of Birth</label>
                             <input id="dob" name="dob" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="date" required />
                         </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="line1" className="text-white text-sm">Address Line 01</label>
                             <input id="line1" name="line1" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="No: 40/2A" required />
                         </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="line2" className="text-white text-sm">Address Line 02</label>
                             <input id="line2" name="line2" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Street Name" required />
                         </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label className="text-white text-sm">City</label>
                             <Dropdown name="Select Country" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
                         </div>
                     </div>
 
-                    <div className="col-span-6 flex items-center justify-center pt-3 pl-5 pr-5 pb-3">
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label className="text-white text-sm">Country</label>
                             <Dropdown name="Select Country" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
@@ -106,7 +106,7 @@ const Profile = () => {
                     </div>
 
                     <div className="col-span-12 flex items-center justify-center p-5 mt-4">
-                        <SecondaryButton containerClass="w-1/3 bg-black text-white" name="Save" />
+                        <SecondaryButton containerClass="w-full md:w-1/3 bg-black text-white" name="Save" />
                     </div>
 
                 </div>

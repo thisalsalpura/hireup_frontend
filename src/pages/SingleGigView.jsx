@@ -219,7 +219,7 @@ const SingleGigView = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-5 sticky top-28 flex-shrink-0 self-start h-[600px] w-full flex items-start justify-center p-5 bg-amber-500">
+                    <div className="col-span-5 sticky top-28 flex-shrink-0 self-start h-fit w-full flex items-start justify-center px-5">
                         <TabsComponents />
                     </div>
                 </div>

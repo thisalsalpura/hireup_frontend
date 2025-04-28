@@ -89,7 +89,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className={`absolute mt-2 w-11/12 mx-auto bg-cus-white-transparent shadow-lg rounded-lg sm:rounded-none transition-all duration-300 ease-in-out py-6 backdrop:blur-2xl ${isOpen ? "right-0 left-0" : "right-[-100%]"} flex justify-center items-center`}>
+                    <div className={`absolute mt-2 w-11/12 mx-auto bg-white shadow-lg rounded-lg sm:rounded-none transition-all duration-300 ease-in-out py-6 backdrop:blur-2xl ${isOpen ? "right-0 left-0" : "right-[-100%]"} flex justify-center items-center`}>
                         {navItems()}
                     </div>
                 </nav>
