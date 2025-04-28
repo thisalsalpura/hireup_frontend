@@ -1,10 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes, faStar, faLeftLong, faRightLong } from "@fortawesome/free-solid-svg-icons";
 import TabsComponents from "../components/TabsComponents";
 
 const SingleGigView = () => {
+
+    useEffect(() => {
+        document.body.classList.add("custom2");
+        return () => document.body.classList.remove("custom2");
+    }, []);
 
     const scrollRef = useRef(null);
 
@@ -46,7 +51,7 @@ const SingleGigView = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-12 items-start mt-8">
+                <div className="grid grid-cols-12 items-start mt-8 min-h-full relative">
                     <div className="col-span-7 h-full flex flex-col justify-center pr-5">
                         <p className="text-3xl text-black text-left">develop custom web applications business e commerce and landing pages</p>
 
@@ -214,7 +219,7 @@ const SingleGigView = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-5 h-fit w-fit flex items-start justify-center pl-5 py-5 bg-amber-500 overscroll-contain">
+                    <div className="col-span-5 sticky top-28 flex-shrink-0 self-start h-[600px] w-full flex items-start justify-center p-5 bg-amber-500">
                         <TabsComponents />
                     </div>
                 </div>

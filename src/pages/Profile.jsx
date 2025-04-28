@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import Dropdown from "../components/DropDown";
 import SecondaryButton from "../components/SecondaryButton";
 
 const Profile = () => {
+
+    useEffect(() => {
+        document.body.classList.add("custom2");
+        return () => document.body.classList.remove("custom2");
+    }, []);
+
     return (
         <section className="bg-white custom2">
 
