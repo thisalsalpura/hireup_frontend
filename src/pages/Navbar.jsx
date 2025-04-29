@@ -68,7 +68,7 @@ const Navbar = () => {
             )}
 
             {true && (
-                <nav className="fixed top-0 left-0 right-0 z-50">
+                <nav className="absolute top-0 left-0 right-0 z-50">
                     <div className="max-w-7xl mx-auto h-24 bg-white flex items-center justify-between px-7">
                         <a href="/">
                             <img className="h-10 sm:h-12" src={logo} alt="logo" />
@@ -89,7 +89,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className={`absolute mt-2 w-11/12 mx-auto bg-white shadow-lg rounded-lg sm:rounded-none transition-all duration-300 ease-in-out py-6 backdrop:blur-2xl ${isOpen ? "right-0 left-0" : "right-[-100%]"} flex justify-center items-center`}>
+                    <div className={`fixed top-24 left-1/2 transform -translate-x-1/2 w-[95%] max-w-7xl bg-white shadow-lg rounded-lg sm:rounded-none transition-all duration-300 ease-in-out py-6 backdrop:blur-2xl ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} flex justify-center items-center z-40`}>
                         {navItems()}
                     </div>
                 </nav>

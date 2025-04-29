@@ -44,6 +44,11 @@ body.custom2::-webkit-scrollbar-track {
     display: none;
 }
 
+.cusxscroll::-webkit-scrollbar {
+    height: 6px;
+    cursor: grabbing !important;
+}
+
 @theme {
     /* fonts */
     --font-londrinasolid: "Londrina Solid", sans-serif;

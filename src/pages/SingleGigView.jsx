@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes, faStar, faLeftLong, faRightLong } from "@fortawesome/free-solid-svg-icons";
-import TabsComponents from "../components/TabsComponents";
+import TabsComponent from "../components/TabsComponent";
 
 const SingleGigView = () => {
 
@@ -51,8 +51,8 @@ const SingleGigView = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-12 items-start mt-8 min-h-full relative">
-                    <div className="col-span-7 h-full flex flex-col justify-center pr-5">
+                <div className="grid grid-cols-12 items-start mt-8 h-full relative">
+                    <div className="col-span-12 lg:col-span-7 h-full flex flex-col justify-center p-0.5 lg:py-0 lg:pl-0 lg:pr-5">
                         <p className="text-3xl text-black text-left">develop custom web applications business e commerce and landing pages</p>
 
                         <div className="flex flex-row items-center justify-start gap-3.5 mt-8">
@@ -144,17 +144,17 @@ const SingleGigView = () => {
                         <p className="text-3xl text-black text-left mt-10">About this Gig</p>
 
                         <div className="h-full w-full mt-4">
-                            <div className="relative overflow-x-auto">
+                            <div className="relative overflow-x-auto cusxscroll">
 
-                                <table class="h-full w-full">
-                                    <caption class="p-5 bg-cus-black-low rounded-tl-md rounded-tr-md">
+                                <table className="h-full w-full border-separate border-spacing-y-1">
+                                    <caption className="p-5 bg-cus-black-low rounded-md">
                                         <h2 className="text-3xl text-white text-left">Our products</h2>
                                         <p className="text-sm text-white text-left mt-2">Browse a list of Flowbite products designed to help you work and play, stay organized, get answers, keep in touch, grow your business, and more.</p>
                                     </caption>
 
                                     <thead className="bg-gray-500">
                                         <tr>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tl-md rounded-bl-md">
                                                 Package
                                             </th>
                                             <th className="px-6 py-3 text-black text-lg font-semibold text-left">
@@ -163,7 +163,7 @@ const SingleGigView = () => {
                                             <th className="px-6 py-3 text-black text-lg font-semibold text-left">
                                                 Silver
                                             </th>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tr-md rounded-br-md">
                                                 Gold
                                             </th>
                                         </tr>
@@ -171,7 +171,7 @@ const SingleGigView = () => {
 
                                     <tbody>
                                         <tr className="bg-cus-black-low border-b border-gray-500">
-                                            <th className="px-6 py-4 text-white text-base text-left">
+                                            <th className="px-6 py-4 text-white text-base text-left rounded-tl-md rounded-bl-md">
                                                 Apple MacBook Pro 17
                                             </th>
                                             <td className="px-6 py-4 text-white text-base text-left">
@@ -180,12 +180,12 @@ const SingleGigView = () => {
                                             <td className="px-6 py-4 text-white text-base text-left">
                                                 Laptop
                                             </td>
-                                            <td className="px-6 py-4 text-white text-base text-left">
+                                            <td className="px-6 py-4 text-white text-base text-left rounded-tr-md rounded-br-md">
                                                 $2999
                                             </td>
                                         </tr>
                                         <tr className="bg-cus-black-low border-b border-gray-500">
-                                            <th className="px-6 py-4 text-white text-base text-left">
+                                            <th className="px-6 py-4 text-white text-base text-left rounded-tl-md rounded-bl-md">
                                                 Apple MacBook Pro 17
                                             </th>
                                             <td className="px-6 py-4 text-white text-base text-left">
@@ -194,12 +194,12 @@ const SingleGigView = () => {
                                             <td className="px-6 py-4 text-white text-base text-left">
                                                 Laptop
                                             </td>
-                                            <td className="px-6 py-4 text-white text-base text-left">
+                                            <td className="px-6 py-4 text-white text-base text-left rounded-tr-md rounded-br-md">
                                                 $2999
                                             </td>
                                         </tr>
                                         <tr className="bg-cus-black-low border-b border-gray-500">
-                                            <th className="px-6 py-4 text-white text-base text-left">
+                                            <th className="px-6 py-4 text-white text-base text-left rounded-tl-md rounded-bl-md">
                                                 Apple MacBook Pro 17
                                             </th>
                                             <td className="px-6 py-4 text-white text-base text-left">
@@ -208,7 +208,7 @@ const SingleGigView = () => {
                                             <td className="px-6 py-4 text-white text-base text-left">
                                                 Laptop
                                             </td>
-                                            <td className="px-6 py-4 text-white text-base text-left">
+                                            <td className="px-6 py-4 text-white text-base text-left rounded-tr-md rounded-br-md">
                                                 $2999
                                             </td>
                                         </tr>
@@ -219,8 +219,8 @@ const SingleGigView = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-5 sticky top-28 flex-shrink-0 self-start h-fit w-full flex items-start justify-center px-5">
-                        <TabsComponents />
+                    <div className="mt-16 lg:mt-0 col-span-12 lg:col-span-5 lg:sticky lg:top-6 h-fit w-full flex items-start justify-center px-0.5 sm:px-5">
+                        <TabsComponent />
                     </div>
                 </div>
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "./Navbar";
-import Dropdown from "../components/DropDown";
 import SecondaryButton from "../components/SecondaryButton";
+import DropdownComponent from "../components/DropdownComponent";
 
 const Profile = () => {
 
@@ -94,14 +94,14 @@ const Profile = () => {
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label className="text-white text-sm">City</label>
-                            <Dropdown name="Select Country" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                            <DropdownComponent name="Select City" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
                         </div>
                     </div>
 
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label className="text-white text-sm">Country</label>
-                            <Dropdown name="Select Country" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                            <DropdownComponent name="Select Country" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
                         </div>
                     </div>
 
@@ -110,10 +110,6 @@ const Profile = () => {
                     </div>
 
                 </div>
-
-                <br />
-                <br />
-                <br />
 
             </div>
 

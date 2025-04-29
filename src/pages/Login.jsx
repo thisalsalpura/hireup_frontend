@@ -59,11 +59,7 @@ const Login = () => {
 
                                         <div className="flex flex-row items-center justify-between mt-5">
                                             <label className="flex items-center space-x-2.5">
-                                                <input
-                                                    type="checkbox"
-                                                    className="bg-blur rounded-md h-4 w-4 cursor-pointer focus:ring-2 focus:ring-blue-700"
-                                                    required
-                                                />
+                                                <input type="checkbox" className="bg-blur rounded-md h-4 w-4 cursor-pointer focus:ring-2 focus:ring-blue-700" required />
                                                 <span className="text-white text-sm sm:text-base">Remember Me</span>
                                             </label>
 

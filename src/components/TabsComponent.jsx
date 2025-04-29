@@ -1,7 +1,8 @@
+import React from "react";
 import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 import Button from "./Button";
 
-const TabsComponents = () => {
+const TabsComponent = () => {
     return (
         <div className="flex w-full flex-col">
             <Tabs aria-label="Dynamic tabs" className="pb-3">
@@ -42,4 +43,4 @@ const TabsComponents = () => {
     )
 }
 
-export default TabsComponents;
+export default TabsComponent;
