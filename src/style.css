@@ -94,7 +94,7 @@ body.custom2::-webkit-scrollbar-track {
     }
 
     .secondary-btn {
-        @apply flex gap-10 items-center justify-center px-4 py-3.5 cursor-pointer text-lg font-bold rounded-md mx-auto tracking-wide;
+        @apply flex gap-5 items-center justify-center px-4 py-3.5 cursor-pointer text-lg font-bold rounded-md mx-auto tracking-wide;
     }
 
     .secondary-btn-ping {

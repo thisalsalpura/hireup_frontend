@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import SingleGigView from "./pages/SingleGigView";
 import Profile from "./pages/Profile";
+import AdvancedSearch from "./pages/AdvancedSearch";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
                     <Route path="/home" element={<Home />} />
                     <Route path="/singleGigView" element={<SingleGigView />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/advancedSearch" element={<AdvancedSearch />} />
                 </Routes>
             </Router>
         </main>

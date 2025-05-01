@@ -41,9 +41,9 @@ const SingleGigView = () => {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-0">
                     <div className="flex flex-wrap md:flex-row items-center justify-start md:justify-center">
                         <span className="text-base text-blue-700 opacity-50 cursor-pointer">Home &nbsp;{">"}&nbsp;</span>
-                        <span className="text-base text-blue-700 opacity-50 cursor-pointer">&nbsp;SingleGigView &nbsp;{">"}&nbsp;</span>
-                        <span className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp;Programming & Tech &nbsp;{">"}&nbsp;</span>
-                        <span className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp;Web Development</span>
+                        <span className="text-base text-blue-700 opacity-50 cursor-pointer">&nbsp; SingleGigView &nbsp;{">"}&nbsp;</span>
+                        <span className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; Programming & Tech &nbsp;{">"}&nbsp;</span>
+                        <span className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; Web Development</span>
                     </div>
 
                     <div className="flex items-center justify-start md:justify-center">
