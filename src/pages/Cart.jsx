@@ -23,19 +23,19 @@ const Cart = () => {
 
                     <hr className="h-0.5 w-full bg-black opacity-5 mt-2.5" />
 
-                    <div className="h-full w-full flex flex-row items-center justify-center mt-6">
-                        <input type="text" className="bg-cus-black-low px-5 h-14 w-2/4 rounded-lg outline-none text-lg text-white" placeholder="Search by Name..." />
+                    <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center mt-6 gap-3 sm:gap-0">
+                        <input type="text" className="bg-cus-black-low px-5 h-14 w-full sm:w-2/4 rounded-lg outline-none text-lg text-white" placeholder="Search by Name..." />
 
-                        <div className="flex items-center justify-center h-14 w-auto md:ml-2.5">
-                            <SecondaryButton href="/advancedSearch" containerClass="w-fit h-full bg-cus-black-low text-white" name="Search" />
+                        <div className="flex items-center justify-center h-14 w-full sm:w-auto md:ml-2.5">
+                            <SecondaryButton href="/advancedSearch" containerClass="w-full sm:w-fit h-full bg-cus-black-low text-white" name="Search" />
                         </div>
                     </div>
                 </div>
 
-                <div className="h-full w-full grid grid-cols-12 mt-8">
-                    <div className="col-span-8 flex flex-col items-center justify-center p-2.5 gap-6">
-                        <div className="h-full w-full flex flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 gap-2.5">
-                            <div className="h-full w-2/4 flex items-center justify-center border-2 border-white rounded-md p-1.5 overflow-hidden">
+                <div className="h-full w-full grid grid-cols-12 gap-4 sm:gap-0 mt-8">
+                    <div className="col-span-12 lg:col-span-8 flex flex-col items-center justify-center p-0 sm:p-2.5 gap-6">
+                        <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 gap-2.5">
+                            <div className="h-full w-full sm:w-2/4 flex items-center justify-center border-2 border-white rounded-md p-1.5 overflow-hidden">
                                 <div className="h-full w-full flex items-center justify-center bg-white rounded-md p-2 hover:scale-110 transition-all duration-300 ease-in-out">
                                     <img src={cartImg} alt="cart" className="h-full w-full object-cover rounded-md" />
                                 </div>
@@ -48,8 +48,8 @@ const Cart = () => {
                             </div>
                         </div>
 
-                        <div className="h-full w-full flex flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 gap-2.5">
-                            <div className="h-full w-2/4 flex items-center justify-center border-2 border-white rounded-md p-1.5 overflow-hidden">
+                        <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 gap-2.5">
+                            <div className="h-full w-full sm:w-2/4 flex items-center justify-center border-2 border-white rounded-md p-1.5 overflow-hidden">
                                 <div className="h-full w-full flex items-center justify-center bg-white rounded-md p-2 hover:scale-110 transition-all duration-300 ease-in-out">
                                     <img src={cartImg} alt="cart" className="h-full w-full object-cover rounded-md" />
                                 </div>
@@ -62,8 +62,8 @@ const Cart = () => {
                             </div>
                         </div>
 
-                        <div className="h-full w-full flex flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 gap-2.5">
-                            <div className="h-full w-2/4 flex items-center justify-center border-2 border-white rounded-md p-1.5 overflow-hidden">
+                        <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 gap-2.5">
+                            <div className="h-full w-full sm:w-2/4 flex items-center justify-center border-2 border-white rounded-md p-1.5 overflow-hidden">
                                 <div className="h-full w-full flex items-center justify-center bg-white rounded-md p-2 hover:scale-110 transition-all duration-300 ease-in-out">
                                     <img src={cartImg} alt="cart" className="h-full w-full object-cover rounded-md" />
                                 </div>
@@ -77,9 +77,34 @@ const Cart = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-4 flex flex-col items-center justify-center p-2.5">
+                    <div className="col-span-12 lg:col-span-4 flex flex-col items-center justify-center p-0 sm:p-2.5">
                         <div className="h-full w-full flex flex-col items-center justify-between bg-cus-black-low rounded-md shadow-md p-5">
+                            <div className="h-full w-full flex-col items-center justify-center">
+                                <h2 className="text-white text-4xl text-center font-londrinasolid mb-2.5">Checkout</h2>
+                                <hr className="h-0.5 w-full bg-white opacity-10" />
+                                <div className="items-start justify-between grid grid-cols-12 mt-8 mb-5">
+                                    <p className="text-white text-base col-span-1 text-left">1</p>
+                                    <p className="text-white text-base col-span-8 text-left overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat id ligula facilisis lacinia.</p>
+                                    <p className="text-white text-base col-span-3 text-center">$6000</p>
+                                </div>
+                                <div className="items-start justify-between grid grid-cols-12 mb-5">
+                                    <p className="text-white text-base col-span-1 text-left">2</p>
+                                    <p className="text-white text-base col-span-8 text-left overflow-hidden">E-commerce Web Development</p>
+                                    <p className="text-white text-base col-span-3 text-center">$12000</p>
+                                </div>
+                                <div className="items-start justify-between grid grid-cols-12 mb-5">
+                                    <p className="text-white text-base col-span-1 text-left">3</p>
+                                    <p className="text-white text-base col-span-8 text-left overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p className="text-white text-base col-span-3 text-center">$480</p>
+                                </div>
+                                <div className="items-start justify-between grid grid-cols-12 mb-5">
+                                    <p className="text-white text-base col-span-1 text-left">4</p>
+                                    <p className="text-white text-base col-span-8 text-left overflow-hidden">E-commerce Web</p>
+                                    <p className="text-white text-base col-span-3 text-center">$600</p>
+                                </div>
+                            </div>
 
+                            <SecondaryButton href="/" containerClass="mt-10 w-full h-12 bg-white text-black" name="Checkout" />
                         </div>
                     </div>
                 </div>
