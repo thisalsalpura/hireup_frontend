@@ -14,7 +14,7 @@ const DropdownComponent = ({ name, dropdownBtnClass, dropdownMenuClass, dropdown
 
     return (
         <Dropdown onOpenChange={(open) => setIsOpen(open)}>
-            <DropdownTrigger className={`${dropdownBtnClass} h-10 flex flex-row items-center justify-between bg-blur py-0.5 px-2.5 rounded-md cursor-pointer`}>
+            <DropdownTrigger className={`bg-blur ${dropdownBtnClass} h-10 flex flex-row items-center justify-between py-0.5 px-2.5 rounded-md cursor-pointer`}>
                 <Button className="capitalize" variant="bordered">
                     <p className="text-white text-base">{selectedValue}</p>
                     <FontAwesomeIcon icon={isOpen ? faCircleChevronUp : faCircleChevronDown} className="text-white text-base font-bold text-right" />

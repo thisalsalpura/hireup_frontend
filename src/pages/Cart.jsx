@@ -34,45 +34,45 @@ const Cart = () => {
 
                 <div className="h-full w-full grid grid-cols-12 gap-4 sm:gap-0 mt-8">
                     <div className="col-span-12 lg:col-span-8 flex flex-col items-center justify-center p-0 sm:p-2.5 gap-6">
-                        <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 gap-2.5">
+                        <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 pb-2.5 sm:p-5 gap-2.5">
                             <div className="h-full w-full sm:w-2/4 flex items-center justify-center border-2 border-white rounded-md p-1.5 overflow-hidden">
                                 <div className="h-full w-full flex items-center justify-center bg-white rounded-md p-2 hover:scale-110 transition-all duration-300 ease-in-out">
                                     <img src={cartImg} alt="cart" className="h-full w-full object-cover rounded-md" />
                                 </div>
                             </div>
 
-                            <div className="h-full w-full flex flex-col items-start justify-center p-2.5 gap-2.5">
+                            <div className="h-full w-full flex flex-col items-start justify-center p-0 sm:p-2.5 gap-2.5">
                                 <h2 className="font-londrinasolid text-white text-xl">Cart Item Name</h2>
                                 <p className="text-base text-white opacity-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat id ligula facilisis lacinia.</p>
-                                <Button name="Remove from Cart" containerClass="mt-10" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-cus-light-yellow-high" />
+                                <Button name="Remove from Cart" containerClass="mt-5 sm:mt-10" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-cus-light-yellow-high" />
                             </div>
                         </div>
 
-                        <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 gap-2.5">
+                        <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 pb-2.5 sm:p-5 gap-2.5">
                             <div className="h-full w-full sm:w-2/4 flex items-center justify-center border-2 border-white rounded-md p-1.5 overflow-hidden">
                                 <div className="h-full w-full flex items-center justify-center bg-white rounded-md p-2 hover:scale-110 transition-all duration-300 ease-in-out">
                                     <img src={cartImg} alt="cart" className="h-full w-full object-cover rounded-md" />
                                 </div>
                             </div>
 
-                            <div className="h-full w-full flex flex-col items-start justify-center p-2.5 gap-2.5">
+                            <div className="h-full w-full flex flex-col items-start justify-center p-0 sm:p-2.5 gap-2.5">
                                 <h2 className="font-londrinasolid text-white text-xl">Cart Item Name</h2>
                                 <p className="text-base text-white opacity-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat id ligula facilisis lacinia.</p>
-                                <Button name="Remove from Cart" containerClass="mt-10" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-cus-light-yellow-high" />
+                                <Button name="Remove from Cart" containerClass="mt-5 sm:mt-10" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-cus-light-yellow-high" />
                             </div>
                         </div>
 
-                        <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 gap-2.5">
+                        <div className="h-full w-full flex flex-col sm:flex-row items-center justify-center bg-cus-black-low rounded-md shadow-md p-5 pb-2.5 sm:p-5 gap-2.5">
                             <div className="h-full w-full sm:w-2/4 flex items-center justify-center border-2 border-white rounded-md p-1.5 overflow-hidden">
                                 <div className="h-full w-full flex items-center justify-center bg-white rounded-md p-2 hover:scale-110 transition-all duration-300 ease-in-out">
                                     <img src={cartImg} alt="cart" className="h-full w-full object-cover rounded-md" />
                                 </div>
                             </div>
 
-                            <div className="h-full w-full flex flex-col items-start justify-center p-2.5 gap-2.5">
+                            <div className="h-full w-full flex flex-col items-start justify-center p-0 sm:p-2.5 gap-2.5">
                                 <h2 className="font-londrinasolid text-white text-xl">Cart Item Name</h2>
                                 <p className="text-base text-white opacity-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat id ligula facilisis lacinia.</p>
-                                <Button name="Remove from Cart" containerClass="mt-10" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-cus-light-yellow-high" />
+                                <Button name="Remove from Cart" containerClass="mt-5 sm:mt-10" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-cus-light-yellow-high" />
                             </div>
                         </div>
                     </div>
@@ -85,26 +85,26 @@ const Cart = () => {
                                 <div className="items-start justify-between grid grid-cols-12 mt-8 mb-5">
                                     <p className="text-white text-base col-span-1 text-left">1</p>
                                     <p className="text-white text-base col-span-8 text-left overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat id ligula facilisis lacinia.</p>
-                                    <p className="text-white text-base col-span-3 text-center">$6000</p>
+                                    <p className="text-white text-base col-span-3 text-right">$6000</p>
                                 </div>
                                 <div className="items-start justify-between grid grid-cols-12 mb-5">
                                     <p className="text-white text-base col-span-1 text-left">2</p>
                                     <p className="text-white text-base col-span-8 text-left overflow-hidden">E-commerce Web Development</p>
-                                    <p className="text-white text-base col-span-3 text-center">$12000</p>
+                                    <p className="text-white text-base col-span-3 text-right">$12000</p>
                                 </div>
                                 <div className="items-start justify-between grid grid-cols-12 mb-5">
                                     <p className="text-white text-base col-span-1 text-left">3</p>
                                     <p className="text-white text-base col-span-8 text-left overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <p className="text-white text-base col-span-3 text-center">$480</p>
+                                    <p className="text-white text-base col-span-3 text-right">$480</p>
                                 </div>
                                 <div className="items-start justify-between grid grid-cols-12 mb-5">
                                     <p className="text-white text-base col-span-1 text-left">4</p>
                                     <p className="text-white text-base col-span-8 text-left overflow-hidden">E-commerce Web</p>
-                                    <p className="text-white text-base col-span-3 text-center">$600</p>
+                                    <p className="text-white text-base col-span-3 text-right">$600</p>
                                 </div>
                             </div>
 
-                            <SecondaryButton href="/" containerClass="mt-10 w-full h-12 bg-white text-black" name="Checkout" />
+                            <SecondaryButton href="/" containerClass="mt-16 sm:mt-10 w-full h-12 bg-white text-black" name="Checkout" />
                         </div>
                     </div>
                 </div>

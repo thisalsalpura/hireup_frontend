@@ -5,8 +5,9 @@ import Home from "./pages/Home";
 import SingleGigView from "./pages/SingleGigView";
 import Profile from "./pages/Profile";
 import AdvancedSearch from "./pages/AdvancedSearch";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Cart from "./pages/Cart";
+import GigRegister from "./pages/GigRegister";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/advancedSearch" element={<AdvancedSearch />} />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/gigRegister" element={<GigRegister />} />
                 </Routes>
             </Router>
         </main>
