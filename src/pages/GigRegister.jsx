@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "./Navbar";
 import DropdownComponent from "../components/DropdownComponent";
 import SecondaryButton from "../components/SecondaryButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 
 const GigRegister = () => {
     return (
@@ -17,7 +19,7 @@ const GigRegister = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row items-center justify-center py-2.5 px-6 border-t border-b border-gray-300 gap-6 mt-6">
+                <div className="flex flex-wrap lg:flex-row items-center justify-center py-2.5 px-6 border-t border-b border-gray-300 gap-6 mt-6">
                     <div className="flex flex-row items-center justify-center gap-2.5">
                         <div className="h-6 w-6 bg-cus-light-yellow-high flex items-center justify-center rounded-full">
                             <p>1</p>
@@ -66,41 +68,74 @@ const GigRegister = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-12 mt-6">
-                    <div className="col-span-9 flex flex-col items-center justify-start p-2.5">
-                        <div className="h-full w-full flex flex-col gap-6 items-center justify-start border border-gray-300 shadow-xl rounded-md p-8">
-                            <div className="grid grid-cols-12 gap-2.5 w-full items-start justify-center">
-                                <div className="col-span-4 flex flex-col gap-2 items-start justify-start">
+                <div className="grid grid-cols-12 mt-6 h-full items-start relative">
+                    <div className="col-span-12 lg:col-span-9 flex flex-col h-full items-center justify-start p-2.5">
+                        <div className="h-full w-full flex flex-col gap-6 items-center justify-start border border-gray-300 shadow-xl rounded-md p-4 sm:p-8">
+                            <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
+                                <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
                                     <h2 className="text-2xl font-semibold">Gig Title</h2>
                                     <p>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.</p>
                                 </div>
-                                <div className="col-span-8 flex flex-col gap-2 items-end justify-center">
-                                    <input id="gigName" name="gigName" className="bg-cus-black-low h-10 w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Web Development" required />
+                                <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
+                                    <input id="gigName" name="gigName" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Web Development" required />
                                 </div>
                             </div>
 
                             <hr className="border-gray-300 h-0.5 w-full" />
 
-                            <div className="grid grid-cols-12 gap-2.5 w-full items-start justify-center">
-                                <div className="col-span-4 flex flex-col gap-2 items-start justify-start">
+                            <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
+                                <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
                                     <h2 className="text-2xl font-semibold">Category</h2>
                                     <p>Choose the category and sub-category most suitable for your Gig.</p>
                                 </div>
-                                <div className="col-span-8 flex flex-col gap-2 items-end justify-center">
-                                    <DropdownComponent name="Select Category" dropdownBtnClass="w-11/12 bg-cus-black-low" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                                <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
+                                    <DropdownComponent name="Select Category" dropdownBtnClass="w-full md:w-11/12 bg-cus-black-low" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                                </div>
+                            </div>
+
+                            <hr className="border-gray-300 h-0.5 w-full" />
+
+                            <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
+                                <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
+                                    <h2 className="text-2xl font-semibold">Gig Title</h2>
+                                    <p>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.</p>
+                                </div>
+                                <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
+                                    <input id="" name="" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Web Development" required />
+                                </div>
+                            </div>
+
+                            <hr className="border-gray-300 h-0.5 w-full" />
+
+                            <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
+                                <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
+                                    <h2 className="text-2xl font-semibold">Category</h2>
+                                    <p>Choose the category and sub-category most suitable for your Gig.</p>
+                                </div>
+                                <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
+                                    <DropdownComponent name="Select Category" dropdownBtnClass="w-full md:w-11/12 bg-cus-black-low" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
                                 </div>
                             </div>
                         </div>
 
-                        <div className="h-full w-full flex items-end justify-end mt-4">
-                            <div className="h-auto w-auto">
-                                <SecondaryButton href="/advancedSearch" containerClass="w-fit h-full bg-cus-black-low text-white" name="Save & Continue" />
+                        <div className="h-full w-full flex items-center md:items-end justify-center md:justify-end mt-6 sm:mt-4">
+                            <div className="h-auto w-full md:w-auto">
+                                <SecondaryButton href="/advancedSearch" containerClass="w-full md:w-fit h-full bg-cus-black-low text-white" name="Save & Continue" />
                             </div>
                         </div>
                     </div>
 
-                    <div className="col-span-3">
-
+                    <div className="top-6 col-span-3 h-fit sticky hidden lg:flex flex-col items-center justify-start p-2.5 pt-0">
+                        <div className="h-12 w-12 translate-y-1/2 flex items-center justify-center rounded-full border border-black p-1">
+                            <div className="h-full w-full bg-cus-light-yellow-high flex items-center justify-center rounded-full">
+                                <FontAwesomeIcon icon={faLightbulb} className="text-black text-lg" />
+                            </div>
+                        </div>
+                        <div className="h-full w-full bg-cus-black-low shadow-xl rounded-md p-4 pt-8">
+                            <div className="h-full w-full flex flex-col gap-2 items-start justify-start">
+                                <p className="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus eius similique, culpa, omnis delectus nulla exercitationem aspernatur sequi, atque voluptatum ipsa quibusdam est ea necessitatibus numquam reprehenderit perspiciatis assumenda fugit?</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
