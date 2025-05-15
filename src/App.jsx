@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import AdvancedSearch from "./pages/AdvancedSearch";
 import Cart from "./pages/Cart";
 import GigRegister from "./pages/GigRegister";
+import OrdersQueue from "./pages/OrdersQueue";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
                     <Route path="/advancedSearch" element={<AdvancedSearch />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/gigRegister" element={<GigRegister />} />
+                    <Route path="/ordersQueue" element={<OrdersQueue />} />
                 </Routes>
             </Router>
         </main>
