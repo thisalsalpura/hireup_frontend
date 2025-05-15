@@ -11,7 +11,7 @@ const GigRegister = () => {
 
             <Navbar />
 
-            <div className="max-w-7xl mx-auto h-full mt-24 bg-white p-5">
+            <div className="max-w-7xl mx-auto h-full mt-24 bg-white p-2.5 sm:p-5">
                 <div className="flex items-center justify-start">
                     <div className="flex flex-wrap md:flex-row items-center justify-start md:justify-center">
                         <span className="text-base text-blue-700 opacity-50 cursor-pointer">Home &nbsp;{">"}&nbsp;</span>
@@ -126,12 +126,16 @@ const GigRegister = () => {
                     </div>
 
                     <div className="top-6 col-span-3 h-fit sticky hidden lg:flex flex-col items-center justify-start p-2.5 pt-0">
-                        <div className="h-12 w-12 translate-y-1/2 flex items-center justify-center rounded-full border border-black p-1">
+                        <div className="h-12 w-12 translate-y-1/2 flex items-center justify-center rounded-full border border-black p-1 z-10">
                             <div className="h-full w-full bg-cus-light-yellow-high flex items-center justify-center rounded-full">
                                 <FontAwesomeIcon icon={faLightbulb} className="text-black text-lg" />
                             </div>
                         </div>
-                        <div className="h-full w-full bg-cus-black-low shadow-xl rounded-md p-4 pt-8">
+                        <div className="relative h-full w-full bg-cus-black-low shadow-xl rounded-md p-4 pt-8">
+                            <div className="absolute left-0 top-8 -translate-x-full">
+                                <div className="w-0 h-0 border-y-[10px] border-y-transparent border-r-[10px] border-r-cus-black-low"></div>
+                            </div>
+
                             <div className="h-full w-full flex flex-col gap-2 items-start justify-start">
                                 <p className="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus eius similique, culpa, omnis delectus nulla exercitationem aspernatur sequi, atque voluptatum ipsa quibusdam est ea necessitatibus numquam reprehenderit perspiciatis assumenda fugit?</p>
                             </div>
