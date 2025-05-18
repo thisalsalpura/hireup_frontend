@@ -1,8 +1,12 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Button from "../components/Button";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/react";
 
 const OrdersQueue = () => {
+
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
     return (
         <section className="bg-white custom2">
 
@@ -42,7 +46,7 @@ const OrdersQueue = () => {
                                     </p>
                                 </div>
 
-                                <div className="h-full w-full flex items-center justify-end mt-8">
+                                <div onClick={onOpen} className="h-full w-full flex items-center justify-end mt-8">
                                     <Button name="Let's Talk" frontClasses="text-black h-10 w-full border-2 border-black px-12" backClasses="h-10 w-full bg-cus-light-yellow-high" />
                                 </div>
                             </div>
@@ -145,6 +149,83 @@ const OrdersQueue = () => {
                         </div>
                     </div>
                 </div>
+
+                <Modal isOpen={isOpen} scrollBehavior="inside" onOpenChange={onOpenChange}>
+                    <ModalContent>
+                        {(onClose) => (
+                            <>
+                                <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+                                <ModalBody>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
+                                        risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
+                                        quam.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
+                                        risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
+                                        quam.
+                                    </p>
+                                    <p>
+                                        Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor
+                                        adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit
+                                        officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. Et mollit incididunt
+                                        nisi consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa
+                                        deserunt nostrud ad veniam.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
+                                        risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
+                                        quam. Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit
+                                        dolor adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis
+                                        sit officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. Et mollit
+                                        incididunt nisi consectetur esse laborum eiusmod pariatur proident Lorem eiusmod
+                                        et. Culpa deserunt nostrud ad veniam.
+                                    </p>
+                                    <p>
+                                        Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit officia
+                                        eiusmod Lorem aliqua enim laboris do dolor eiusmod. Et mollit incididunt nisi
+                                        consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa
+                                        deserunt nostrud ad veniam. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit. Nullam pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
+                                        hendrerit risus, sed porttitor quam. Magna exercitation reprehenderit magna aute
+                                        tempor cupidatat consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
+                                        incididunt cillum quis. Velit duis sit officia eiusmod Lorem aliqua enim laboris
+                                        do dolor eiusmod. Et mollit incididunt nisi consectetur esse laborum eiusmod
+                                        pariatur proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
+                                        risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
+                                        quam.
+                                    </p>
+                                    <p>
+                                        Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor
+                                        adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit
+                                        officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. Et mollit incididunt
+                                        nisi consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa
+                                        deserunt nostrud ad veniam.
+                                    </p>
+                                    <p>
+                                        Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit officia
+                                        eiusmod Lorem aliqua enim laboris do dolor eiusmod. Et mollit incididunt nisi
+                                        consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa
+                                        deserunt nostrud ad veniam. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit. Nullam pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
+                                        hendrerit risus, sed porttitor quam. Magna exercitation reprehenderit magna aute
+                                        tempor cupidatat consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
+                                        incididunt cillum quis. Velit duis sit officia eiusmod Lorem aliqua enim laboris
+                                        do dolor eiusmod. Et mollit incididunt nisi consectetur esse laborum eiusmod
+                                        pariatur proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.
+                                    </p>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <button onPress={onClose} className="bg-cus-light-yellow-high p-1.5">Close</button>
+                                </ModalFooter>
+                            </>
+                        )}
+                    </ModalContent>
+                </Modal>
             </div>
 
         </section>
