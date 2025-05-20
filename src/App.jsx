@@ -8,6 +8,7 @@ import AdvancedSearch from "./pages/AdvancedSearch";
 import Cart from "./pages/Cart";
 import GigRegister from "./pages/GigRegister";
 import OrdersQueue from "./pages/OrdersQueue";
+import AdminDashboard from "./pages/AdminDashboard";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/gigRegister" element={<GigRegister />} />
                     <Route path="/ordersQueue" element={<OrdersQueue />} />
+                    <Route path="/adminDashboard" element={<AdminDashboard />} />
                 </Routes>
             </Router>
         </main>
