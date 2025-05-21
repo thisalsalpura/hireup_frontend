@@ -8,4 +8,11 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
+  optimizeDeps: {
+    include: [
+      '@amcharts/amcharts5',
+      '@amcharts/amcharts5/xy',
+      '@amcharts/amcharts5/themes/Animated'
+    ]
+  }
 })

@@ -2,31 +2,9 @@ import React from "react";
 import logo from "../assets/icons/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGauge, faChartSimple, faUser, faStore, faBellConcierge } from "@fortawesome/free-solid-svg-icons";
-import Chart from 'react-apexcharts';
+import BarChart from "../components/BarChart";
 
 const AdminDashboard = () => {
-
-    const options = {
-        chart: {
-            id: 'basic-bar'
-        },
-        xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
-        },
-        title: {
-            text: 'Monthly Sales',
-            align: 'center',
-            style: { fontSize: '20px', color: '#333', fontFamily: 'Ropa Sans', fontWeight: 'bold' }
-        }
-    };
-
-    const series = [
-        {
-            name: 'Sales',
-            data: [30, 40, 35, 50, 49, 60]
-        }
-    ];
-
     return (
         <section className="bg-white custom2">
 
@@ -73,9 +51,9 @@ const AdminDashboard = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-9 flex items-center justify-center p-4">
+                    <div className="col-span-9 flex items-center justify-center py-2 pl-5 pr-2">
                         <div className="h-full w-full flex items-center justify-center">
-                            <Chart options={options} series={series} type="bar" height="100%" width="100%" />
+                            <BarChart />
                         </div>
                     </div>
                 </div>
