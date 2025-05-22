@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import GigRegister from "./pages/GigRegister";
 import OrdersQueue from "./pages/OrdersQueue";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminLogin from "./pages/AdminLogin";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
                     <Route path="/gigRegister" element={<GigRegister />} />
                     <Route path="/ordersQueue" element={<OrdersQueue />} />
                     <Route path="/adminDashboard" element={<AdminDashboard />} />
+                    <Route path="/adminLogin" element={<AdminLogin />} />
                 </Routes>
             </Router>
         </main>
