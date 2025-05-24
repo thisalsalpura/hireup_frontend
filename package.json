@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:emails": "mjml src/emails/mjml -o src/emails/html --config.minify=true",
+    "watch:emails": "mjml -w src/emails/mjml -o src/emails/html"
   },
   "dependencies": {
     "@amcharts/amcharts5": "^5.12.2",
