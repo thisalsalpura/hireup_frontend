@@ -1,9 +1,46 @@
 <mjml>
-    <mj-body>
-        <mj-section>
-            <mj-column>
-                <mj-text>Hello MJML!</mj-text>
-            </mj-column>
-        </mj-section>
-    </mj-body>
+  <mj-head>
+    <mj-font name="RopaSans" href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap" />
+  </mj-head>
+
+  <mj-body background-color="#D1D5DC">
+    <mj-section background-color="#FFFFFF">
+      <mj-column vertical-align="middle">
+        <mj-image align="left" src="../../assets/icons/logo.svg" alt="Logo" />
+      </mj-column>
+
+      <mj-column vertical-align="middle">
+        <mj-text align="right" font-size="16px" font-weight="600" font-family="Ropa Sans, sans-serif" color="#000000">Welcome to HireUp</mj-text>
+        <mj-text align="right" font-size="16px" font-weight="600" font-family="Ropa Sans, sans-serif" color="#000000">24/05/2025</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column width="90%">
+        <mj-divider border-color="#D1D5DC" border-width="1px" padding="10px 0" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column width="90%" background-color="#D1D5DC" border-radius="10px" padding="15px">
+        <mj-text align="center" font-size="30px" font-weight="600" font-family="Ropa Sans, sans-serif" padding-bottom="35px">Admin Login Verification</mj-text>
+        <mj-text align="center" font-size="18px" font-family="Ropa Sans, sans-serif" padding-bottom="15px">Verify Your Admin Email</mj-text>
+        <mj-button background-color="transparent" color="#7118B4" font-size="20px" font-weight="600" font-family="Ropa Sans, sans-serif" href="http://localhost:5173/adminDashboard" border-radius="25px" border="2px solid #7118B4"
+          >Verify</mj-button
+        >
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column width="90%">
+        <mj-divider border-color="#D1D5DC" border-width="1px" padding="10px 0" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column>
+        <mj-text align="center" font-size="18px" font-family="Ropa Sans, sans-serif" padding-bottom="15px">Connect with us</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
 </mjml>
