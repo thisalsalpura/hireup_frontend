@@ -14,5 +14,9 @@ export default defineConfig({
       '@amcharts/amcharts5/xy',
       '@amcharts/amcharts5/themes/Animated'
     ]
-  }
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+  },
 })
