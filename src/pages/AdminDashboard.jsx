@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../assets/icons/logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGauge, faChartSimple, faUser, faStore, faBellConcierge } from "@fortawesome/free-solid-svg-icons";
 import BarChart from "../components/BarChart";
 
 const AdminDashboard = () => {
+
+    useEffect(() => {
+        document.body.classList.add("custom2");
+        return () => document.body.classList.remove("custom2");
+    }, []);
+
     return (
         <section className="bg-white custom2">
 

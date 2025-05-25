@@ -20,7 +20,7 @@ const Profile = () => {
                 <div className="flex items-center justify-start">
                     <div className="flex flex-wrap md:flex-row items-center justify-start md:justify-center">
                         <span className="text-base text-blue-700 opacity-50 cursor-pointer">Home &nbsp;{">"}&nbsp;</span>
-                        <span className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; Profile</span>
+                        <span className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; UserProfile</span>
                     </div>
                 </div>
 

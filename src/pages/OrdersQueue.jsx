@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import Button from "../components/Button";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/react";
@@ -8,6 +8,11 @@ import { faClose, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 const OrdersQueue = () => {
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+    useEffect(() => {
+        document.body.classList.add("custom2");
+        return () => document.body.classList.remove("custom2");
+    }, []);
 
     return (
         <section className="bg-white custom2">

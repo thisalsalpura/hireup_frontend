@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../components/Button";
 import signinImg from "../assets/images/signin.svg";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,6 +10,11 @@ import SecondaryButton from "../components/SecondaryButton";
 const AdminLogin = () => {
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+    useEffect(() => {
+        document.body.classList.add("custom2");
+        return () => document.body.classList.remove("custom2");
+    }, []);
 
     return (
         <section className="bg-white h-full">
