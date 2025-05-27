@@ -33,26 +33,26 @@ const SellerProfile = () => {
                 </div>
 
                 <div className="mt-8 h-full w-full flex flex-col items-center justify-center bg-white border border-gray-300 shadow-xl rounded-md p-6 gap-10">
-                    <div className="h-full w-full flex flex-row items-start justify-between">
+                    <div className="h-full w-full flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-0">
                         <div className="h-full w-auto flex flex-row items-center justify-center gap-6">
-                            <div className="h-32 w-32 flex items-center justify-center border-2 border-black rounded-full p-1">
+                            <div className="h-24 md:h-32 w-24 md:w-32 flex items-center justify-center border-2 border-black rounded-full p-1">
                                 <div className="h-full w-full flex items-center justify-center bg-cus-light-yellow-high rounded-full"></div>
                             </div>
 
                             <div className="h-full w-auto flex flex-col items-start justify-center gap-2.5">
-                                <h2 className="text-3xl font-semibold">John Doeily</h2>
+                                <h2 className="text-2xl md:text-3xl font-semibold">John Doeily</h2>
                                 <div className="h-auto w-auto flex items-center justify-center gap-2">
-                                    <FontAwesomeIcon icon={faLocationDot} className="text-lg" />
-                                    <p className="text-lg">Sri Lanka</p>
+                                    <FontAwesomeIcon icon={faLocationDot} className="text-base md:text-lg" />
+                                    <p className="text-base md:text-lg">Sri Lanka</p>
                                 </div>
                                 <button onClick={onProOpen} className="px-2 py-0.5 border border-gray-400 rounded-lg font-semibold cursor-pointer"><FontAwesomeIcon icon={faPen} className="mr-2.5 text-sm" />Edit</button>
                             </div>
                         </div>
 
-                        <div className="h-full w-auto flex items-center justify-center">
-                            <div className="h-auto w-auto flex items-center justify-between bg-black rounded-md shadow-md px-5 py-4 gap-8 cursor-pointer">
-                                <p className="text-2xl text-white">Explore My Gigs</p>
-                                <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-lg text-white" />
+                        <div className="h-full w-full md:w-auto flex items-center justify-center">
+                            <div className="h-auto w-full md:w-auto flex items-center justify-between bg-black rounded-md shadow-md px-5 py-4 gap-8 cursor-pointer">
+                                <p className="text-xl md:text-2xl text-white">Explore My Gigs</p>
+                                <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-base md:text-lg text-white" />
                             </div>
                         </div>
                     </div>
@@ -72,32 +72,38 @@ const SellerProfile = () => {
                     <div className="h-full w-full flex flex-col items-start justify-center border border-gray-300 rounded-md p-5 gap-6">
                         <h2 className="text-4xl font-londrinasolid">Education</h2>
                         <div className="h-auto w-full flex flex-col items-center justify-start gap-3">
-                            <div className="h-auto w-full flex flex-row items-center justify-between bg-gray-300 rounded-md px-4 py-3.5 gap-6">
-                                <div className="h-auto w-auto flex flex-row items-center justify-center gap-6">
+                            <div className="h-auto w-full flex flex-col md:flex-row items-center justify-between bg-gray-300 rounded-md px-4 py-3.5 gap-6">
+                                <div className="h-auto w-auto flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
                                     <div className="h-12 w-12 flex items-center justify-center bg-gray-200 rounded-full p-1">
                                         <FontAwesomeIcon icon={faUserGraduate} className="text-xl text-black" />
                                     </div>
-                                    <div className="flex flex-col items-start justify-center">
-                                        <h2 className="text-xl font-semibold">Birmingham City University</h2>
-                                        <p>BSc Hons Software Engineering</p>
+
+                                    <div className="flex flex-col items-center md:items-start justify-center">
+                                        <h2 className="text-xl text-center md:text-left font-semibold">Birmingham City University</h2>
+                                        <p className="text-center md:text-left">BSc Hons Software Engineering</p>
                                     </div>
                                 </div>
+
+                                <hr className="h-0.5 w-full flex md:hidden bg-cus-black-low opacity-10" />
 
                                 <div className="h-12 w-12 flex items-center justify-center bg-gray-200 rounded-full p-1 cursor-pointer">
                                     <FontAwesomeIcon icon={faTrash} className="text-xl text-red-500" />
                                 </div>
                             </div>
 
-                            <div className="h-auto w-full flex flex-row items-center justify-between bg-gray-300 rounded-md px-4 py-3.5 gap-6">
-                                <div className="h-auto w-auto flex flex-row items-center justify-center gap-6">
+                            <div className="h-auto w-full flex flex-col md:flex-row items-center justify-between bg-gray-300 rounded-md px-4 py-3.5 gap-6">
+                                <div className="h-auto w-auto flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
                                     <div className="h-12 w-12 flex items-center justify-center bg-gray-200 rounded-full p-1">
                                         <FontAwesomeIcon icon={faUserGraduate} className="text-xl text-black" />
                                     </div>
-                                    <div className="flex flex-col items-start justify-center">
-                                        <h2 className="text-xl font-semibold">Java Institute</h2>
-                                        <p>BSc Hons Software Engineering</p>
+
+                                    <div className="flex flex-col items-center md:items-start justify-center">
+                                        <h2 className="text-xl text-center md:text-left font-semibold">Java Institute</h2>
+                                        <p className="text-center md:text-left">BSc Hons Software Engineering</p>
                                     </div>
                                 </div>
+
+                                <hr className="h-0.5 w-full flex md:hidden bg-cus-black-low opacity-10" />
 
                                 <div className="h-12 w-12 flex items-center justify-center bg-gray-200 rounded-full p-1 cursor-pointer">
                                     <FontAwesomeIcon icon={faTrash} className="text-xl text-red-500" />

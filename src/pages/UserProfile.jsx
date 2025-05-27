@@ -103,7 +103,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-12 flex items-center justify-center p-5 mt-4">
+                    <div className="col-span-12 flex items-center justify-center py-5 px-3 mt-4">
                         <SecondaryButton containerClass="w-full md:w-1/3 bg-black text-white" name="Save" />
                     </div>
 

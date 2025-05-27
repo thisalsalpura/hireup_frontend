@@ -225,7 +225,7 @@ const AdvancedSearch = () => {
                         </div>
                     </div>
 
-                    <Pagination className="bg-blur text-white rounded-md mt-4 mb-4 cursor-pointer" initialPage={1} total={10} color="success" variant="flat" radius="md" size="lg" />
+                    <Pagination className="bg-blur text-white rounded-md mt-4 mb-4 cursor-pointer" initialPage={1} total={10} color="success" variant="flat" radius="md" size="md" />
                 </div>
 
             </div>
