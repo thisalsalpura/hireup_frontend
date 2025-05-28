@@ -11,6 +11,7 @@ import OrdersQueue from "./pages/OrdersQueue";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import SellerProfile from "./pages/SellerProfile";
+import SellerDashboard from "./pages/SellerDashboard";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
                     <Route path="/adminDashboard" element={<AdminDashboard />} />
                     <Route path="/adminLogin" element={<AdminLogin />} />
                     <Route path="/sellerProfile" element={<SellerProfile />} />
+                    <Route path="/sellerDashboard" element={<SellerDashboard />} />
                 </Routes>
             </Router>
         </main>

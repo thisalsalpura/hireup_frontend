@@ -66,7 +66,7 @@ const AdminLogin = () => {
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton backdrop="blur" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50" />
 
-                    <ModalContent className="h-auto max-h-3/4 w-1/3 flex flex-col items-center justify-between bg-cus-black-low rounded-sm shadow-xl p-2.5 z-50">
+                    <ModalContent className="h-auto max-h-3/4 w-[95%] md:w-2/3 lg:w-1/3 flex flex-col items-center justify-between bg-cus-black-low rounded-sm shadow-xl p-2.5 z-50">
                         {(onClose) => (
                             <>
                                 <ModalHeader className="h-auto w-full flex flex-row items-center justify-between border-b border-b-gray-400">

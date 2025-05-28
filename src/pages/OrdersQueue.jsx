@@ -128,7 +128,7 @@ const OrdersQueue = () => {
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton backdrop="blur" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50" />
 
-                    <ModalContent className="h-auto max-h-3/4 w-2/4 flex flex-col items-center justify-between bg-cus-black-low rounded-sm shadow-xl p-2.5 z-50">
+                    <ModalContent className="h-auto max-h-3/4 w-[95%] md:w-3/4 lg:w-2/4 flex flex-col items-center justify-between bg-cus-black-low rounded-sm shadow-xl p-2.5 z-50">
                         {(onClose) => (
                             <>
                                 <ModalHeader className="h-auto w-full flex flex-row items-center justify-between border-b border-b-gray-400">
