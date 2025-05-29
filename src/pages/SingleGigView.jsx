@@ -220,7 +220,7 @@ const SingleGigView = () => {
                     </div>
 
                     <div className="mt-16 lg:mt-0 col-span-12 lg:col-span-5 lg:sticky lg:top-6 h-fit w-full flex items-start justify-center px-0.5 sm:px-5">
-                        <TabsComponent />
+                        {/* <TabsComponent /> */}
                     </div>
                 </div>
 
