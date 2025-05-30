@@ -67,3 +67,19 @@ export const paths = [
     icon: faMusic,
   },
 ];
+
+import SellerGigs from "../pages/SellerGigs";
+import SellerProfile from "../pages/SellerProfile";
+
+export const sellerDashboardTabs = [
+  {
+    id: "1",
+    tabName: "Seller's Gigs",
+    tabContent: SellerGigs,
+  },
+  {
+    id: "2",
+    tabName: "Seller's Profile",
+    tabContent: SellerProfile,
+  },
+];

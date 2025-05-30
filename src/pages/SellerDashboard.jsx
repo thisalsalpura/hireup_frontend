@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/icons/logo.svg";
 import TabsComponent from "../components/TabsComponent";
-import SellerProfile from "./SellerProfile";
+import { sellerDashboardTabs } from "../constants/script";
 
 const SellerDashboard = () => {
     return (
@@ -39,7 +39,7 @@ const SellerDashboard = () => {
                 </div>
 
                 <div className="mt-10 h-full w-full flex items-center justify-center">
-                    <TabsComponent tabName="Seller Profile" tabContent={<SellerProfile />} />
+                    <TabsComponent tabs={sellerDashboardTabs} />
                 </div>
 
             </div>

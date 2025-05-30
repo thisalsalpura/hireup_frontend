@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faArrowUpRightFromSquare, faPen, faUserGraduate, faTrash, faClose } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/react";
@@ -12,15 +12,10 @@ const SellerProfile = () => {
     const { isOpen: isEducationOpen, onOpen: onEducationOpen, onOpenChange: onEducationOpenChange } = useDisclosure();
     const { isOpen: isSkillsOpen, onOpen: onSkillsOpen, onOpenChange: onSkillsOpenChange } = useDisclosure();
 
-    useEffect(() => {
-        document.body.classList.add("custom2");
-        return () => document.body.classList.remove("custom2");
-    }, []);
-
     return (
         <>
 
-            <div className="mt-8 h-full w-full flex flex-col items-center justify-center bg-white border border-gray-300 shadow-xl rounded-md p-6 gap-10">
+            <div className="h-full w-full flex flex-col items-center justify-center rounded-md p-6 gap-10">
                 <div className="h-full w-full flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-0">
                     <div className="h-full w-auto flex flex-row items-center justify-center gap-6">
                         <div className="h-24 md:h-32 w-24 md:w-32 flex items-center justify-center border-2 border-black rounded-full p-1">
