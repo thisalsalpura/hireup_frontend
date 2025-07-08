@@ -5,6 +5,8 @@ import signinImg from "../assets/images/signin.svg";
 import registerImg from "../assets/images/register.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import Checkbox from "../components/Checkbox";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
 
@@ -36,7 +38,7 @@ const Login = () => {
 
                                 <div className="relative overflow-hidden h-full w-full hidden lg:flex lg:col-span-7 items-center justify-center p-3">
                                     <div className="h-full w-full flex items-center justify-center">
-                                        <h2 className="absolute bg-transparent text-transparent cus-text-style cus-text-style-black text-6xl font-londrinasolid z-20">Welcome! <br />HireUp</h2>
+                                        <h2 className="absolute bg-transparent text-transparent tracking-widest cus-text-style cus-text-style-black text-6xl font-londrinasolid z-20">Welcome! <br />HireUp</h2>
 
                                         <div className="h-full w-full flex items-center justify-center z-10">
                                             <img src={signinImg} alt="signin_img" className="object-cover h-[500px]" />
@@ -61,12 +63,12 @@ const Login = () => {
                                         <div className="flex flex-row items-center justify-between mt-5">
                                             <Checkbox name="Remember Me" />
 
-                                            <label className="text-blue-700 text-sm sm:text-base"><a href="/">Forgot Password?</a></label>
+                                            <label className="text-blue-700 hover:border-b-2 hover:border-blue-700 text-sm sm:text-base"><a href="/">Forgot Password?</a></label>
                                         </div>
 
                                         <Button href="/home" name="SignIn" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
 
-                                        <p className="text-white text-sm sm:text-base tracking-wide mt-4">Not registered? <a className="text-blue-700" onClick={toggleSlide}>Register</a></p>
+                                        <p className="text-white text-sm sm:text-base tracking-wide mt-4">Not registered? <a className="text-blue-700 hover:border-b-2 hover:border-blue-700" onClick={toggleSlide}>Register</a></p>
 
                                         <Button name="Google SignIn" icon={faGoogle} containerClass="mt-4" frontClasses="text-blue-700 h-10 w-full border-2 border-blue-700" backClasses="h-10 w-full bg-white" />
                                     </div>
@@ -106,13 +108,13 @@ const Login = () => {
 
                                         <Button name="Register" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
 
-                                        <p className="text-white text-sm sm:text-base tracking-wide mt-4">Already registered? <a className="text-blue-700" onClick={toggleSlide}>SignIn</a></p>
+                                        <p className="text-white text-sm sm:text-base tracking-wide mt-4">Already registered? <a className="text-blue-700 hover:border-b-2 hover:border-blue-700" onClick={toggleSlide}>SignIn</a></p>
                                     </div>
                                 </div>
 
                                 <div className="relative overflow-hidden h-full w-full hidden lg:flex lg:col-span-7 items-center justify-center p-3">
                                     <div className="h-full w-full flex items-center justify-center">
-                                        <h2 className="absolute bg-transparent text-transparent cus-text-style cus-text-style-black text-6xl font-londrinasolid z-20">Welcome! <br />HireUp</h2>
+                                        <h2 className="absolute bg-transparent text-transparent tracking-widest cus-text-style cus-text-style-black text-6xl font-londrinasolid z-20">Welcome! <br />HireUp</h2>
 
                                         <div className="h-full w-full flex items-center justify-center z-10">
                                             <img src={registerImg} alt="signin_img" className="object-cover h-[500px]" />
