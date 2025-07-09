@@ -14,12 +14,14 @@ const Login = () => {
     const navigate = useNavigate();
 
     const loginWithGoogle = useGoogleLogin({
-        onSuccess: async (tokenResponse) => {
-            console.log("Google Token:", tokenResponse);
+        flow: "implicit",
+        onSuccess: (tokenResponse) => {
+            const token = tokenResponse.access_token;
+            const user = jwtDecode(token);
+            console.log("Google User:", user);
             navigate("/home");
         },
-        onError: () => console.log("Login Failed"),
-        flow: "auth-code",
+        onError: () => console.log("Login Failed")
     });
 
     const [isOpen, setIsOpen] = useState(false)
@@ -82,7 +84,7 @@ const Login = () => {
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Not registered? <a className="text-blue-700 hover:border-b-2 hover:border-blue-700" onClick={toggleSlide}>Register</a></p>
 
-                                        <Button onClick={loginWithGoogle} name="Google SignIn" icon={faGoogle} containerClass="mt-4" frontClasses="text-blue-700 h-10 w-full border-2 border-blue-700" backClasses="h-10 w-full bg-white" />
+                                        <Button onClick={() => { alert("Button clicked!"); loginWithGoogle(); }} name="Google SignIn" icon={faGoogle} containerClass="mt-4" frontClasses="text-blue-700 h-10 w-full border-2 border-blue-700" backClasses="h-10 w-full bg-white" />
 
                                     </div>
                                 </div>
