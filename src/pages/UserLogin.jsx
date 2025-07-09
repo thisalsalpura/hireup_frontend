@@ -5,10 +5,22 @@ import signinImg from "../assets/images/signin.svg";
 import registerImg from "../assets/images/register.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import Checkbox from "../components/Checkbox";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    const loginWithGoogle = useGoogleLogin({
+        onSuccess: async (tokenResponse) => {
+            console.log("Google Token:", tokenResponse);
+            navigate("/home");
+        },
+        onError: () => console.log("Login Failed"),
+        flow: "auth-code",
+    });
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -70,7 +82,8 @@ const Login = () => {
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Not registered? <a className="text-blue-700 hover:border-b-2 hover:border-blue-700" onClick={toggleSlide}>Register</a></p>
 
-                                        <Button name="Google SignIn" icon={faGoogle} containerClass="mt-4" frontClasses="text-blue-700 h-10 w-full border-2 border-blue-700" backClasses="h-10 w-full bg-white" />
+                                        <Button onClick={loginWithGoogle} name="Google SignIn" icon={faGoogle} containerClass="mt-4" frontClasses="text-blue-700 h-10 w-full border-2 border-blue-700" backClasses="h-10 w-full bg-white" />
+
                                     </div>
                                 </div>
 
