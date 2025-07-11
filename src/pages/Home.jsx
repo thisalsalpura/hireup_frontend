@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faStar, faHeart, faCircleLeft, faCircleRight } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faStar, faHeart, faCircleLeft, faCircleRight, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import SecondaryButton from "../components/SecondaryButton";
+import { paths } from "../constants/script";
 
 const Home = () => {
 
@@ -29,6 +30,12 @@ const Home = () => {
                 behavior: "smooth",
             });
         }
+    };
+
+    const [isOpenSubMenu, setIsOpenSubMenu] = useState({});
+
+    const toggleSubMenu = () => {
+        setIsOpenSubMenu((previousOpen) => !previousOpen);
     };
 
     return (
@@ -59,7 +66,7 @@ const Home = () => {
 
                 <div className="mt-10">
                     <div className="flex flex-col md:flex-row items-center justify-center md:justify-between px-1">
-                        <h2 className="text-black text-3xl text-center font-londrinasolid">Programming & Tech</h2>
+                        <h2 className="text-black text-3xl text-center font-londrinasolid">Recommended for You!</h2>
 
                         <div className="hidden md:flex flex-row items-center justify-center gap-2">
                             <div onClick={scrollLeft} className="bg-cus-black-low w-auto h-auto px-4 py-2.5 flex items-center justify-center rounded-md cursor-pointer">
@@ -73,7 +80,7 @@ const Home = () => {
 
                     <div ref={scrollRef} className="flex gap-5 sm:gap-8 mt-6 bg-transparent overflow-x-auto hide-scrollbar px-0.5 py-4">
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-md h-96 w-64 sm:w-80 flex-shrink-0">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
                             <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
                                     <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
@@ -105,7 +112,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-md h-96 w-64 sm:w-80 flex-shrink-0">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
                             <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
                                     <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
@@ -137,7 +144,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-md h-96 w-64 sm:w-80 flex-shrink-0">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
                             <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
                                     <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
@@ -169,7 +176,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-md h-96 w-64 sm:w-80 flex-shrink-0">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
                             <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
                                     <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
@@ -201,7 +208,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-md h-96 w-64 sm:w-80 flex-shrink-0">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
                             <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
                                     <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
@@ -234,6 +241,36 @@ const Home = () => {
                         </div>
 
                     </div>
+                </div>
+
+                <div className="mt-6 h-full w-full grid grid-cols-12 gap-3.5">
+                    <div className="col-span-4 flex flex-col items-center justify-center p-2 gap-12">
+                        <div className="h-auto w-full flex flex-col justify-center items-start border border-gray-200 rounded-md shadow-sm px-6 py-4">
+                            <h2 className="text-2xl font-londrinasolid tracking-wide">Categories</h2>
+
+                            <div className="mt-5 h-auto w-full flex flex-col justify-center items-center gap-4 opacity-65">
+                                {paths.map(({ id, title, icon }) => (
+                                    <div key={id} className="h-auto w-full flex flex-col justify-center items-center gap-1.5">
+                                        <div className="h-auto w-full flex flex-row justify-between items-center">
+                                            <p>{title}</p>
+                                            <FontAwesomeIcon onClick={toggleSubMenu} icon={isOpenSubMenu ? faMinus : faPlus} className="cursor-pointer" />
+                                        </div>
+                                        <div className={`h-auto w-full ${isOpenSubMenu ? "flex" : "hidden"} flex-col justify-center items-start transition-all duration-300 ea`}>
+                                            <ul className="text-sm gap-0.5">
+                                                <li>Web Development</li>
+                                                <li>Mobile Development</li>
+                                                <li>Data Science</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="h-52 w-full border border-gray-200 rounded-md shadow-sm"></div>
+                    </div>
+
+                    <div className="col-span-8"></div>
                 </div>
             </div>
 

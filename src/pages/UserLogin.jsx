@@ -84,7 +84,7 @@ const Login = () => {
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Not registered? <a className="text-blue-700 hover:border-b-2 hover:border-blue-700" onClick={toggleSlide}>Register</a></p>
 
-                                        <Button onClick={() => { alert("Button clicked!"); loginWithGoogle(); }} name="Google SignIn" icon={faGoogle} containerClass="mt-4" frontClasses="text-blue-700 h-10 w-full border-2 border-blue-700" backClasses="h-10 w-full bg-white" />
+                                        <Button onClick={() => { loginWithGoogle(); }} name="Google SignIn" icon={faGoogle} containerClass="mt-4" frontClasses="text-blue-700 h-10 w-full border-2 border-blue-700" backClasses="h-10 w-full bg-white" />
 
                                     </div>
                                 </div>

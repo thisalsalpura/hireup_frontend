@@ -83,3 +83,31 @@ export const sellerDashboardTabs = [
     tabContent: SellerProfile,
   },
 ];
+
+export const steps = [
+  {
+    id: 1,
+    name: "Overview",
+  },
+  {
+    id: 2,
+    name: "Pricing",
+  },
+  {
+    id: 3,
+    name: "Description & FAQ",
+  },
+  {
+    id: 4,
+    name: "Requirements"
+  },
+  {
+    id: 5,
+    name: "Gallery"
+  },
+  {
+    id: 6,
+    name: "Publish"
+  }
+];
+
