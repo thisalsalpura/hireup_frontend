@@ -32,10 +32,13 @@ const Home = () => {
         }
     };
 
-    const [isOpenSubMenu, setIsOpenSubMenu] = useState({});
+    const [openSubMenus, setOpenSubMenus] = useState({});
 
-    const toggleSubMenu = () => {
-        setIsOpenSubMenu((previousOpen) => !previousOpen);
+    const toggleSubMenu = (id) => {
+        setOpenSubMenus((previousOpen) => ({
+            ...previousOpen,
+            [id]: !previousOpen[id],
+        }));
     };
 
     return (
@@ -78,7 +81,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div ref={scrollRef} className="flex gap-5 sm:gap-8 mt-6 bg-transparent overflow-x-auto hide-scrollbar px-0.5 py-4">
+                    <div ref={scrollRef} className="flex gap-5 sm:gap-8 mt-6 overflow-x-auto hide-scrollbar px-0.5 py-4">
 
                         <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
                             <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
@@ -244,18 +247,18 @@ const Home = () => {
                 </div>
 
                 <div className="mt-6 h-full w-full grid grid-cols-12 gap-3.5">
-                    <div className="col-span-4 flex flex-col items-center justify-center p-2 gap-12">
+                    <div className="col-span-4 flex flex-col items-center justify-center p-0.5 gap-12">
                         <div className="h-auto w-full flex flex-col justify-center items-start border border-gray-200 rounded-md shadow-sm px-6 py-4">
                             <h2 className="text-2xl font-londrinasolid tracking-wide">Categories</h2>
 
                             <div className="mt-5 h-auto w-full flex flex-col justify-center items-center gap-4 opacity-65">
                                 {paths.map(({ id, title, icon }) => (
-                                    <div key={id} className="h-auto w-full flex flex-col justify-center items-center gap-1.5">
+                                    <div key={id} className="h-auto w-full flex flex-col justify-center items-center gap-1.5 transition-all duration-300 ease-in-out">
                                         <div className="h-auto w-full flex flex-row justify-between items-center">
                                             <p>{title}</p>
-                                            <FontAwesomeIcon onClick={toggleSubMenu} icon={isOpenSubMenu ? faMinus : faPlus} className="cursor-pointer" />
+                                            <FontAwesomeIcon onClick={() => toggleSubMenu(id)} icon={openSubMenus[id] ? faMinus : faPlus} className="cursor-pointer transform transition-transform duration-300" />
                                         </div>
-                                        <div className={`h-auto w-full ${isOpenSubMenu ? "flex" : "hidden"} flex-col justify-center items-start transition-all duration-300 ea`}>
+                                        <div className={`transition-all duration-300 ease-in-out overflow-hidden ${openSubMenus[id] ? "max-h-44 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"} w-full flex flex-col justify-center items-start`}>
                                             <ul className="text-sm gap-0.5">
                                                 <li>Web Development</li>
                                                 <li>Mobile Development</li>
@@ -267,7 +270,55 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="h-52 w-full border border-gray-200 rounded-md shadow-sm"></div>
+                        <div className="h-auto w-full flex flex-col justify-center items-start border border-gray-200 rounded-md shadow-sm px-6 py-4">
+                            <h2 className="text-2xl font-londrinasolid tracking-wide">Best Sellers</h2>
+
+                            <div className="mt-5 h-auto w-full flex flex-col justify-center items-center gap-4">
+                                <div className="h-auto w-full flex flex-row justify-start items-center border-b border-b-gray-200 py-4 gap-4">
+                                    <div className="h-16 w-16 flex flex-shrink-0 justify-center items-center rounded-lg border-2 border-black p-0.5">
+                                        <div className="h-full w-full bg-cus-light-yellow-high rounded-lg"></div>
+                                    </div>
+
+                                    <div className="h-16 w-full flex flex-col justify-start items-start overflow-hidden">
+                                        <p className="text-left font-semibold">Ben Stokes</p>
+                                        <p className="text-left text-sm line-clamp-2">Hi there! I am Ben Stokes. I design responsive and user-friendly websites and applications. My expertise includes web development using HTML, CSS, JavaScript, and PHP, as well as UI and UX design for both web and mobile platforms. I build everything from personal websites to complex e-commerce platforms. I also provide database management services, develop desktop software applications using Java and design logos and icons for your brand. Let's bring your digital vision to life with a professional, modern touch.</p>
+                                    </div>
+                                </div>
+
+                                <div className="h-auto w-full flex flex-row justify-start items-center border-b border-b-gray-200 py-4 gap-4">
+                                    <div className="h-16 w-16 flex flex-shrink-0 justify-center items-center rounded-lg border-2 border-black p-0.5">
+                                        <div className="h-full w-full bg-cus-light-yellow-high rounded-lg"></div>
+                                    </div>
+
+                                    <div className="h-16 w-full flex flex-col justify-start items-start overflow-hidden">
+                                        <p className="text-left font-semibold">Ben Stokes</p>
+                                        <p className="text-left text-sm line-clamp-2">Hi there! I am Ben Stokes. I design responsive and user-friendly websites and applications. My expertise includes web development using HTML, CSS, JavaScript, and PHP, as well as UI and UX design for both web and mobile platforms. I build everything from personal websites to complex e-commerce platforms. I also provide database management services, develop desktop software applications using Java and design logos and icons for your brand. Let's bring your digital vision to life with a professional, modern touch.</p>
+                                    </div>
+                                </div>
+
+                                <div className="h-auto w-full flex flex-row justify-start items-center border-b border-b-gray-200 py-4 gap-4">
+                                    <div className="h-16 w-16 flex flex-shrink-0 justify-center items-center rounded-lg border-2 border-black p-0.5">
+                                        <div className="h-full w-full bg-cus-light-yellow-high rounded-lg"></div>
+                                    </div>
+
+                                    <div className="h-16 w-full flex flex-col justify-start items-start overflow-hidden">
+                                        <p className="text-left font-semibold">Ben Stokes</p>
+                                        <p className="text-left text-sm line-clamp-2">Hi there! I am Ben Stokes. I design responsive and user-friendly websites and applications. My expertise includes web development using HTML, CSS, JavaScript, and PHP, as well as UI and UX design for both web and mobile platforms. I build everything from personal websites to complex e-commerce platforms. I also provide database management services, develop desktop software applications using Java and design logos and icons for your brand. Let's bring your digital vision to life with a professional, modern touch.</p>
+                                    </div>
+                                </div>
+
+                                <div className="h-auto w-full flex flex-row justify-start items-center border-b border-b-gray-200 py-4 gap-4">
+                                    <div className="h-16 w-16 flex flex-shrink-0 justify-center items-center rounded-lg border-2 border-black p-0.5">
+                                        <div className="h-full w-full bg-cus-light-yellow-high rounded-lg"></div>
+                                    </div>
+
+                                    <div className="h-16 w-full flex flex-col justify-start items-start overflow-hidden">
+                                        <p className="text-left font-semibold">Ben Stokes</p>
+                                        <p className="text-left text-sm line-clamp-2">Hi there! I am Ben Stokes. I design responsive and user-friendly websites and applications. My expertise includes web development using HTML, CSS, JavaScript, and PHP, as well as UI and UX design for both web and mobile platforms. I build everything from personal websites to complex e-commerce platforms. I also provide database management services, develop desktop software applications using Java and design logos and icons for your brand. Let's bring your digital vision to life with a professional, modern touch.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="col-span-8"></div>
