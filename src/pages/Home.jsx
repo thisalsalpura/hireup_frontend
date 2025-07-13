@@ -57,17 +57,20 @@ const Home = () => {
                     <div className="absolute mr-64 mt-24 h-72 w-72 bg-cus-dark-pink rounded-full mix-blend-multiply opacity-80 animate-scale-10s animate-translate-4"></div>
                 </div>
 
-                <div className="flex flex-row items-center justify-center h-full w-full -translate-y-1/2 gap-0">
-                    <input type="text" className="bg-cus-black-low px-5 h-16 w-full md:w-2/4 rounded-tl-lg rounded-bl-lg outline-none text-sm md:text-lg lg:text-2xl text-white" placeholder="What service are you looking for today?" />
+                <div className="flex flex-col sm:flex-row items-center justify-center h-full w-full -translate-y-1/2 relative gap-2 sm:gap-0">
+                    <div className="flex flex-row h-fit w-full sm:w-auto">
+                        <input type="text" className="bg-cus-black-low px-5 h-16 w-full sm:w-[400px] rounded-tl-lg rounded-bl-lg outline-none text-sm md:text-lg lg:text-2xl text-white" placeholder="What service are you looking for today?" />
 
-                    <div className="-ml-0.5 bg-cus-black-low px-4 h-16 flex items-center justify-center rounded-tr-lg rounded-br-lg">
-                        <FontAwesomeIcon icon={faMagnifyingGlass} className="text-base md:text-lg lg:text-2xl text-white cursor-pointer" />
+                        <div className="-ml-0.5 bg-cus-black-low px-4 h-16 flex items-center justify-center rounded-tr-lg rounded-br-lg">
+                            <FontAwesomeIcon icon={faMagnifyingGlass} className="text-base md:text-lg lg:text-2xl text-white cursor-pointer" />
+                        </div>
                     </div>
 
-                    <div className="flex items-center justify-center h-16 w-auto md:ml-2.5">
-                        <SecondaryButton href="/advancedSearch" containerClass="w-fit h-full bg-cus-black-low text-white" name="Advanced" />
+                    <div className="flex items-center justify-center h-16 w-full sm:w-auto sm:ml-2.5">
+                        <SecondaryButton href="/advancedSearch" containerClass="w-full sm:w-fit h-full bg-cus-black-low text-white" name="Advanced" />
                     </div>
                 </div>
+
 
                 <div className="mt-10">
                     <div className="flex flex-col md:flex-row items-center justify-center md:justify-between px-0.5">
@@ -368,8 +371,8 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="mt-10 relative h-full w-full grid grid-cols-12 gap-3.5">
-                    <div className="col-span-3 h-fit sticky top-6 flex flex-col justify-start items-start p-0.5 gap-12">
+                <div className="mt-10 relative h-full w-full grid grid-cols-12 sm:gap-3.5">
+                    <div className="col-span-12 sm:col-span-6 lg:col-span-3 h-full sm:h-fit sm:top-6 sm:sticky flex flex-col justify-start items-start p-0.5 gap-12">
                         <div className="h-auto w-full flex flex-col justify-center items-start border border-gray-200 rounded-md shadow-sm px-6 py-4">
                             <h2 className="text-2xl font-londrinasolid tracking-wide">Categories</h2>
 
@@ -443,9 +446,9 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-9 flex flex-wrap justify-center items-start gap-5 pr-0.5 pl-2.5 py-0.5">
+                    <div className="mt-12 sm:mt-0 col-span-12 sm:col-span-6 lg:col-span-9 flex flex-wrap justify-center items-start gap-5 pr-0.5 pl-2.5 py-0.5">
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-full sm:w-72 flex-shrink-0 group">
                             <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
                                     <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
@@ -485,7 +488,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-full sm:w-72 flex-shrink-0 group">
                             <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
                                     <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
@@ -525,7 +528,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-full sm:w-72 flex-shrink-0 group">
                             <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
                                     <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
@@ -565,7 +568,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-full sm:w-72 flex-shrink-0 group">
                             <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
                                     <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
@@ -605,7 +608,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-full sm:w-72 flex-shrink-0 group">
                             <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
                                     <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
@@ -645,7 +648,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-full sm:w-72 flex-shrink-0 group">
                             <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
                                     <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
@@ -685,7 +688,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-full sm:w-72 flex-shrink-0 group">
                             <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
                                     <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
@@ -725,7 +728,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-full sm:w-72 flex-shrink-0 group">
                             <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
                                 <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
                                     <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
@@ -783,11 +786,11 @@ const Home = () => {
                     </div>
 
                     <div className="h-auto w-full grid grid-cols-12 border border-gray-200 rounded-md shadow-sm p-4 gap-6">
-                        <div className="col-span-6 h-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
+                        <div className="col-span-12 sm:col-span-6 h-44 sm:h-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
 
                         </div>
 
-                        <div className="col-span-6 flex flex-col justify-start items-start gap-4">
+                        <div className="col-span-12 sm:col-span-6 flex flex-col justify-start items-start gap-4">
                             <div className="flex flex-row justify-center items-start gap-4">
                                 <div className="h-16 w-16 flex justify-center items-start border-2 border-black rounded-md p-0.5">
                                     <div className="h-full w-full bg-cus-light-yellow-high rounded-md">
@@ -814,11 +817,11 @@ const Home = () => {
                     </div>
                 </div>
 
-                <h2 className="mt-16 text-black text-3xl font-londrinasolid text-left px-0.5">News</h2>
+                <h2 className="mt-16 text-black text-3xl font-londrinasolid text-center sm:text-left px-0.5">News</h2>
 
-                <div className="mt-10 flex flex-wrap justify-start items-center gap-6 px-0.5">
+                <div className="mt-10 flex flex-wrap justify-center lg:justify-start items-center sm:gap-6 px-0.5">
 
-                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                    <div className="h-auto w-full sm:w-72 flex flex-col justify-center items-center gap-2.5">
                         <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
 
                         </div>
@@ -829,7 +832,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                    <div className="mt-12 sm:mt-0 h-auto w-full sm:w-72 flex flex-col justify-center items-center gap-2.5">
                         <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
 
                         </div>
@@ -840,7 +843,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                    <div className="mt-12 sm:mt-0 h-auto w-full sm:w-72 flex flex-col justify-center items-center gap-2.5">
                         <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
 
                         </div>
@@ -851,7 +854,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                    <div className="mt-12 sm:mt-0 h-auto w-full sm:w-72 flex flex-col justify-center items-center gap-2.5">
                         <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
 
                         </div>
@@ -862,7 +865,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                    <div className="mt-12 sm:mt-0 h-auto w-full sm:w-72 flex flex-col justify-center items-center gap-2.5">
                         <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
 
                         </div>
@@ -873,7 +876,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                    <div className="mt-12 sm:mt-0 h-auto w-full sm:w-72 flex flex-col justify-center items-center gap-2.5">
                         <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
 
                         </div>
@@ -884,7 +887,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                    <div className="mt-12 sm:mt-0 h-auto w-full sm:w-72 flex flex-col justify-center items-center gap-2.5">
                         <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
 
                         </div>
@@ -900,12 +903,12 @@ const Home = () => {
                 <div className="mt-24 p-0.5">
                     <div className="mb-12 h-0.5 w-full bg-gray-200"></div>
 
-                    <div className="h-full w-full flex flex-col justify-center items-start bg-cus-black-low rounded-md gap-8 px-20 py-8">
+                    <div className="h-full w-full flex flex-col justify-center items-start bg-cus-black-low rounded-md gap-8 px-10 sm:px-20 py-8">
                         <div className="mt-2.5 h-0.5 w-full bg-gray-300 opacity-20"></div>
 
-                        <div className="h-auto w-full grid grid-cols-12 justify-center items-start gap-2">
+                        <div className="h-auto w-full grid grid-cols-12 justify-center items-start sm:gap-2">
 
-                            <div className="col-span-3 flex flex-col justify-center items-start gap-4">
+                            <div className="col-span-12 sm:col-span-3 flex flex-col justify-center items-start gap-4">
                                 <h2 className="text-white text-lg text-left font-semibold">Company</h2>
 
                                 <ul className="text-white text-sm text-left space-y-1.5">
@@ -919,7 +922,7 @@ const Home = () => {
                                 </ul>
                             </div>
 
-                            <div className="col-span-3 flex flex-col justify-center items-start gap-4">
+                            <div className="mt-8 sm:mt-0 col-span-12 sm:col-span-3 flex flex-col justify-center items-start gap-4">
                                 <h2 className="text-white text-lg text-left font-semibold">Company</h2>
 
                                 <ul className="text-white text-sm text-left space-y-1.5">
@@ -931,7 +934,7 @@ const Home = () => {
                                 </ul>
                             </div>
 
-                            <div className="col-span-3 flex flex-col justify-center items-start gap-4">
+                            <div className="mt-8 sm:mt-0 col-span-12 sm:col-span-3 flex flex-col justify-center items-start gap-4">
                                 <h2 className="text-white text-lg text-left font-semibold">Company</h2>
 
                                 <ul className="text-white text-sm text-left space-y-1.5">
@@ -943,7 +946,7 @@ const Home = () => {
                                 </ul>
                             </div>
 
-                            <div className="col-span-3 flex flex-col justify-center items-start gap-4">
+                            <div className="mt-8 sm:mt-0 col-span-12 sm:col-span-3 flex flex-col justify-center items-start gap-4">
                                 <h2 className="text-white text-lg text-left font-semibold">Company</h2>
 
                                 <ul className="text-white text-sm text-left space-y-1.5">
@@ -962,8 +965,8 @@ const Home = () => {
 
                         </div>
 
-                        <div className="mt-10 h-full w-full grid grid-cols-12 justify-center items-center gap-2">
-                            <div className="col-span-6 flex flex-row justify-start items-center gap-8">
+                        <div className="mt-10 h-full w-full grid grid-cols-12 justify-center items-center sm:gap-2">
+                            <div className="col-span-12 sm:col-span-6 flex flex-col sm:flex-row justify-center sm:justify-start items-start sm:items-center gap-8">
                                 <p className="text-white text-left font-semibold">Follow us</p>
 
                                 <div className="flex flex-row justify-start items-center gap-5">
@@ -972,7 +975,7 @@ const Home = () => {
                                     ))}
                                 </div>
                             </div>
-                            <div className="col-span-6 flex flex-row justify-end items-center gap-8">
+                            <div className="mt-12 sm:mt-0 col-span-12 sm:col-span-6 flex flex-col sm:flex-row justify-center sm:justify-end items-start sm:items-center gap-8">
                                 <p className="text-white text-right font-semibold">Mobile App</p>
 
                                 <div className="flex flex-row justify-end items-center gap-8">
