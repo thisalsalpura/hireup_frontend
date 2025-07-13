@@ -1,7 +1,6 @@
 import React from "react";
 import { socialLinks } from "../../constants/script";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Tooltip } from "@heroui/tooltip";
 
 const Footer = () => {
     return (
@@ -9,14 +8,7 @@ const Footer = () => {
             <div className="h-full w-full flex flex-col items-center justify-center bg-black rounded-xl p-5">
                 <div className="flex flex-row gap-5">
                     {socialLinks.map(({ id, title, href, icon }) => (
-                        <Tooltip
-                            key={id}
-                            showArrow
-                            className="bg-white px-2 py-0.5 rounded-sm text-black font-semibold"
-                            content={title}
-                        >
-                            <FontAwesomeIcon icon={icon} className="text-white text-3xl cursor-pointer transition-all duration-300 ease-in-out hover:-rotate-12 hover:scale-105" />
-                        </Tooltip>
+                        <FontAwesomeIcon icon={icon} className="text-white text-3xl cursor-pointer transition-all duration-300 ease-in-out hover:-rotate-12 hover:scale-105" />
                     ))}
                 </div>
 

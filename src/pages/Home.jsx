@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faStar, faHeart, faCircleLeft, faCircleRight, faPlus, faMinus, faRetweet } from "@fortawesome/free-solid-svg-icons";
+import { faApple, faGooglePlay } from "@fortawesome/free-brands-svg-icons";
 import SecondaryButton from "../components/SecondaryButton";
-import { paths } from "../constants/script";
+import { paths, socialLinks } from "../constants/script";
+import Button from "../components/Button";
 
 const Home = () => {
 
@@ -68,7 +70,7 @@ const Home = () => {
                 </div>
 
                 <div className="mt-10">
-                    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between px-1">
+                    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between px-0.5">
                         <h2 className="text-black text-3xl text-center font-londrinasolid">Recommended for You!</h2>
 
                         <div className="hidden md:flex flex-row items-center justify-center gap-2">
@@ -763,6 +765,228 @@ const Home = () => {
                             </div>
                         </div>
 
+                    </div>
+                </div>
+
+                <div className="mt-16 h-full w-full p-0.5">
+                    <div className="mb-10 flex flex-col md:flex-row items-center justify-center md:justify-between">
+                        <h2 className="text-black text-3xl text-center font-londrinasolid">Popular Gigs!</h2>
+
+                        <div className="hidden md:flex flex-row items-center justify-center gap-2">
+                            <div onClick={scrollLeft} className="bg-cus-black-low w-auto h-auto px-4 py-2.5 flex items-center justify-center rounded-md cursor-pointer">
+                                <FontAwesomeIcon icon={faCircleLeft} className="text-white text-2xl font-bold" />
+                            </div>
+                            <div onClick={scrollRight} className="bg-cus-black-low w-auto h-auto px-4 py-2.5 flex items-center justify-center rounded-md cursor-pointer">
+                                <FontAwesomeIcon icon={faCircleRight} className="text-white text-2xl font-bold" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="h-auto w-full grid grid-cols-12 border border-gray-200 rounded-md shadow-sm p-4 gap-6">
+                        <div className="col-span-6 h-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
+
+                        </div>
+
+                        <div className="col-span-6 flex flex-col justify-start items-start gap-4">
+                            <div className="flex flex-row justify-center items-start gap-4">
+                                <div className="h-16 w-16 flex justify-center items-start border-2 border-black rounded-md p-0.5">
+                                    <div className="h-full w-full bg-cus-light-yellow-high rounded-md">
+
+                                    </div>
+                                </div>
+
+                                <div className="h-full w-auto flex flex-col justify-center items-start">
+                                    <p className="text-lg font-semibold text-left">Ben Stokes</p>
+                                    <p className="text-lg text-black font-semibold text-left"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+                            </div>
+
+                            <p className="text-sm line-clamp-4">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab odit nostrum iure amet quaerat eos illum reiciendis ipsam architecto facilis ex earum ut, nobis consequuntur numquam consequatur nulla, sed dicta?
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae consequatur, expedita repellendus vitae molestias excepturi magnam dicta. Laboriosam, deserunt. Expedita eligendi quisquam ducimus nemo aperiam nobis unde sint non quod.
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam ducimus accusamus soluta quas assumenda est iusto a? Eius in aperiam maiores blanditiis delectus ullam fuga dolor saepe quisquam quia.
+                            </p>
+
+                            <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+
+                            <Button name="Add to Cart" containerClass="mt-2" frontClasses="text-black h-10 w-full border-2 border-black" backClasses="h-10 w-full bg-cus-light-yellow-high" />
+                        </div>
+                    </div>
+                </div>
+
+                <h2 className="mt-16 text-black text-3xl font-londrinasolid text-left px-0.5">News</h2>
+
+                <div className="mt-10 flex flex-wrap justify-start items-center gap-6 px-0.5">
+
+                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                        <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
+
+                        </div>
+
+                        <div className="h-auto w-full flex flex-col justify-center items-start gap-1.5">
+                            <p className="mt-2 text-left line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam necessitatibus, quasi cum possimus, debitis pariatur sit ex, similique eum dignissimos delectus fugit a esse ullam sed itaque distinctio tempore officia.</p>
+                            <p className="text-left text-sm opacity-75">Aug 12, 2025</p>
+                        </div>
+                    </div>
+
+                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                        <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
+
+                        </div>
+
+                        <div className="h-auto w-full flex flex-col justify-center items-start gap-1.5">
+                            <p className="mt-2 text-left line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam necessitatibus, quasi cum possimus, debitis pariatur sit ex, similique eum dignissimos delectus fugit a esse ullam sed itaque distinctio tempore officia.</p>
+                            <p className="text-left text-sm opacity-75">Aug 12, 2025</p>
+                        </div>
+                    </div>
+
+                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                        <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
+
+                        </div>
+
+                        <div className="h-auto w-full flex flex-col justify-center items-start gap-1.5">
+                            <p className="mt-2 text-left line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam necessitatibus, quasi cum possimus, debitis pariatur sit ex, similique eum dignissimos delectus fugit a esse ullam sed itaque distinctio tempore officia.</p>
+                            <p className="text-left text-sm opacity-75">Aug 12, 2025</p>
+                        </div>
+                    </div>
+
+                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                        <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
+
+                        </div>
+
+                        <div className="h-auto w-full flex flex-col justify-center items-start gap-1.5">
+                            <p className="mt-2 text-left line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam necessitatibus, quasi cum possimus, debitis pariatur sit ex, similique eum dignissimos delectus fugit a esse ullam sed itaque distinctio tempore officia.</p>
+                            <p className="text-left text-sm opacity-75">Aug 12, 2025</p>
+                        </div>
+                    </div>
+
+                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                        <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
+
+                        </div>
+
+                        <div className="h-auto w-full flex flex-col justify-center items-start gap-1.5">
+                            <p className="mt-2 text-left line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam necessitatibus, quasi cum possimus, debitis pariatur sit ex, similique eum dignissimos delectus fugit a esse ullam sed itaque distinctio tempore officia.</p>
+                            <p className="text-left text-sm opacity-75">Aug 12, 2025</p>
+                        </div>
+                    </div>
+
+                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                        <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
+
+                        </div>
+
+                        <div className="h-auto w-full flex flex-col justify-center items-start gap-1.5">
+                            <p className="mt-2 text-left line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam necessitatibus, quasi cum possimus, debitis pariatur sit ex, similique eum dignissimos delectus fugit a esse ullam sed itaque distinctio tempore officia.</p>
+                            <p className="text-left text-sm opacity-75">Aug 12, 2025</p>
+                        </div>
+                    </div>
+
+                    <div className="h-auto w-72 flex flex-col justify-center items-center gap-2.5">
+                        <div className="h-36 w-full bg-cus-light-yellow-high border border-gray-200 rounded-md">
+
+                        </div>
+
+                        <div className="h-auto w-full flex flex-col justify-center items-start gap-1.5">
+                            <p className="mt-2 text-left line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam necessitatibus, quasi cum possimus, debitis pariatur sit ex, similique eum dignissimos delectus fugit a esse ullam sed itaque distinctio tempore officia.</p>
+                            <p className="text-left text-sm opacity-75">Aug 12, 2025</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="mt-24 p-0.5">
+                    <div className="mb-12 h-0.5 w-full bg-gray-200"></div>
+
+                    <div className="h-full w-full flex flex-col justify-center items-start bg-cus-black-low rounded-md gap-8 px-20 py-8">
+                        <div className="mt-2.5 h-0.5 w-full bg-gray-300 opacity-20"></div>
+
+                        <div className="h-auto w-full grid grid-cols-12 justify-center items-start gap-2">
+
+                            <div className="col-span-3 flex flex-col justify-center items-start gap-4">
+                                <h2 className="text-white text-lg text-left font-semibold">Company</h2>
+
+                                <ul className="text-white text-sm text-left space-y-1.5">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#">Press</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                </ul>
+                            </div>
+
+                            <div className="col-span-3 flex flex-col justify-center items-start gap-4">
+                                <h2 className="text-white text-lg text-left font-semibold">Company</h2>
+
+                                <ul className="text-white text-sm text-left space-y-1.5">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#">Press</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+
+                            <div className="col-span-3 flex flex-col justify-center items-start gap-4">
+                                <h2 className="text-white text-lg text-left font-semibold">Company</h2>
+
+                                <ul className="text-white text-sm text-left space-y-1.5">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#">Press</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+
+                            <div className="col-span-3 flex flex-col justify-center items-start gap-4">
+                                <h2 className="text-white text-lg text-left font-semibold">Company</h2>
+
+                                <ul className="text-white text-sm text-left space-y-1.5">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#">Press</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#">Press</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div className="mt-10 h-full w-full grid grid-cols-12 justify-center items-center gap-2">
+                            <div className="col-span-6 flex flex-row justify-start items-center gap-8">
+                                <p className="text-white text-left font-semibold">Follow us</p>
+
+                                <div className="flex flex-row justify-start items-center gap-5">
+                                    {socialLinks.map(({ id, title, href, icon }) => (
+                                        <FontAwesomeIcon key={id} icon={icon} className="text-white text-2xl cursor-pointer transition-all duration-300 ease-in-out hover:-rotate-12 hover:scale-105" />
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="col-span-6 flex flex-row justify-end items-center gap-8">
+                                <p className="text-white text-right font-semibold">Mobile App</p>
+
+                                <div className="flex flex-row justify-end items-center gap-8">
+                                    <FontAwesomeIcon icon={faGooglePlay} className="text-white text-2xl cursor-pointer" />
+                                    <FontAwesomeIcon icon={faApple} className="text-white text-2xl cursor-pointer" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="h-0.5 w-full bg-gray-300 opacity-20"></div>
+
+                        <div className="h-auto w-full flex justify-center items-center">
+                            <p className="text-white text-xl text-center font-semibold tracking-wider">Copyright © 2025 HireUp All Rights Reserved.</p>
+                        </div>
                     </div>
                 </div>
             </div>
