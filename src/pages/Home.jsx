@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faStar, faHeart, faCircleLeft, faCircleRight, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faStar, faHeart, faCircleLeft, faCircleRight, faPlus, faMinus, faRetweet } from "@fortawesome/free-solid-svg-icons";
 import SecondaryButton from "../components/SecondaryButton";
 import { paths } from "../constants/script";
 
@@ -83,10 +83,18 @@ const Home = () => {
 
                     <div ref={scrollRef} className="flex gap-5 sm:gap-8 mt-6 overflow-x-auto hide-scrollbar px-0.5 py-4">
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
-                            <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
-                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
-                                    <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -102,7 +110,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="flex items-center justify-start mt-3">
-                                    <p className="text-base text-black">develop custom web applications business e commerce and landing pages</p>
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
                                 </div>
 
                                 <div className="flex items-center justify-start mt-2">
@@ -115,10 +123,18 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
-                            <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
-                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
-                                    <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -134,7 +150,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="flex items-center justify-start mt-3">
-                                    <p className="text-base text-black">develop custom web applications business e commerce and landing pages</p>
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
                                 </div>
 
                                 <div className="flex items-center justify-start mt-2">
@@ -147,10 +163,18 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
-                            <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
-                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
-                                    <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -166,7 +190,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="flex items-center justify-start mt-3">
-                                    <p className="text-base text-black">develop custom web applications business e commerce and landing pages</p>
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
                                 </div>
 
                                 <div className="flex items-center justify-start mt-2">
@@ -179,10 +203,18 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
-                            <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
-                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
-                                    <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -198,7 +230,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="flex items-center justify-start mt-3">
-                                    <p className="text-base text-black">develop custom web applications business e commerce and landing pages</p>
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
                                 </div>
 
                                 <div className="flex items-center justify-start mt-2">
@@ -211,10 +243,18 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0">
-                            <div className="h-44 w-full rounded-tl-md rounded-tr-md p-4">
-                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md">
-                                    <FontAwesomeIcon icon={faHeart} className="absolute top-4 right-4 text-2xl text-cus-light-pink-high" />
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -230,7 +270,87 @@ const Home = () => {
                                 </div>
 
                                 <div className="flex items-center justify-start mt-3">
-                                    <p className="text-base text-black">develop custom web applications business e commerce and landing pages</p>
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-80 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
                                 </div>
 
                                 <div className="flex items-center justify-start mt-2">
@@ -246,8 +366,8 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="mt-6 h-full w-full grid grid-cols-12 gap-3.5">
-                    <div className="col-span-4 flex flex-col items-center justify-center p-0.5 gap-12">
+                <div className="mt-10 relative h-full w-full grid grid-cols-12 gap-3.5">
+                    <div className="col-span-3 h-fit sticky top-6 flex flex-col justify-start items-start p-0.5 gap-12">
                         <div className="h-auto w-full flex flex-col justify-center items-start border border-gray-200 rounded-md shadow-sm px-6 py-4">
                             <h2 className="text-2xl font-londrinasolid tracking-wide">Categories</h2>
 
@@ -321,7 +441,329 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-8"></div>
+                    <div className="col-span-9 flex flex-wrap justify-center items-start gap-5 pr-0.5 pl-2.5 py-0.5">
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-cus-white-transparent flex flex-col rounded-md shadow-sm border border-gray-200 h-96 w-64 sm:w-72 flex-shrink-0 group">
+                            <div className="h-48 w-full rounded-tl-md rounded-tr-md p-4 transform transition-transform duration-300 ease-in-out group-hover:scale-105">
+                                <div className="relative h-full w-full bg-cus-light-yellow-high rounded-md shadow-md overflow-hidden">
+                                    <div className="absolute top-4 -right-10 flex flex-col justify-center items-center gap-2.5 transition-all duration-300 ease-in-out group-hover:top-4 group-hover:right-4">
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faHeart} className="text-xl text-cus-light-pink-high" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="h-auto w-full flex flex-col p-4">
+                                <div className="flex flex-row items-center justify-start gap-2.5">
+                                    <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex items-center justify-center">
+                                        <a className="text-base text-black font-semibold">Ben Stokes</a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-base text-black line-clamp-2">develop custom web applications business e commerce and landing pages</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-2">
+                                    <p className="text-lg text-black font-semibold"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
+                                </div>
+
+                                <div className="flex items-center justify-start mt-3">
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $80</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
