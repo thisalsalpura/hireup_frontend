@@ -6,22 +6,22 @@ const Button = ({ name, icon, href, containerClass, frontClasses, backClasses, o
     if (href) {
         return (
             <NavLink to={href} className={`cus-btn-con ${containerClass}`}>
-                <button className={`cus-btn-front ${frontClasses} clip-custom cursor-pointer`}>
+                <div className={`cus-btn-front ${frontClasses} clip-custom cursor-pointer`}>
                     {icon && <FontAwesomeIcon icon={icon} className="text-lg mr-3.5" />}
                     {name}
-                </button>
-                <button className={`cus-btn-back ${backClasses} clip-custom cursor-pointer`}></button>
+                </div>
+                <div className={`cus-btn-back ${backClasses} clip-custom cursor-pointer`}></div>
             </NavLink>
         )
     } else {
         return (
-            <div onClick={onClick} className={`cus-btn-con ${containerClass}`}>
-                <button className={`cus-btn-front ${frontClasses} clip-custom cursor-pointer`}>
+            <button onClick={onClick} className={`cus-btn-con ${containerClass}`}>
+                <div className={`cus-btn-front ${frontClasses} clip-custom cursor-pointer`}>
                     {icon && <FontAwesomeIcon icon={icon} className="text-lg mr-3.5" />}
                     {name}
-                </button>
-                <button className={`cus-btn-back ${backClasses} clip-custom cursor-pointer`}></button>
-            </div>
+                </div>
+                <div className={`cus-btn-back ${backClasses} clip-custom cursor-pointer`}></div>
+            </button>
         )
     }
 }

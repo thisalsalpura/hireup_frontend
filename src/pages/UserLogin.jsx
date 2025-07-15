@@ -8,6 +8,7 @@ import Checkbox from "../components/Checkbox";
 import { useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { SignUp } from "../api/SignUp";
 
 const Login = () => {
 
@@ -132,7 +133,7 @@ const Login = () => {
                                             <input id="password" name="password" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
                                         </div>
 
-                                        <Button name="Register" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
+                                        <Button onClick={SignUp} name="Register" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Already registered? <a className="text-blue-700 border-b-2 border-transparent hover:border-blue-700" onClick={toggleSlide}>SignIn</a></p>
                                     </div>
