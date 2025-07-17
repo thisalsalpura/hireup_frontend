@@ -1,4 +1,6 @@
-export async function VerifyUser() {
+import { toast } from "react-toastify";
+
+export async function VerifyUser(setLoading) {
     const verificationCode = document.getElementById("verification").value;
 
     const userObject = {
@@ -6,6 +8,8 @@ export async function VerifyUser() {
     };
 
     const userJson = JSON.stringify(userObject);
+
+    setLoading(true);
 
     try {
         const response = await fetch("http://localhost:8080/hireup_backend/UserVerification", {
@@ -20,18 +24,25 @@ export async function VerifyUser() {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-                window.location.href = "/home";
+                toast.success(json.message);
+                document.getElementById("verification").value = "";
+                setTimeout(() => {
+                    window.location.href = "/home";
+                }, 2000);
             } else {
                 if (json.message === "ENULL") {
+                    document.getElementById("verification").value = "";
                     window.location.href = "/userLogin";
                 } else {
-                    console.log(json.message);
+                    toast.error(json.message);
                 }
             }
         } else {
-            console.log("Something went wrong! Please try again later.");
+            toast.error("Something went wrong! Please try again later.");
         }
     } catch (error) {
         console.log(error);
+    } finally {
+        setLoading(false);
     }
 }

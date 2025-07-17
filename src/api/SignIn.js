@@ -1,4 +1,6 @@
-export async function SignIn() {
+import { toast } from "react-toastify";
+
+export async function SignIn(setLoading) {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -8,6 +10,8 @@ export async function SignIn() {
     };
 
     const userJson = JSON.stringify(userObject);
+
+    setLoading(true);
 
     try {
         const response = await fetch("http://localhost:8080/hireup_backend/SignIn", {
@@ -22,18 +26,29 @@ export async function SignIn() {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
+                document.getElementById("email").value = "";
+                document.getElementById("password").value = "";
+
                 if (json.message === "NVERIFY") {
-                    window.location.href = "/userVerification";
+                    toast.success("User sign in Successfully! Please check your Email Address for the Verification.");
+                    setTimeout(() => {
+                        window.location.href = "/userVerification";
+                    }, 2000);
                 } else if (json.message === "WVERIFY") {
-                    window.location.href = "/home";
+                    toast.success("User sign in Successfully!");
+                    setTimeout(() => {
+                        window.location.href = "/home";
+                    }, 2000);
                 }
             } else {
-                console.log(json.message);
+                toast.error(json.message);
             }
         } else {
-            console.log("Something went wrong! Please try again later.");
+            toast.error("Something went wrong! Please try again later.");
         }
     } catch (error) {
         console.log(error);
+    } finally {
+        setLoading(false);
     }
 }

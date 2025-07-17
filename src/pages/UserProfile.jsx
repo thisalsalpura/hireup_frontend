@@ -6,6 +6,22 @@ import DropdownComponent from "../components/DropdownComponent";
 const Profile = () => {
 
     useEffect(() => {
+        (async () => {
+            const response = await fetch("http://localhost:8080/hireup_backend/SessionServlet", {
+                method: "GET",
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                const json = await response.json();
+                if (json.redirect === "NO") {
+                    window.location.href = "/userLogin";
+                }
+            }
+        })();
+    }, []);
+
+    useEffect(() => {
         document.body.classList.add("custom2");
         return () => document.body.classList.remove("custom2");
     }, []);
@@ -30,6 +46,7 @@ const Profile = () => {
                         <div className="h-36 w-36 flex items-center justify-center border border-white rounded-full cursor-pointer">
                             <div className="h-32 w-32 bg-white rounded-full"></div>
                         </div>
+                        <p className="text-white">User registered at <span>Sep 2024</span></p>
                         <SecondaryButton containerClass="w-full md:w-2/3 lg:w-1/3 bg-black text-white" name="Upload Profile Picture" />
                     </div>
 
@@ -50,14 +67,14 @@ const Profile = () => {
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="email" className="text-white text-sm">Email</label>
-                            <input id="email" name="email" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="email" placeholder="name@gmail.com" required />
+                            <input id="email" name="email" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="email" placeholder="name@gmail.com" readOnly required />
                         </div>
                     </div>
 
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="password" className="text-white text-sm">Password</label>
-                            <input id="password" name="password" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                            <input id="password" name="password" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" readOnly required />
                         </div>
                     </div>
 
@@ -72,6 +89,20 @@ const Profile = () => {
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="dob" className="text-white text-sm">Date of Birth</label>
                             <input id="dob" name="dob" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="date" required />
+                        </div>
+                    </div>
+
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
+                        <div className="flex flex-col w-full gap-1.5">
+                            <label className="text-white text-sm">Locale</label>
+                            <DropdownComponent name="Select Locale" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                        </div>
+                    </div>
+
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
+                        <div className="flex flex-col w-full gap-1.5">
+                            <label htmlFor="pcode" className="text-white text-sm">Postal Code</label>
+                            <input id="pcode" name="pcode" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Postal Code" required />
                         </div>
                     </div>
 

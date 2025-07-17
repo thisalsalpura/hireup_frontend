@@ -1,4 +1,6 @@
-export async function SignUp() {
+import { toast } from "react-toastify";
+
+export async function SignUp(setLoading) {
     const fname = document.getElementById("fname").value;
     const lname = document.getElementById("lname").value;
     const email = document.getElementById("email").value;
@@ -13,6 +15,8 @@ export async function SignUp() {
 
     const userJson = JSON.stringify(userObject);
 
+    setLoading(true);
+
     try {
         const response = await fetch("http://localhost:8080/hireup_backend/SignUp", {
             method: "POST",
@@ -26,14 +30,23 @@ export async function SignUp() {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-                window.location.href = "/userVerification";
+                toast.success(json.message);
+                document.getElementById("fname").value = "";
+                document.getElementById("lname").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("password").value = "";
+                setTimeout(() => {
+                    window.location.href = "/userVerification";
+                }, 2000);
             } else {
-                console.log(json.message);
+                toast.error(json.message);
             }
         } else {
-            console.log("Something went wrong! Please try again later.");
+            toast.error("Something went wrong! Please try again later.");
         }
     } catch (error) {
         console.log(error);
+    } finally {
+        setLoading(false);
     }
 }

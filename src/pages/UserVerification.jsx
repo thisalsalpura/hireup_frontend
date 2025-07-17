@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../components/Button";
 import verificationImg from "../assets/images/verification.svg";
 import { VerifyUser } from "../api/UserVerification";
+import { Slab } from "react-loading-indicators";
 
 const UserVerification = () => {
+
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetch("http://localhost:8080/hireup_backend/SessionServlet", {
+                method: "GET",
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                const json = await response.json();
+                if (json.redirect === "YES") {
+                    window.location.href = "/home";
+                }
+            }
+        })();
+    }, []);
+
     return (
         <section className="bg-white h-full">
-            <div className="max-w-7xl mx-auto h-full bg-white">
+            <div className={`h-screen w-full ${loading ? "flex" : "hidden"} items-center justify-center`}>
+                <Slab color="#000000" size="medium" text="" textColor="" />
+            </div>
+
+            <div className={`max-w-7xl mx-auto ${loading ? "hidden" : "flex"} h-full bg-white`}>
                 <div className="relative h-full w-full grid grid-cols-12 items-center justify-center">
 
                     <div className="relative overflow-hidden h-full w-full hidden lg:flex lg:col-span-7 items-center justify-center p-3">
@@ -28,7 +52,7 @@ const UserVerification = () => {
                                 <input id="verification" name="verification" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="••••••••" required />
                             </div>
 
-                            <Button onClick={VerifyUser} name="Verify" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
+                            <Button onClick={() => VerifyUser(setLoading)} name="Verify" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
                         </div>
                     </div>
 

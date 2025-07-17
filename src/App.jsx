@@ -14,6 +14,8 @@ import SellerProfile from "./pages/SellerProfile";
 import SellerDashboard from "./pages/SellerDashboard";
 import UserVerification from "./pages/UserVerification";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
     return (
@@ -35,6 +37,8 @@ const App = () => {
                     <Route path="/sellerDashboard" element={<SellerDashboard />} />
                     <Route path="/userVerification" element={<UserVerification />} />
                 </Routes>
+
+                <ToastContainer position="top-right" autoClose={2000} newestOnTop={true} closeOnClick pauseOnHover closeButton={false} />
             </Router>
         </main>
     )

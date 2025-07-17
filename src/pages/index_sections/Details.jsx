@@ -57,7 +57,7 @@ const Details = () => {
                                 <p className="mt-7 text-center text-black text-base md:text-lg xl:text-xl tracking-wide">Turn your skills into income. Create your profile, showcase your expertise, and start getting hired by clients who value what you do.</p>
                             </div>
 
-                            <Button name="Join as a Seller" containerClass="mt-10" frontClasses="text-black h-10 w-full border-2 border-black" backClasses="h-10 w-full bg-cus-light-yellow-high" />
+                            <Button href="userLogin" name="Join as a Seller" containerClass="mt-10" frontClasses="text-black h-10 w-full border-2 border-black" backClasses="h-10 w-full bg-cus-light-yellow-high" />
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@ const Details = () => {
                                 <p className="mt-7 text-center text-black text-base md:text-lg xl:text-xl tracking-wide">Find skilled freelancers ready to bring your ideas to life. Post your project, connect with talent, and get quality work done—on your terms.</p>
                             </div>
 
-                            <Button name="Join as a Buyer" containerClass="mt-10" frontClasses="text-white h-10 w-full border-2 border-black" backClasses="h-10 w-full bg-cus-dark-purple" />
+                            <Button href="userLogin" name="Join as a Buyer" containerClass="mt-10" frontClasses="text-white h-10 w-full border-2 border-black" backClasses="h-10 w-full bg-cus-dark-purple" />
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ const Details = () => {
                 <div className="h-full w-full bg-blur rounded-xl flex flex-col items-center justify-center p-8">
                     <h2 className="text-3xl lg:text-5xl text-white text-center">Freelance services at your fingertips</h2>
 
-                    <Button name="Join HireUp" containerClass="mt-8" frontClasses="text-black h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-white" />
+                    <Button href="/home" name="Join HireUp" containerClass="mt-8" frontClasses="text-black h-10 w-40 border-2 border-black" backClasses="h-10 w-40 bg-white" />
                 </div>
             </div>
 

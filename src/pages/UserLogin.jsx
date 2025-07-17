@@ -10,6 +10,7 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { SignUp } from "../api/SignUp";
 import { SignIn } from "../api/SignIn";
+import { Slab } from "react-loading-indicators";
 
 const Login = () => {
 
@@ -26,11 +27,29 @@ const Login = () => {
         onError: () => console.log("Login Failed")
     });
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+
+    const [loading, setLoading] = useState(false);
 
     const toggleSlide = () => {
         setIsOpen((previousOpen) => !previousOpen)
-    }
+    };
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetch("http://localhost:8080/hireup_backend/SessionServlet", {
+                method: "GET",
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                const json = await response.json();
+                if (json.redirect === "YES") {
+                    window.location.href = "/home";
+                }
+            }
+        })();
+    }, []);
 
     useEffect(() => {
         document.body.classList.add("custom2");
@@ -39,7 +58,11 @@ const Login = () => {
 
     return (
         <section className="bg-white h-full">
-            <div className="max-w-7xl mx-auto h-full bg-white">
+            <div className={`h-screen w-full ${loading ? "flex" : "hidden"} items-center justify-center`}>
+                <Slab color="#000000" size="medium" text="" textColor="" />
+            </div>
+
+            <div className={`max-w-7xl mx-auto ${loading ? "hidden" : "flex"} h-full bg-white`}>
                 <div className="relative h-full w-full grid grid-cols-12 items-center justify-center">
                     <AnimatePresence mode="wait">
                         {!isOpen && (
@@ -82,7 +105,7 @@ const Login = () => {
                                             <label className="text-blue-700 border-b-2 border-transparent hover:border-blue-700 text-sm sm:text-base"><a href="/">Forgot Password?</a></label>
                                         </div>
 
-                                        <Button onClick={SignIn} name="SignIn" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
+                                        <Button onClick={() => SignIn(setLoading)} name="SignIn" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Not registered? <a className="text-blue-700 border-b-2 border-transparent hover:border-blue-700" onClick={toggleSlide}>Register</a></p>
 
@@ -133,7 +156,7 @@ const Login = () => {
                                             <input id="password" name="password" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
                                         </div>
 
-                                        <Button onClick={SignUp} name="Register" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
+                                        <Button onClick={() => SignUp(setLoading)} name="Register" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Already registered? <a className="text-blue-700 border-b-2 border-transparent hover:border-blue-700" onClick={toggleSlide}>SignIn</a></p>
                                     </div>

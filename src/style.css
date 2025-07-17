@@ -49,6 +49,10 @@ body.custom2::-webkit-scrollbar-track {
     cursor: grabbing !important;
 }
 
+.Toastify__toast {
+    font-family: "Ropa Sans", sans-serif !important;
+}
+
 @theme {
     /* fonts */
     --font-londrinasolid: "Londrina Solid", sans-serif;

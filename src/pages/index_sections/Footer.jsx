@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="h-full w-full flex flex-col items-center justify-center bg-black rounded-xl p-5">
                 <div className="flex flex-row gap-5">
                     {socialLinks.map(({ id, title, href, icon }) => (
-                        <FontAwesomeIcon icon={icon} className="text-white text-3xl cursor-pointer transition-all duration-300 ease-in-out hover:-rotate-12 hover:scale-105" />
+                        <FontAwesomeIcon key={id} icon={icon} className="text-white text-3xl cursor-pointer transition-all duration-300 ease-in-out hover:-rotate-12 hover:scale-105" />
                     ))}
                 </div>
 
