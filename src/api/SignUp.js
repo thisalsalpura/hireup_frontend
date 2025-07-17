@@ -19,13 +19,14 @@ export async function SignUp() {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: "include",
             body: userJson
         });
 
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-                console.log(json.message);
+                window.location.href = "/userVerification";
             } else {
                 console.log(json.message);
             }

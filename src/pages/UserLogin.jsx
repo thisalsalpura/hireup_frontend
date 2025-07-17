@@ -9,6 +9,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { SignUp } from "../api/SignUp";
+import { SignIn } from "../api/SignIn";
 
 const Login = () => {
 
@@ -39,7 +40,7 @@ const Login = () => {
     return (
         <section className="bg-white h-full">
             <div className="max-w-7xl mx-auto h-full bg-white">
-                <div className="relative h-full w-full grid grid-cols-12">
+                <div className="relative h-full w-full grid grid-cols-12 items-center justify-center">
                     <AnimatePresence mode="wait">
                         {!isOpen && (
                             <motion.div
@@ -81,12 +82,11 @@ const Login = () => {
                                             <label className="text-blue-700 border-b-2 border-transparent hover:border-blue-700 text-sm sm:text-base"><a href="/">Forgot Password?</a></label>
                                         </div>
 
-                                        <Button href="/home" name="SignIn" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
+                                        <Button onClick={SignIn} name="SignIn" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Not registered? <a className="text-blue-700 border-b-2 border-transparent hover:border-blue-700" onClick={toggleSlide}>Register</a></p>
 
                                         <Button onClick={() => { loginWithGoogle(); }} name="Google SignIn" icon={faGoogle} containerClass="mt-4" frontClasses="text-blue-700 h-10 w-full border-2 border-blue-700" backClasses="h-10 w-full bg-white" />
-
                                     </div>
                                 </div>
 

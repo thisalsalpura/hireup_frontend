@@ -1,16 +1,14 @@
-export async function SignIn() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+export async function VerifyUser() {
+    const verificationCode = document.getElementById("verification").value;
 
     const userObject = {
-        email: email,
-        password: password
+        verificationCode: verificationCode
     };
 
     const userJson = JSON.stringify(userObject);
 
     try {
-        const response = await fetch("http://localhost:8080/hireup_backend/SignIn", {
+        const response = await fetch("http://localhost:8080/hireup_backend/UserVerification", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -22,13 +20,13 @@ export async function SignIn() {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-                if (json.message === "NVERIFY") {
-                    window.location.href = "/userVerification";
-                } else if (json.message === "WVERIFY") {
-                    window.location.href = "/home";
-                }
+                window.location.href = "/home";
             } else {
-                console.log(json.message);
+                if (json.message === "ENULL") {
+                    window.location.href = "/userLogin";
+                } else {
+                    console.log(json.message);
+                }
             }
         } else {
             console.log("Something went wrong! Please try again later.");
