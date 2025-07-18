@@ -10,17 +10,18 @@ import GigRegister from "./pages/GigRegister";
 import OrdersQueue from "./pages/OrdersQueue";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
-import SellerProfile from "./pages/SellerProfile";
 import SellerDashboard from "./pages/SellerDashboard";
 import UserVerification from "./pages/UserVerification";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
     return (
         <main className="bg-white h-full">
             <Router>
+                <ScrollToTop />
                 <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/userLogin" element={<UserLogin />} />
@@ -33,7 +34,6 @@ const App = () => {
                     <Route path="/ordersQueue" element={<OrdersQueue />} />
                     <Route path="/adminDashboard" element={<AdminDashboard />} />
                     <Route path="/adminLogin" element={<AdminLogin />} />
-                    <Route path="/sellerProfile" element={<SellerProfile />} />
                     <Route path="/sellerDashboard" element={<SellerDashboard />} />
                     <Route path="/userVerification" element={<UserVerification />} />
                 </Routes>

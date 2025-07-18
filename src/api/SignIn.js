@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export async function SignIn(setLoading) {
+export async function signIn(setLoading) {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 

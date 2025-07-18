@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export async function VerifyUser(setLoading) {
+export async function verifyUser(setLoading) {
     const verificationCode = document.getElementById("verification").value;
 
     const userObject = {

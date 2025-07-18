@@ -1,9 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import SecondaryButton from "../components/SecondaryButton";
-import DropdownComponent from "../components/DropdownComponent";
+import { loadUserDropdowns } from "../api/LoadUserDropdowns";
+import { loadOtherDropdownsData } from "../api/LoadUserDropdowns";
+import { loadUserData } from "../api/LoadUserData";
+import { userProfileUpdate } from "../api/UserProfileUpdate";
+import { Slab } from "react-loading-indicators";
 
 const Profile = () => {
+
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -22,16 +28,27 @@ const Profile = () => {
     }, []);
 
     useEffect(() => {
+        loadUserDropdowns();
+        loadUserData();
+    }, []);
+
+    useEffect(() => {
         document.body.classList.add("custom2");
         return () => document.body.classList.remove("custom2");
     }, []);
 
     return (
-        <section className="bg-white custom2">
+        <section className="bg-white custom2 relative">
+            <div className={`absolute inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center`}>
+                <Slab color="#000000" size="large" text="" textColor="" />
+            </div>
 
-            <Navbar />
 
-            <div className="max-w-7xl mx-auto h-full mt-24 bg-white p-5">
+            <nav className={`fixed ${loading ? "opacity-20 pointer-events-none" : ""} top-0 left-0 right-0 z-50`}>
+                <Navbar />
+            </nav>
+
+            <div className={`max-w-7xl mx-auto ${loading ? "opacity-20 pointer-events-none" : ""} h-full mt-24 bg-white p-5`}>
 
                 <div className="flex items-center justify-start">
                     <div className="flex flex-wrap md:flex-row items-center justify-start md:justify-center">
@@ -46,7 +63,7 @@ const Profile = () => {
                         <div className="h-36 w-36 flex items-center justify-center border border-white rounded-full cursor-pointer">
                             <div className="h-32 w-32 bg-white rounded-full"></div>
                         </div>
-                        <p className="text-white">User registered at <span>Sep 2024</span></p>
+
                         <SecondaryButton containerClass="w-full md:w-2/3 lg:w-1/3 bg-black text-white" name="Upload Profile Picture" />
                     </div>
 
@@ -67,21 +84,21 @@ const Profile = () => {
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="email" className="text-white text-sm">Email</label>
-                            <input id="email" name="email" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="email" placeholder="name@gmail.com" readOnly required />
+                            <input id="email" name="email" className="bg-cus-white-transparent h-10 py-0.5 px-2.5 rounded-md text-black text-base" type="email" placeholder="name@gmail.com" readOnly required disabled />
                         </div>
                     </div>
 
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="password" className="text-white text-sm">Password</label>
-                            <input id="password" name="password" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" readOnly required />
+                            <input id="password" name="password" className="bg-cus-white-transparent h-10 py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
                         </div>
                     </div>
 
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
-                            <label htmlFor="mobile" className="text-white text-sm">Mobile Number</label>
-                            <input id="mobile" name="mobile" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="tel" placeholder="0712345678" required />
+                            <label htmlFor="regDate" className="text-white text-sm">Registered Date</label>
+                            <input id="regDate" name="regDate" className="bg-cus-white-transparent h-10 py-0.5 px-2.5 rounded-md text-black text-base" type="tel" placeholder="2025-07-07" required disabled />
                         </div>
                     </div>
 
@@ -89,20 +106,6 @@ const Profile = () => {
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="dob" className="text-white text-sm">Date of Birth</label>
                             <input id="dob" name="dob" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="date" required />
-                        </div>
-                    </div>
-
-                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
-                        <div className="flex flex-col w-full gap-1.5">
-                            <label className="text-white text-sm">Locale</label>
-                            <DropdownComponent name="Select Locale" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
-                        </div>
-                    </div>
-
-                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
-                        <div className="flex flex-col w-full gap-1.5">
-                            <label htmlFor="pcode" className="text-white text-sm">Postal Code</label>
-                            <input id="pcode" name="pcode" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Postal Code" required />
                         </div>
                     </div>
 
@@ -122,26 +125,45 @@ const Profile = () => {
 
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
-                            <label className="text-white text-sm">City</label>
-                            <DropdownComponent name="Select City" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                            <label htmlFor="pcode" className="text-white text-sm">Postal Code</label>
+                            <input id="pcode" name="pcode" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Postal Code" required />
                         </div>
                     </div>
 
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
-                            <label className="text-white text-sm">Country</label>
-                            <DropdownComponent name="Select Country" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                            <label htmlFor="country" className="text-white text-sm">Country</label>
+                            <select onChange={loadOtherDropdownsData} id="country" name="country" defaultValue="0" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base appearance-none">
+                                <option className="text-black text-base" value="0">Select Country</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
+                        <div className="flex flex-col w-full gap-1.5">
+                            <label htmlFor="city" className="text-white text-sm">City</label>
+                            <select id="city" name="city" defaultValue="0" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base appearance-none opacity-50" disabled>
+                                <option className="text-black text-base" value="0">Select City</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
+                        <div className="flex flex-col w-full gap-1.5">
+                            <label className="text-white text-sm">Locale</label>
+                            <select id="locale" name="locale" defaultValue="0" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base appearance-none opacity-50" disabled>
+                                <option className="text-black text-base" value="0">Select Locale</option>
+                            </select>
                         </div>
                     </div>
 
                     <div className="col-span-12 flex items-center justify-center py-5 px-3 mt-4">
-                        <SecondaryButton containerClass="w-full md:w-1/3 bg-black text-white" name="Save" />
+                        <SecondaryButton onClick={() => userProfileUpdate(setLoading)} containerClass="w-full md:w-1/3 bg-black text-white" name="Save" />
                     </div>
 
                 </div>
 
             </div>
-
         </section>
     )
 }

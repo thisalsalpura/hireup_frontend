@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../assets/icons/logo.svg";
 import menuIcon from "../assets/icons/menu.svg";
 import closeIcon from "../assets/icons/close.svg";
-import { SignOut } from "../api/SignOut";
+import { signOut } from "../api/SignOut";
 
 const Navbar = () => {
 
@@ -28,7 +28,7 @@ const Navbar = () => {
                 <button className="cus-btn-set w-full">
                     <a className="text-lg font-bold text-black">Notifications</a>
                 </button>
-                <button onClick={SignOut} className="cus-btn-set w-full">
+                <button onClick={signOut} className="cus-btn-set w-full">
                     <a className="text-lg font-bold text-black">SignOut</a>
                 </button>
             </div>
@@ -36,9 +36,9 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="absolute top-0 left-0 right-0 z-50">
+        <nav className="fixed top-0 left-0 right-0 z-50">
             <div className="max-w-7xl mx-auto h-24 bg-white flex items-center justify-between px-7">
-                <a href="/">
+                <a href="/home">
                     <img className="h-10 sm:h-12" src={logo} alt="logo" />
                 </a>
 

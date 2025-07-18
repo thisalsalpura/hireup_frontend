@@ -1,4 +1,4 @@
-export async function SignOut() {
+export async function signOut() {
     try {
         const response = await fetch("http://localhost:8080/hireup_backend/SignOut", {
             method: "GET",

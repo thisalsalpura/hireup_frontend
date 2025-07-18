@@ -8,8 +8,8 @@ import Checkbox from "../components/Checkbox";
 import { useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { SignUp } from "../api/SignUp";
-import { SignIn } from "../api/SignIn";
+import { signUp } from "../api/SignUp";
+import { signIn } from "../api/SignIn";
 import { Slab } from "react-loading-indicators";
 
 const Login = () => {
@@ -57,12 +57,12 @@ const Login = () => {
     }, []);
 
     return (
-        <section className="bg-white h-full">
-            <div className={`h-screen w-full ${loading ? "flex" : "hidden"} items-center justify-center`}>
-                <Slab color="#000000" size="medium" text="" textColor="" />
+        <section className="bg-white h-full relative">
+            <div className={`absolute inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center`}>
+                <Slab color="#000000" size="large" text="" textColor="" />
             </div>
 
-            <div className={`max-w-7xl mx-auto ${loading ? "hidden" : "flex"} h-full bg-white`}>
+            <div className={`max-w-7xl mx-auto ${loading ? "opacity-20 pointer-events-none" : ""} h-full bg-white`}>
                 <div className="relative h-full w-full grid grid-cols-12 items-center justify-center">
                     <AnimatePresence mode="wait">
                         {!isOpen && (
@@ -105,7 +105,7 @@ const Login = () => {
                                             <label className="text-blue-700 border-b-2 border-transparent hover:border-blue-700 text-sm sm:text-base"><a href="/">Forgot Password?</a></label>
                                         </div>
 
-                                        <Button onClick={() => SignIn(setLoading)} name="SignIn" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
+                                        <Button onClick={() => signIn(setLoading)} name="SignIn" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Not registered? <a className="text-blue-700 border-b-2 border-transparent hover:border-blue-700" onClick={toggleSlide}>Register</a></p>
 
@@ -156,7 +156,7 @@ const Login = () => {
                                             <input id="password" name="password" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
                                         </div>
 
-                                        <Button onClick={() => SignUp(setLoading)} name="Register" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
+                                        <Button onClick={() => signUp(setLoading)} name="Register" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
 
                                         <p className="text-white text-sm sm:text-base tracking-wide mt-4">Already registered? <a className="text-blue-700 border-b-2 border-transparent hover:border-blue-700" onClick={toggleSlide}>SignIn</a></p>
                                     </div>
