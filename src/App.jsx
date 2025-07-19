@@ -22,6 +22,7 @@ const App = () => {
         <main className="bg-white h-full">
             <Router>
                 <ScrollToTop />
+
                 <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/userLogin" element={<UserLogin />} />
