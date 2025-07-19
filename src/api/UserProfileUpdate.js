@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { loadUserData } from "./LoadUserData";
 
 export async function userProfileUpdate(setLoading) {
     const fname = document.getElementById("fname").value;
@@ -41,13 +42,10 @@ export async function userProfileUpdate(setLoading) {
             const json = await response.json();
             if (json.status) {
                 toast.success(json.message);
-                document.getElementById("fname").value = "";
-                document.getElementById("lname").value = "";
-                document.getElementById("email").value = "";
-                document.getElementById("password").value = "";
                 setTimeout(() => {
-                    window.location.href = "/userVerification";
+                    window.location.reload();
                 }, 2000);
+                loadUserData();
             } else {
                 toast.error(json.message);
             }

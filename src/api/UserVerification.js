@@ -3,11 +3,11 @@ import { toast } from "react-toastify";
 export async function verifyUser(setLoading) {
     const verificationCode = document.getElementById("verification").value;
 
-    const userObject = {
+    const verificationObject = {
         verificationCode: verificationCode
     };
 
-    const userJson = JSON.stringify(userObject);
+    const verificationJson = JSON.stringify(verificationObject);
 
     setLoading(true);
 
@@ -18,7 +18,7 @@ export async function verifyUser(setLoading) {
                 "Content-Type": "application/json"
             },
             credentials: "include",
-            body: userJson
+            body: verificationJson
         });
 
         if (response.ok) {

@@ -1,3 +1,5 @@
+import { loadOtherDropdownsData } from "./LoadUserDropdowns";
+
 export async function loadUserData() {
     try {
         const response = await fetch("http://localhost:8080/hireup_backend/LoadUserData", {
@@ -12,6 +14,7 @@ export async function loadUserData() {
                 document.getElementById("lname").value = json.lname;
                 document.getElementById("email").value = json.email;
                 document.getElementById("password").value = json.password;
+                document.getElementById("currentPassword").value = json.password;
                 document.getElementById("regDate").value = json.regDate;
 
                 if (json.message === "UPDATED") {
@@ -19,9 +22,10 @@ export async function loadUserData() {
                     document.getElementById("line1").value = json.line1;
                     document.getElementById("line2").value = json.line2;
                     document.getElementById("pcode").value = json.pcode;
-                    document.getElementById("country").value = json.countryId;
-                    document.getElementById("city").value = json.cityId;
-                    document.getElementById("locale").value = json.localeId;
+                    document.getElementById("country").value = String(json.countryId);
+                    await loadOtherDropdownsData();
+                    document.getElementById("city").value = String(json.cityId);
+                    document.getElementById("locale").value = String(json.localeId);
                 }
             }
         }

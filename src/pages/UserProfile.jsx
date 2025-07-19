@@ -6,6 +6,8 @@ import { loadOtherDropdownsData } from "../api/LoadUserDropdowns";
 import { loadUserData } from "../api/LoadUserData";
 import { userProfileUpdate } from "../api/UserProfileUpdate";
 import { Slab } from "react-loading-indicators";
+import FooterMain from "./Footer";
+import { changePassword } from "../api/ChangePassword";
 
 const Profile = () => {
 
@@ -28,8 +30,18 @@ const Profile = () => {
     }, []);
 
     useEffect(() => {
-        loadUserDropdowns();
-        loadUserData();
+        (async () => {
+            setLoading(true);
+
+            try {
+                await loadUserDropdowns(setLoading);
+                await loadUserData(setLoading);
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false);
+            }
+        })();
     }, []);
 
     useEffect(() => {
@@ -52,8 +64,8 @@ const Profile = () => {
 
                 <div className="flex items-center justify-start">
                     <div className="flex flex-wrap md:flex-row items-center justify-start md:justify-center">
-                        <span className="text-base text-blue-700 opacity-50 cursor-pointer">Home &nbsp;{">"}&nbsp;</span>
-                        <span className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; UserProfile</span>
+                        <a href="/home" className="text-base text-blue-700 opacity-50 cursor-pointer">Home &nbsp;{">"}&nbsp;</a>
+                        <a href="/userProfile" className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; UserProfile</a>
                     </div>
                 </div>
 
@@ -98,7 +110,7 @@ const Profile = () => {
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="regDate" className="text-white text-sm">Registered Date</label>
-                            <input id="regDate" name="regDate" className="bg-cus-white-transparent h-10 py-0.5 px-2.5 rounded-md text-black text-base" type="tel" placeholder="2025-07-07" required disabled />
+                            <input id="regDate" name="regDate" className="bg-cus-white-transparent h-10 py-0.5 px-2.5 rounded-md text-black text-base" type="tel" placeholder="2025-07-07" readOnly required disabled />
                         </div>
                     </div>
 
@@ -133,7 +145,7 @@ const Profile = () => {
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="country" className="text-white text-sm">Country</label>
-                            <select onChange={loadOtherDropdownsData} id="country" name="country" defaultValue="0" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base appearance-none">
+                            <select onChange={loadOtherDropdownsData} id="country" name="country" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base appearance-none">
                                 <option className="text-black text-base" value="0">Select Country</option>
                             </select>
                         </div>
@@ -162,6 +174,41 @@ const Profile = () => {
                     </div>
 
                 </div>
+
+                <div className="h-full w-full bg-cus-black-low grid grid-cols-12 rounded-md shadow-md mt-12 p-3 sm:p-5">
+
+                    <div className="col-span-12 bg-cus-white-transparent flex flex-col items-center justify-center gap-6 p-3 sm:p-5 mt-4 mb-4 rounded-md">
+                        <h2 className="text-2xl text-white font-londrinasolid tracking-wider">Change the Password</h2>
+                    </div>
+
+                    <div className="col-span-12 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
+                        <div className="flex flex-col w-full gap-1.5">
+                            <label htmlFor="currentPassword" className="text-white text-sm">Current Password</label>
+                            <input id="currentPassword" name="currentPassword" className="bg-cus-white-transparent h-10 py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
+                        </div>
+                    </div>
+
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
+                        <div className="flex flex-col w-full gap-1.5">
+                            <label htmlFor="newPassword" className="text-white text-sm">New Password</label>
+                            <input id="newPassword" name="newPassword" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                        </div>
+                    </div>
+
+                    <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
+                        <div className="flex flex-col w-full gap-1.5">
+                            <label htmlFor="confirmPassword" className="text-white text-sm">Confirm Password</label>
+                            <input id="confirmPassword" name="confirmPassword" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                        </div>
+                    </div>
+
+                    <div className="col-span-12 flex items-center justify-center py-5 px-3 mt-4">
+                        <SecondaryButton onClick={() => changePassword(setLoading)} containerClass="w-full md:w-1/3 bg-black text-white" name="Save" />
+                    </div>
+
+                </div>
+
+                <FooterMain />
 
             </div>
         </section>
