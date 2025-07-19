@@ -49,7 +49,7 @@ const UserVerification = () => {
 
                             <div className="flex flex-col w-full gap-1.5 mt-5">
                                 <label htmlFor="verification" className="text-white text-sm">Verification Code</label>
-                                <input id="verification" name="verification" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="••••••••" required />
+                                <input id="verification" name="verification" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" required />
                             </div>
 
                             <Button onClick={() => verifyUser(setLoading)} name="Verify" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />

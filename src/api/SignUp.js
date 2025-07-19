@@ -3,8 +3,8 @@ import { toast } from "react-toastify";
 export async function signUp(setLoading) {
     const fname = document.getElementById("fname").value;
     const lname = document.getElementById("lname").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("email2").value;
+    const password = document.getElementById("password2").value;
 
     const userObject = {
         fname: fname,
@@ -33,8 +33,8 @@ export async function signUp(setLoading) {
                 toast.success(json.message);
                 document.getElementById("fname").value = "";
                 document.getElementById("lname").value = "";
-                document.getElementById("email").value = "";
-                document.getElementById("password").value = "";
+                document.getElementById("email2").value = "";
+                document.getElementById("password2").value = "";
                 setTimeout(() => {
                     window.location.href = "/userVerification";
                 }, 2000);

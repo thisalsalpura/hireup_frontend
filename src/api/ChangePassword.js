@@ -30,6 +30,8 @@ export async function changePassword(setLoading) {
             const json = await response.json();
             if (json.status) {
                 toast.success(json.message);
+                document.getElementById("newPassword").value = "";
+                document.getElementById("confirmPassword").value = "";
                 setTimeout(() => {
                     window.location.reload();
                 }, 2000);

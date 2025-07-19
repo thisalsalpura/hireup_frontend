@@ -8,6 +8,9 @@ import { userProfileUpdate } from "../api/UserProfileUpdate";
 import { Slab } from "react-loading-indicators";
 import FooterMain from "./Footer";
 import { changePassword } from "../api/ChangePassword";
+import { showPassword } from "../api/ShowPassword";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
 
@@ -103,7 +106,14 @@ const Profile = () => {
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="password" className="text-white text-sm">Password</label>
-                            <input id="password" name="password" className="bg-cus-white-transparent h-10 py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
+                            <div className="relative">
+                                <input id="password" name="password" className="bg-cus-white-transparent h-10 w-full py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
+
+                                <button onClick={() => showPassword("password", "passwordShow", "passwordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
+                                    <span className="hidden" id="passwordShow"><FontAwesomeIcon icon={faEye} /></span>
+                                    <span className="flex" id="passwordHide"><FontAwesomeIcon icon={faEyeSlash} /></span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -184,21 +194,42 @@ const Profile = () => {
                     <div className="col-span-12 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="currentPassword" className="text-white text-sm">Current Password</label>
-                            <input id="currentPassword" name="currentPassword" className="bg-cus-white-transparent h-10 py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
+                            <div className="relative">
+                                <input id="currentPassword" name="currentPassword" className="bg-cus-white-transparent h-10 w-full py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
+
+                                <button onClick={() => showPassword("currentPassword", "currentPasswordShow", "currentPasswordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
+                                    <span className="hidden" id="currentPasswordShow"><FontAwesomeIcon icon={faEye} /></span>
+                                    <span className="flex" id="currentPasswordHide"><FontAwesomeIcon icon={faEyeSlash} /></span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="newPassword" className="text-white text-sm">New Password</label>
-                            <input id="newPassword" name="newPassword" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                            <div className="relative">
+                                <input id="newPassword" name="newPassword" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+
+                                <button onClick={() => showPassword("newPassword", "newPasswordShow", "newPasswordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
+                                    <span className="hidden" id="newPasswordShow"><FontAwesomeIcon icon={faEye} /></span>
+                                    <span className="flex" id="newPasswordHide"><FontAwesomeIcon icon={faEyeSlash} /></span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="confirmPassword" className="text-white text-sm">Confirm Password</label>
-                            <input id="confirmPassword" name="confirmPassword" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                            <div className="relative">
+                                <input id="confirmPassword" name="confirmPassword" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+
+                                <button onClick={() => showPassword("confirmPassword", "confirmPasswordShow", "confirmPasswordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
+                                    <span className="hidden" id="confirmPasswordShow"><FontAwesomeIcon icon={faEye} /></span>
+                                    <span className="flex" id="confirmPasswordHide"><FontAwesomeIcon icon={faEyeSlash} /></span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 

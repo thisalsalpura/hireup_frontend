@@ -1,12 +1,14 @@
 import { toast } from "react-toastify";
 
 export async function signIn(setLoading) {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = document.getElementById("email1").value;
+    const password = document.getElementById("password1").value;
+    const rememberMe = document.getElementById("rememberMe").checked;
 
     const userObject = {
         email: email,
-        password: password
+        password: password,
+        rememberMe: rememberMe
     };
 
     const userJson = JSON.stringify(userObject);
@@ -26,8 +28,8 @@ export async function signIn(setLoading) {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-                document.getElementById("email").value = "";
-                document.getElementById("password").value = "";
+                document.getElementById("email1").value = "";
+                document.getElementById("password1").value = "";
 
                 if (json.message === "NVERIFY") {
                     toast.success("User sign in Successfully! Please check your Email Address for the Verification.");
