@@ -24,6 +24,11 @@ const UserVerification = () => {
         })();
     }, []);
 
+    useEffect(() => {
+        document.body.classList.add("custom2");
+        return () => document.body.classList.remove("custom2");
+    }, []);
+
     return (
         <section className="bg-white h-full relative">
             <div className={`absolute inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center`}>

@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faStar, faHeart, faCircleLeft, faCircleRight, faPlus, faMinus, faRetweet } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faStar, faHeart, faCircleLeft, faCircleRight, faPlus, faMinus, faRetweet, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import SecondaryButton from "../components/SecondaryButton";
 import { paths } from "../constants/script";
 import Button from "../components/Button";
 import FooterMain from "./Footer";
+import { Slab } from "react-loading-indicators";
+import { showPassword } from "../api/ShowPassword";
+import { setHideBtnIcon } from "../api/ShowPassword";
+import { registerAsSeller } from "../api/RegisterAsSeller";
 
 const Home = () => {
 
@@ -36,6 +40,10 @@ const Home = () => {
 
     const [openSubMenus, setOpenSubMenus] = useState({});
 
+    const [loading, setLoading] = useState(false);
+
+    const [showFPModal, setShowFPModal] = useState(false);
+
     const toggleSubMenu = (id) => {
         setOpenSubMenus((previousOpen) => ({
             ...previousOpen,
@@ -44,11 +52,61 @@ const Home = () => {
     };
 
     return (
-        <section className="bg-white custom2">
+        <section className="bg-white custom2 relative">
+            <div className={`absolute inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center`}>
+                <Slab color="#000000" size="large" text="" textColor="" />
+            </div>
 
-            <Navbar />
+            <Navbar onShowModal={() => setShowFPModal(true)} onShowLoading={setLoading} loadingClass={`${loading ? "opacity-20 pointer-events-none" : ""}`} />
 
-            <div className="max-w-7xl mx-auto h-full mt-24 bg-white p-5">
+            <div className={`max-w-7xl mx-auto ${loading ? "opacity-20 pointer-events-none" : ""} h-full bg-white p-5`}>
+
+                {showFPModal && (
+                    <>
+                        <div role="dialog" aria-modal="true" aria-labelledby="dialog-title" className="relative z-50">
+                            <div aria-hidden="true" className="fixed inset-0 bg-gray-500/75 transition-opacity"></div>
+
+                            <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                                <div className="flex min-h-full items-center justify-center p-4">
+                                    <div className="relative overflow-hidden rounded-lg bg-white">
+                                        <div className="bg-white p-6">
+                                            <div className="flex items-start justify-center">
+                                                <div className="text-left">
+                                                    <h3 id="dialog-title" className="text-xl font-semibold text-black">Seller Registration</h3>
+                                                    <div className="mt-2">
+                                                        <p className="text-sm text-gray-500">Are you sure you want to register as a seller? Then fill the details and register as a seller.</p>
+                                                    </div>
+
+                                                    <div className="flex flex-col w-full gap-1.5 mt-5">
+                                                        <label htmlFor="email" className="text-black text-sm">Email</label>
+                                                        <input id="email" name="email" className="bg-cus-black-low h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="email" placeholder="name@gmail.com" required />
+                                                    </div>
+
+                                                    <div className="flex flex-col w-full gap-1.5 mt-5">
+                                                        <label htmlFor="password" className="text-black text-sm">Confirm Password</label>
+                                                        <div className="relative">
+                                                            <input onMouseLeave={() => setHideBtnIcon("password", "passwordShow", "passwordHide")} id="password" name="password" className="bg-cus-black-low h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+
+                                                            <button onClick={() => showPassword("password", "passwordShow", "passwordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
+                                                                <span className="hidden" id="passwordShow"><FontAwesomeIcon icon={faEye} /></span>
+                                                                <span className="flex" id="passwordHide"><FontAwesomeIcon icon={faEyeSlash} /></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white flex flex-row-reverse pt-2 pb-6 px-6 gap-2.5">
+                                            <button onClick={() => setShowFPModal(false)} type="button" className="inline-flex justify-center rounded-md bg-red-400 px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-red-400 ring-inset w-auto cursor-pointer">Cancel</button>
+                                            <button onClick={() => registerAsSeller(setLoading, setShowFPModal)} type="button" className="inline-flex justify-center rounded-md bg-blur px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-black ring-inset w-auto cursor-pointer">Register as Seller</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+
                 <div className="relative h-72 w-full flex items-center justify-center rounded-md overflow-hidden filter blur-xl">
                     <div className="absolute ml-64 mb-24 h-72 w-72 bg-cus-dark-purple rounded-full mix-blend-multiply opacity-80 animate-scale-14s animate-translate-1"></div>
                     <div className="absolute ml-48 mt-24 h-72 w-72 bg-cus-light-pink-high rounded-full mix-blend-multiply opacity-80 animate-scale-10s animate-translate-3"></div>
@@ -901,6 +959,7 @@ const Home = () => {
                 </div>
 
                 <FooterMain />
+
             </div>
 
         </section>

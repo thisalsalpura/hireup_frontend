@@ -98,7 +98,7 @@ const Login = () => {
                                         <div className="bg-white p-6">
                                             <div className="flex items-start justify-center">
                                                 <div className="text-left">
-                                                    <h3 id="dialog-title" className="text-lg font-semibold text-black">Forgot Password</h3>
+                                                    <h3 id="dialog-title" className="text-xl font-semibold text-black">Forgot Password</h3>
                                                     <div className="mt-2">
                                                         <p className="text-sm text-gray-500">Are you sure you want to update your password? This action cannot be undone.</p>
                                                     </div>
@@ -134,7 +134,7 @@ const Login = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="bg-white flex flex-row-reverse p-6 gap-2.5">
+                                        <div className="bg-white flex flex-row-reverse pt-2 pb-6 px-6 gap-2.5">
                                             <button onClick={() => setShowFPModal(false)} type="button" className="inline-flex justify-center rounded-md bg-red-400 px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-red-400 ring-inset w-auto cursor-pointer">Cancel</button>
                                             <button onClick={() => changeForgotPassword(setLoading, setShowFPModal)} type="button" className="inline-flex justify-center rounded-md bg-blur px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-black ring-inset w-auto cursor-pointer">Save</button>
                                         </div>
