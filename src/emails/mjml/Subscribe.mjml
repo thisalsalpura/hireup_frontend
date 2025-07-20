@@ -1,0 +1,85 @@
+<mjml>
+  <mj-head>
+    <mj-font name="RopaSans" href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap" />
+  </mj-head>
+
+  <mj-body background-color="#babcbf">
+    <mj-section background-color="#FFFFFF">
+      <mj-column vertical-align="middle">
+        <mj-image align="left" src="{{logo}}" alt="Logo" />
+      </mj-column>
+
+      <mj-column vertical-align="middle">
+        <mj-text align="right" font-size="16px" font-weight="600" font-family="Ropa Sans, sans-serif" color="#000000">Welcome to HireUp</mj-text>
+        <mj-text align="right" font-size="16px" font-weight="600" font-family="Ropa Sans, sans-serif" color="#000000">{{date}}</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column width="90%">
+        <mj-divider border-color="#D1D5DC" border-width="1px" padding="10px 0" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column width="90%" background-color="#D1D5DC" border-radius="10px" padding="15px">
+        <mj-text align="center" font-size="30px" font-weight="600" font-family="Ropa Sans, sans-serif" padding-bottom="35px">Welcome to the HireUp</mj-text>
+        <mj-text align="center" font-size="15px" font-weight="300" font-family="Ropa Sans, sans-serif" padding-bottom="35px" letter-spacing="0.5px"
+          >HireUp is a dynamic freelance marketplace where users can seamlessly buy and sell digital services. Whether you're looking to hire top-tier talent or offer your skills to a global audience, HireUp provides a user-friendly
+          platform for both buyers and sellers. Users can register, post gigs, communicate in real-time, manage orders, and securely process payments — all in one place.</mj-text
+        >
+        <mj-button background-color="transparent" color="#7118B4" font-size="20px" font-weight="600" font-family="Ropa Sans, sans-serif" href="http://localhost:5173/home" border-radius="25px" border="2px solid #7118B4"
+          >Explore HireUp</mj-button
+        >
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column width="90%">
+        <mj-divider border-color="#D1D5DC" border-width="1px" padding="10px 0" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column width="90%">
+        <mj-text align="center" font-size="18px" font-family="Ropa Sans, sans-serif" padding-bottom="5px">Connect With Us</mj-text>
+        <mj-social align="center">
+          <mj-social-element icon-size="35px" href="https://www.instagram.com" src="{{instagramIcon}}" alt="instagram" padding="0 10px"></mj-social-element>
+
+          <mj-social-element icon-size="35px" href="https://www.facebook.com" src="{{facebookIcon}}" alt="facebook" padding="0 10px"></mj-social-element>
+
+          <mj-social-element icon-size="35px" href="https://www.linkedin.com" src="{{linkedinIcon}}" alt="linkedin" padding="0 10px"></mj-social-element>
+
+          <mj-social-element icon-size="35px" href="https://www.youtube.com" src="{{youtubeIcon}}" alt="youtube" padding="0 10px"></mj-social-element>
+
+          <mj-social-element icon-size="35px" href="https://x.com" src="{{x-twitterIcon}}" alt="x-twitter" padding="0 10px"></mj-social-element>
+        </mj-social>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column width="90%">
+        <mj-divider border-color="#D1D5DC" border-width="1px" padding="10px 0" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF" padding="0 20px">
+      <mj-column width="35%" vertical-align="middle">
+        <mj-image align="left" src="{{logo}}" alt="Logo" />
+      </mj-column>
+
+      <mj-column width="65%" vertical-align="middle">
+        <mj-text align="left" font-size="16px" font-family="Ropa Sans, sans-serif" color="#000000">© HireUp</mj-text>
+        <mj-text align="left" font-size="16px" font-family="Ropa Sans, sans-serif" color="#000000">40, St Mary's Road,</mj-text>
+        <mj-text align="left" font-size="16px" font-family="Ropa Sans, sans-serif" color="#000000">Mount Lavinia, Sri Lanka.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#FFFFFF">
+      <mj-column width="90%">
+        <mj-divider border-color="#D1D5DC" border-width="1px" padding="10px 0" />
+        <mj-text align="center" font-size="16px" font-weight="600" font-family="Ropa Sans, sans-serif" padding-top="15px">Copyright © 2025 HireUp All Rights Reserved.</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

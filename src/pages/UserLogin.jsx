@@ -15,6 +15,7 @@ import { forgotPassword } from "../api/ForgotPassword";
 import { changeForgotPassword } from "../api/ForgotPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { showPassword } from "../api/ShowPassword";
+import { setHideBtnIcon } from "../api/ShowPassword";
 
 const Login = () => {
 
@@ -68,7 +69,6 @@ const Login = () => {
                 const json = await response.json();
                 if (json.status) {
                     document.getElementById("email1").value = json.email;
-                    document.getElementById("password1").value = json.password;
                 }
             }
         })();
@@ -111,7 +111,7 @@ const Login = () => {
                                                     <div className="flex flex-col w-full gap-1.5 mt-5">
                                                         <label htmlFor="newPassword" className="text-black text-sm">New Password</label>
                                                         <div className="relative">
-                                                            <input id="newPassword" name="newPassword" className="bg-cus-black-low h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                                                            <input onMouseLeave={() => setHideBtnIcon("newPassword", "newPasswordShow", "newPasswordHide")} id="newPassword" name="newPassword" className="bg-cus-black-low h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
 
                                                             <button onClick={() => showPassword("newPassword", "newPasswordShow", "newPasswordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
                                                                 <span className="hidden" id="newPasswordShow"><FontAwesomeIcon icon={faEye} /></span>
@@ -123,7 +123,7 @@ const Login = () => {
                                                     <div className="flex flex-col w-full gap-1.5 mt-5">
                                                         <label htmlFor="confirmPassword" className="text-black text-sm">Confirm Password</label>
                                                         <div className="relative">
-                                                            <input id="confirmPassword" name="confirmPassword" className="bg-cus-black-low h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                                                            <input onMouseLeave={() => setHideBtnIcon("confirmPassword", "confirmPasswordShow", "confirmPasswordHide")} id="confirmPassword" name="confirmPassword" className="bg-cus-black-low h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
 
                                                             <button onClick={() => showPassword("confirmPassword", "confirmPasswordShow", "confirmPasswordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
                                                                 <span className="hidden" id="confirmPasswordShow"><FontAwesomeIcon icon={faEye} /></span>
@@ -179,7 +179,7 @@ const Login = () => {
                                         <div className="flex flex-col w-full gap-1.5 mt-5">
                                             <label htmlFor="password1" className="text-white text-sm">Password</label>
                                             <div className="relative">
-                                                <input id="password1" name="password1" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                                                <input onMouseLeave={() => setHideBtnIcon("password1", "password1Show", "password1Hide")} id="password1" name="password1" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
 
                                                 <button onClick={() => showPassword("password1", "password1Show", "password1Hide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
                                                     <span className="hidden" id="password1Show"><FontAwesomeIcon icon={faEye} /></span>
@@ -248,7 +248,7 @@ const Login = () => {
                                         <div className="flex flex-col w-full gap-1.5 mt-5">
                                             <label htmlFor="password2" className="text-white text-sm">Password</label>
                                             <div className="relative">
-                                                <input id="password2" name="password2" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                                                <input onMouseLeave={() => setHideBtnIcon("password2", "password2Show", "password2Hide")} id="password2" name="password2" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
 
                                                 <button onClick={() => showPassword("password2", "password2Show", "password2Hide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
                                                     <span className="hidden" id="password2Show"><FontAwesomeIcon icon={faEye} /></span>

@@ -17,3 +17,15 @@ export function showPassword(inputId, showBtnIconId, hideBtnIconId) {
         hideBtnIcon.classList.remove("hidden");
     }
 }
+
+export function setHideBtnIcon(inputId, showBtnIconId, hideBtnIconId) {
+    const input = document.getElementById(inputId);
+    const showBtnIcon = document.getElementById(showBtnIconId);
+    const hideBtnIcon = document.getElementById(hideBtnIconId);
+
+    input.type = "password";
+    showBtnIcon.classList.add("hidden");
+    showBtnIcon.classList.remove("flex");
+    hideBtnIcon.classList.remove("hidden");
+    hideBtnIcon.classList.add("flex");
+}

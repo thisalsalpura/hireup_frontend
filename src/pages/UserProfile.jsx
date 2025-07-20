@@ -11,6 +11,7 @@ import { changePassword } from "../api/ChangePassword";
 import { showPassword } from "../api/ShowPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { setHideBtnIcon } from "../api/ShowPassword";
 
 const Profile = () => {
 
@@ -107,7 +108,7 @@ const Profile = () => {
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="password" className="text-white text-sm">Password</label>
                             <div className="relative">
-                                <input id="password" name="password" className="bg-cus-white-transparent h-10 w-full py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
+                                <input onMouseLeave={() => setHideBtnIcon("password", "passwordShow", "passwordHide")} id="password" name="password" className="bg-cus-white-transparent h-10 w-full py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
 
                                 <button onClick={() => showPassword("password", "passwordShow", "passwordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
                                     <span className="hidden" id="passwordShow"><FontAwesomeIcon icon={faEye} /></span>
@@ -195,7 +196,7 @@ const Profile = () => {
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="currentPassword" className="text-white text-sm">Current Password</label>
                             <div className="relative">
-                                <input id="currentPassword" name="currentPassword" className="bg-cus-white-transparent h-10 w-full py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
+                                <input onMouseLeave={() => setHideBtnIcon("currentPassword", "currentPasswordShow", "currentPasswordHide")} id="currentPassword" name="currentPassword" className="bg-cus-white-transparent h-10 w-full py-0.5 px-2.5 rounded-md text-black text-base" type="password" placeholder="••••••••" readOnly required disabled />
 
                                 <button onClick={() => showPassword("currentPassword", "currentPasswordShow", "currentPasswordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
                                     <span className="hidden" id="currentPasswordShow"><FontAwesomeIcon icon={faEye} /></span>
@@ -209,7 +210,7 @@ const Profile = () => {
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="newPassword" className="text-white text-sm">New Password</label>
                             <div className="relative">
-                                <input id="newPassword" name="newPassword" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                                <input onMouseLeave={() => setHideBtnIcon("newPassword", "newPasswordShow", "newPasswordHide")} id="newPassword" name="newPassword" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
 
                                 <button onClick={() => showPassword("newPassword", "newPasswordShow", "newPasswordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
                                     <span className="hidden" id="newPasswordShow"><FontAwesomeIcon icon={faEye} /></span>
@@ -223,7 +224,7 @@ const Profile = () => {
                         <div className="flex flex-col w-full gap-1.5">
                             <label htmlFor="confirmPassword" className="text-white text-sm">Confirm Password</label>
                             <div className="relative">
-                                <input id="confirmPassword" name="confirmPassword" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                                <input onMouseLeave={() => setHideBtnIcon("confirmPassword", "confirmPasswordShow", "confirmPasswordHide")} id="confirmPassword" name="confirmPassword" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
 
                                 <button onClick={() => showPassword("confirmPassword", "confirmPasswordShow", "confirmPasswordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
                                     <span className="hidden" id="confirmPasswordShow"><FontAwesomeIcon icon={faEye} /></span>

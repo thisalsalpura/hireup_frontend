@@ -5,6 +5,7 @@ import { paths } from "../../constants/script";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faApple, faGooglePlay } from "@fortawesome/free-brands-svg-icons";
 import Button from "../../components/Button";
+import { subscribe } from "../../api/Subscribe";
 
 const Details = () => {
     return (
@@ -122,7 +123,7 @@ const Details = () => {
                     <div className="mt-5 w-full flex flex-col md:flex-row gap-4">
                         <input type="email" id="email" name="email" className="w-full md:w-72 bg-blur rounded-md text-lg text-white border border-white px-2 py-1" placeholder="Your email address..." required />
 
-                        <Button name="Subscribe" frontClasses="text-white h-10 w-full md:w-40 border-2 border-white" backClasses="h-10 w-full md:w-40 bg-blue-700" />
+                        <Button onClick={() => subscribe()} name="Subscribe" frontClasses="text-white h-10 w-full md:w-40 border-2 border-white" backClasses="h-10 w-full md:w-40 bg-blue-700" />
                     </div>
 
                     <p className="text-white text-base md:text-lg text-left tracking-wider mt-5">By subscribing, you agree to our <span className="text-blue-700">Terms of Service</span> and <span className="text-blue-700">Privacy Policy</span>.</p>
