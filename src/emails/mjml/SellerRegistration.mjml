@@ -23,8 +23,13 @@
 
     <mj-section background-color="#FFFFFF">
       <mj-column width="90%" background-color="#D1D5DC" border-radius="10px" padding="15px">
-        <mj-text align="center" font-size="30px" font-weight="600" font-family="Ropa Sans, sans-serif" padding-bottom="35px">Admin Login Verification</mj-text>
-        <mj-text align="center" font-size="18px" font-family="Ropa Sans, sans-serif" padding-bottom="15px">{{code}}</mj-text>
+        <mj-text align="center" font-size="30px" font-weight="600" font-family="Ropa Sans, sans-serif" padding-bottom="35px">Seller Registration</mj-text>
+        <mj-text align="center" font-size="15px" font-weight="300" font-family="Ropa Sans, sans-serif" padding-bottom="35px" letter-spacing="0.5px"
+          >You're registered as a Seller, but it still have in the Verification Process. After admin approved the Request, received the Email to inform it.</mj-text
+        >
+        <mj-button background-color="transparent" color="#7118B4" font-size="20px" font-weight="600" font-family="Ropa Sans, sans-serif" href="http://localhost:5173/home" border-radius="25px" border="2px solid #7118B4"
+          >Back to the HireUp</mj-button
+        >
       </mj-column>
     </mj-section>
 

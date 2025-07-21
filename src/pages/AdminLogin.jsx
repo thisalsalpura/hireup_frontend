@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/Button";
 import signinImg from "../assets/images/signin.svg";
 import { motion, AnimatePresence } from "framer-motion";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/react";
+import { Slab } from "react-loading-indicators";
+import { showPassword } from "../api/ShowPassword";
+import { setHideBtnIcon } from "../api/ShowPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
-import SecondaryButton from "../components/SecondaryButton";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { adminLogin } from "../api/AdminLogin";
+import { adminVerification } from "../api/AdminVerification";
 
 const AdminLogin = () => {
 
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [loading, setLoading] = useState(false);
+
+    const [showFPModal, setShowFPModal] = useState(false);
 
     useEffect(() => {
         document.body.classList.add("custom2");
@@ -17,8 +22,47 @@ const AdminLogin = () => {
     }, []);
 
     return (
-        <section className="bg-white h-full">
-            <div className="relative max-w-7xl mx-auto h-full bg-white">
+        <section className="bg-white h-full relative">
+            <div className={`absolute inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center`}>
+                <Slab color="#000000" size="large" text="" textColor="" />
+            </div>
+
+            <div className={`max-w-7xl mx-auto ${loading ? "opacity-20 pointer-events-none" : ""} h-full bg-white`}>
+
+                {showFPModal && (
+                    <>
+                        <div role="dialog" aria-modal="true" aria-labelledby="dialog-title" className="relative z-50">
+                            <div aria-hidden="true" className="fixed inset-0 bg-gray-500/75 transition-opacity"></div>
+
+                            <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                                <div className="flex min-h-full items-center justify-center p-4">
+                                    <div className="relative overflow-hidden rounded-lg bg-white">
+                                        <div className="bg-white p-6">
+                                            <div className="flex items-start justify-center">
+                                                <div className="text-left">
+                                                    <h3 id="dialog-title" className="text-xl font-semibold text-black">Admin Verification</h3>
+                                                    <div className="mt-2">
+                                                        <p className="text-sm text-gray-500">Are you want to Login as a Admin? Verification Code is send to your Email Address. Check it.</p>
+                                                    </div>
+
+                                                    <div className="flex flex-col w-full gap-1.5 mt-5">
+                                                        <label htmlFor="verification" className="font-semibold text-black text-sm">Verification Code</label>
+                                                        <input id="verification" name="verification" className="bg-cus-black-low h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white flex flex-row-reverse pt-2 pb-6 px-6 gap-2.5">
+                                            <button onClick={() => setShowFPModal(false)} type="button" className="inline-flex justify-center rounded-md bg-red-400 px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-red-400 ring-inset w-auto cursor-pointer">Cancel</button>
+                                            <button onClick={() => adminVerification(setLoading, setShowFPModal)} type="button" className="inline-flex justify-center rounded-md bg-blur px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-black ring-inset w-auto cursor-pointer">Verify</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+
                 <div className="relative h-full w-full grid grid-cols-12">
                     <AnimatePresence mode="wait">
                         <motion.div
@@ -51,43 +95,23 @@ const AdminLogin = () => {
 
                                     <div className="flex flex-col w-full gap-1.5 mt-5">
                                         <label htmlFor="password" className="text-white text-sm">Password</label>
-                                        <input id="password" name="password" className="bg-blur h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+                                        <div className="relative">
+                                            <input onMouseLeave={() => setHideBtnIcon("password", "passwordShow", "passwordHide")} id="password" name="password" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="password" placeholder="••••••••" required />
+
+                                            <button onClick={() => showPassword("password", "passwordShow", "passwordHide")} type="button" className="absolute inset-y-0 right-4 flex items-center text-white text-sm focus:outline-none cursor-pointer">
+                                                <span className="hidden" id="passwordShow"><FontAwesomeIcon icon={faEye} /></span>
+                                                <span className="flex" id="passwordHide"><FontAwesomeIcon icon={faEyeSlash} /></span>
+                                            </button>
+                                        </div>
                                     </div>
 
-                                    <div onClick={onOpen} className="h-full w-full">
-                                        <Button name="Admin Login" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
-                                    </div>
+                                    <Button onClick={() => adminLogin(setLoading, setShowFPModal)} name="Admin Login" containerClass="mt-8" frontClasses="text-white h-10 w-full border-2 border-white" backClasses="h-10 w-full bg-blue-700" />
                                 </div>
                             </div>
                         </motion.div>
                     </AnimatePresence>
                 </div>
 
-                <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton backdrop="blur" className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50" />
-
-                    <ModalContent className="h-auto max-h-3/4 w-[95%] md:w-2/3 lg:w-1/3 flex flex-col items-center justify-between bg-cus-black-low rounded-sm shadow-xl p-2.5 z-50">
-                        {(onClose) => (
-                            <>
-                                <ModalHeader className="h-auto w-full flex flex-row items-center justify-between border-b border-b-gray-400">
-                                    <div className="flex flex-row items-center justify-center gap-4">
-                                        <p className="text-lg font-semibold text-white">Admin Verification</p>
-                                    </div>
-
-                                    <div className="flex items-center justify-center">
-                                        <FontAwesomeIcon onClick={onClose} icon={faClose} className="text-xl text-white cursor-pointer" />
-                                    </div>
-                                </ModalHeader>
-                                <ModalBody className="mt-4 mb-2.5 h-auto w-full flex items-center justify-center">
-                                    <input id="text" name="text" className="bg-blur h-10 w-full py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="type here..." required />
-                                </ModalBody>
-                                <ModalFooter className="h-auto w-full flex items-center justify-center">
-                                    <SecondaryButton href="/adminDashboard" containerClass="h-12 w-full bg-white text-black" name="Verify" />
-                                </ModalFooter>
-                            </>
-                        )}
-                    </ModalContent>
-                </Modal>
             </div>
         </section>
     )
