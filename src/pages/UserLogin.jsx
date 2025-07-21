@@ -44,7 +44,7 @@ const Login = () => {
 
     useEffect(() => {
         (async () => {
-            const response = await fetch("http://localhost:8080/hireup_backend/SessionServlet", {
+            const response = await fetch("http://localhost:8080/hireup_backend/SessionServletUser", {
                 method: "GET",
                 credentials: "include"
             });

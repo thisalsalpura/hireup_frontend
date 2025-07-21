@@ -7,6 +7,22 @@ import BarChart from "../components/BarChart";
 const AdminDashboard = () => {
 
     useEffect(() => {
+        (async () => {
+            const response = await fetch("http://localhost:8080/hireup_backend/SessionServletAdmin", {
+                method: "GET",
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                const json = await response.json();
+                if (json.redirect === "NO") {
+                    window.location.href = "/adminLogin";
+                }
+            }
+        })();
+    }, []);
+
+    useEffect(() => {
         document.body.classList.add("custom2");
         return () => document.body.classList.remove("custom2");
     }, []);
@@ -16,7 +32,7 @@ const AdminDashboard = () => {
 
             <nav className="fixed p-2 top-0 left-0 right-0 z-50">
                 <div className="max-w-7xl mx-auto h-32 md:h-20 bg-cus-black-low border border-white rounded-2xl flex flex-col md:flex-row items-center justify-center md:justify-between px-5 gap-6 md:gap-0">
-                    <a href="/">
+                    <a href="/adminDashboard">
                         <img className="h-8 md:h-12" src={logo} alt="logo" />
                     </a>
 
@@ -30,30 +46,30 @@ const AdminDashboard = () => {
                 <div className="grid grid-cols-12 gap-4 lg:gap-0">
                     <div className="col-span-12 lg:col-span-3 flex items-center justify-center p-2">
                         <div className="h-full w-full flex flex-col items-center justify-start bg-white rounded-md shadow-xl px-2.5 py-4 gap-3">
-                            <div className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
+                            <a href="adminDashboard" className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
                                 <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Dashboard</p>
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faGauge} />
-                            </div>
+                            </a>
 
-                            <div className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
+                            <a className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
                                 <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Analytics</p>
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faChartSimple} />
-                            </div>
+                            </a>
 
-                            <div className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
+                            <a className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
                                 <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Customer Management</p>
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faUser} />
-                            </div>
+                            </a>
 
-                            <div className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
+                            <a href="/adminSellerManagement" className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
                                 <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Seller Management</p>
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faStore} />
-                            </div>
+                            </a>
 
-                            <div className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
+                            <a className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
                                 <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Service Management</p>
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faBellConcierge} />
-                            </div>
+                            </a>
                         </div>
                     </div>
 

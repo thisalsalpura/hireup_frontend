@@ -17,6 +17,22 @@ const AdminLogin = () => {
     const [showFPModal, setShowFPModal] = useState(false);
 
     useEffect(() => {
+        (async () => {
+            const response = await fetch("http://localhost:8080/hireup_backend/SessionServletAdmin", {
+                method: "GET",
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                const json = await response.json();
+                if (json.redirect === "YES") {
+                    window.location.href = "/adminDashboard";
+                }
+            }
+        })();
+    }, []);
+
+    useEffect(() => {
         document.body.classList.add("custom2");
         return () => document.body.classList.remove("custom2");
     }, []);
