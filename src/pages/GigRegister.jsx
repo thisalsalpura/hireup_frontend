@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import DropdownComponent from "../components/DropdownComponent";
 import SecondaryButton from "../components/SecondaryButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
@@ -49,7 +48,7 @@ const GigRegister = () => {
                                     <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
                                         <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
                                             <h2 className="text-2xl font-semibold">Gig Title</h2>
-                                            <p>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.</p>
+                                            <p>This is the name of your service. Use clear, keyword-rich titles that buyers would type when searching for your service. Make it specific and professional.</p>
                                         </div>
                                         <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
                                             <input id="gigName" name="gigName" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Web Development" required />
@@ -60,11 +59,26 @@ const GigRegister = () => {
 
                                     <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
                                         <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
-                                            <h2 className="text-2xl font-semibold">Category</h2>
-                                            <p>Choose the category and sub-category most suitable for your Gig.</p>
+                                            <h2 className="text-2xl font-semibold">Gig Description</h2>
+                                            <p>Briefly explain what your gig offers, what makes it unique, and how it benefits the buyer. Keep it concise but informative to attract interest.</p>
                                         </div>
                                         <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
-                                            <DropdownComponent name="Select Category" dropdownBtnClass="w-full md:w-11/12 bg-cus-black-low" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                                            <input id="gigDesc" name="gigDesc" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Web Development" required />
+                                        </div>
+                                    </div>
+
+
+                                    <hr className="border-gray-300 h-0.5 w-full" />
+
+                                    <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
+                                        <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
+                                            <h2 className="text-2xl font-semibold">Category</h2>
+                                            <p>Choose the main service area that best matches your gig. This helps place your gig in the right section for buyers to find it easily.</p>
+                                        </div>
+                                        <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
+                                            <select id="category" name="category" defaultValue="0" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base appearance-none" required>
+                                                <option className="text-black text-base" value="0">Select Category</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -72,23 +86,13 @@ const GigRegister = () => {
 
                                     <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
                                         <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
-                                            <h2 className="text-2xl font-semibold">Gig Title</h2>
-                                            <p>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.</p>
+                                            <h2 className="text-2xl font-semibold">Sub Category</h2>
+                                            <p>Select a more specific service type under the main category. This allows buyers to filter services more precisely and improves your gig's visibility.</p>
                                         </div>
                                         <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
-                                            <input id="" name="" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Web Development" required />
-                                        </div>
-                                    </div>
-
-                                    <hr className="border-gray-300 h-0.5 w-full" />
-
-                                    <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
-                                        <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
-                                            <h2 className="text-2xl font-semibold">Category</h2>
-                                            <p>Choose the category and sub-category most suitable for your Gig.</p>
-                                        </div>
-                                        <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
-                                            <DropdownComponent name="Select Category" dropdownBtnClass="w-full md:w-11/12 bg-cus-black-low" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                                            <select id="subCategory" name="subCategory" defaultValue="0" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base appearance-none" required>
+                                                <option className="text-black text-base" value="0">Select Sub Category</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </>
@@ -114,7 +118,9 @@ const GigRegister = () => {
                                             <p>Choose the category and sub-category most suitable for your Gig.</p>
                                         </div>
                                         <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
-                                            <DropdownComponent name="Select Category" dropdownBtnClass="w-full md:w-11/12 bg-cus-black-low" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                                            <select id="city" name="city" defaultValue="0" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base appearance-none" required>
+                                                <option className="text-black text-base" value="0">Select City</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </>
@@ -140,7 +146,9 @@ const GigRegister = () => {
                                             <p>Choose the category and sub-category most suitable for your Gig.</p>
                                         </div>
                                         <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
-                                            <DropdownComponent name="Select Category" dropdownBtnClass="w-full md:w-11/12 bg-cus-black-low" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
+                                            <select id="city" name="city" defaultValue="0" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base appearance-none" required>
+                                                <option className="text-black text-base" value="0">Select City</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </>
@@ -150,12 +158,12 @@ const GigRegister = () => {
 
                         <div className="h-full w-full flex items-center md:items-end justify-center md:justify-end mt-6 sm:mt-4">
                             <div className="h-auto w-full md:w-auto">
-                                <SecondaryButton href="/advancedSearch" containerClass="w-full md:w-fit h-full bg-cus-black-low text-white" name="Save & Continue" />
+                                <SecondaryButton containerClass="w-full md:w-fit h-full bg-cus-black-low text-white" name="Save & Continue" />
                             </div>
                         </div>
                     </div>
 
-                    <div className="top-6 col-span-3 h-fit sticky hidden lg:flex flex-col items-center justify-start p-2.5 pt-0">
+                    <div className="top-20 col-span-3 h-fit sticky hidden lg:flex flex-col items-center justify-start p-2.5 pt-0">
                         <div className="h-12 w-12 translate-y-1/2 flex items-center justify-center rounded-full border border-black p-1 z-10">
                             <div className="h-full w-full bg-cus-light-yellow-high flex items-center justify-center rounded-full">
                                 <FontAwesomeIcon icon={faLightbulb} className="text-black text-lg" />

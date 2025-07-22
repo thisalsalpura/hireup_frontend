@@ -33,10 +33,10 @@ const SellerProfile = () => {
                     </div>
 
                     <div className="h-full w-full md:w-auto flex items-center justify-center">
-                        <div className="h-auto w-full md:w-auto flex items-center justify-between bg-black rounded-md shadow-md px-5 py-4 gap-8 cursor-pointer">
-                            <p className="text-xl md:text-2xl text-white">Explore My Gigs</p>
+                        <a href="/gigRegister" className="h-auto w-full md:w-auto flex items-center justify-between bg-black rounded-md shadow-md px-5 py-4 gap-8 cursor-pointer">
+                            <p className="text-xl md:text-2xl text-white">Add New Gig</p>
                             <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-base md:text-lg text-white" />
-                        </div>
+                        </a>
                     </div>
                 </div>
 

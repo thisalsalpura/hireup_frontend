@@ -6,7 +6,7 @@ export async function adminLogin(setLoading, setShowFPModal) {
 
     const adminObject = {
         email: email,
-        password: password,
+        password: password
     };
 
     const adminJson = JSON.stringify(adminObject);
