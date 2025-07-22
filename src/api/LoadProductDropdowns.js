@@ -1,16 +1,14 @@
-var cityList;
-var localeList;
+var subCategoryList;
 
-export async function loadUserDropdowns() {
+export async function loadProductDropdowns() {
     try {
         const response = await fetch("http://localhost:8080/hireup_backend/LoadProductDropdowns");
 
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-                loadCountryDropdownData("country", json.countryList, "name");
-                cityList = json.cityList;
-                localeList = json.localeList;
+                loadDropdownData("category", json.categoryList, "name");
+                subCategoryList = json.subCategoryList;
             }
         }
     } catch (error) {
@@ -18,7 +16,7 @@ export async function loadUserDropdowns() {
     }
 }
 
-function loadCountryDropdownData(selectId, list, property) {
+function loadDropdownData(selectId, list, property) {
     const select = document.getElementById(selectId);
 
     list.forEach(item => {
@@ -31,17 +29,14 @@ function loadCountryDropdownData(selectId, list, property) {
 }
 
 export function loadOtherDropdownsData() {
-    const countryId = document.getElementById("country").value;
-    const citySelector = document.getElementById("city");
-    const localeSelector = document.getElementById("locale");
+    const categoryId = document.getElementById("category").value;
+    const subCategorySelector = document.getElementById("subCategory");
 
-    citySelector.length = 1;
-    localeSelector.length = 1;
+    subCategorySelector.length = 1;
 
-    let cityCount = 0;
-    let localeCount = 0;
+    let subCategoryCount = 0;
 
-    cityList.forEach(item => {
+    subCategoryList.forEach(item => {
         if (item.country.id == countryId) {
             const option = document.createElement("option");
             option.className = "text-black text-base";
