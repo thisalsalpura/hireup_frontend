@@ -39,11 +39,9 @@ const AdminSellerManagement = () => {
 
     return (
         <section className="bg-white custom2 relative">
-            {loading && (
-                <div className="fixed inset-0 z-[9999] bg-white bg-opacity-60 flex items-center justify-center">
-                    <Slab color="#000000" size="large" text="" textColor="" />
-                </div>
-            )}
+            <div className={`fixed inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center z-[9999]`}>
+                <Slab color="#000000" size="large" text="" textColor="" />
+            </div>
 
             <nav className={`fixed p-2 top-0 left-0 right-0 ${loading ? "opacity-20 pointer-events-none" : ""} z-50`}>
                 <div className="max-w-7xl mx-auto h-32 md:h-20 bg-cus-black-low border border-white rounded-2xl flex flex-col md:flex-row items-center justify-center md:justify-between px-5 gap-6 md:gap-0">

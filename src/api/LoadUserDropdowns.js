@@ -21,6 +21,8 @@ export async function loadUserDropdowns() {
 function loadCountryDropdownData(selectId, list, property) {
     const select = document.getElementById(selectId);
 
+    select.length = 1;
+
     list.forEach(item => {
         const option = document.createElement("option");
         option.className = "text-black text-base";

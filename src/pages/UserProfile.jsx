@@ -55,10 +55,9 @@ const Profile = () => {
 
     return (
         <section className="bg-white custom2 relative">
-            <div className={`absolute inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center`}>
+            <div className={`fixed inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center z-[9999]`}>
                 <Slab color="#000000" size="large" text="" textColor="" />
             </div>
-
 
             <nav className={`fixed ${loading ? "opacity-20 pointer-events-none" : ""} top-0 left-0 right-0 z-50`}>
                 <Navbar />

@@ -91,11 +91,11 @@ export const steps = [
   },
   {
     id: 2,
-    name: "Pricing",
+    name: "Packages & Pricing",
   },
   {
     id: 3,
-    name: "Description & FAQ",
+    name: "FAQ",
   },
   {
     id: 4,

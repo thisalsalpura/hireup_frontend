@@ -7,7 +7,7 @@ export async function loadProductDropdowns() {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-                loadDropdownData("category", json.categoryList, "name");
+                loadCategoryDropdownData("category", json.categoryList, "name");
                 subCategoryList = json.subCategoryList;
             }
         }
@@ -16,8 +16,10 @@ export async function loadProductDropdowns() {
     }
 }
 
-function loadDropdownData(selectId, list, property) {
+function loadCategoryDropdownData(selectId, list, property) {
     const select = document.getElementById(selectId);
+
+    select.length = 1;
 
     list.forEach(item => {
         const option = document.createElement("option");
@@ -28,7 +30,7 @@ function loadDropdownData(selectId, list, property) {
     });
 }
 
-export function loadOtherDropdownsData() {
+export function loadSubCategoryDropdownsData() {
     const categoryId = document.getElementById("category").value;
     const subCategorySelector = document.getElementById("subCategory");
 
@@ -37,40 +39,21 @@ export function loadOtherDropdownsData() {
     let subCategoryCount = 0;
 
     subCategoryList.forEach(item => {
-        if (item.country.id == countryId) {
+        if (item.category.id == categoryId) {
             const option = document.createElement("option");
             option.className = "text-black text-base";
             option.value = item.id;
             option.innerHTML = item.name;
-            citySelector.appendChild(option);
-            cityCount++;
+            subCategorySelector.appendChild(option);
+            subCategoryCount++;
         }
     });
 
-    if (cityCount !== 0) {
-        citySelector.disabled = false;
-        citySelector.classList.remove("opacity-50");
+    if (subCategoryCount !== 0) {
+        subCategorySelector.disabled = false;
+        subCategorySelector.classList.remove("opacity-50");
     } else {
-        citySelector.disabled = true;
-        citySelector.classList.add("opacity-50");
-    }
-
-    localeList.forEach(item => {
-        if (item.country.id == countryId) {
-            const option = document.createElement("option");
-            option.className = "text-black text-base";
-            option.value = item.id;
-            option.innerHTML = item.value;
-            localeSelector.appendChild(option);
-            localeCount++;
-        }
-    });
-
-    if (localeCount !== 0) {
-        localeSelector.disabled = false;
-        localeSelector.classList.remove("opacity-50");
-    } else {
-        localeSelector.disabled = true;
-        localeSelector.classList.add("opacity-50");
+        subCategorySelector.disabled = true;
+        subCategorySelector.classList.add("opacity-50");
     }
 }

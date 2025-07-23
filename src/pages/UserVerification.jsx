@@ -31,7 +31,7 @@ const UserVerification = () => {
 
     return (
         <section className="bg-white h-full relative">
-            <div className={`absolute inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center`}>
+            <div className={`fixed inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center z-[9999]`}>
                 <Slab color="#000000" size="large" text="" textColor="" />
             </div>
 

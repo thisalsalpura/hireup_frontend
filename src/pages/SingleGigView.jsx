@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes, faStar, faLeftLong, faRightLong } from "@fortawesome/free-solid-svg-icons";
-import TabsComponent from "../components/TabsComponent";
 
 const SingleGigView = () => {
 
