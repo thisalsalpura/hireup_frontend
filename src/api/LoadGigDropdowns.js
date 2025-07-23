@@ -1,8 +1,8 @@
 var subCategoryList;
 
-export async function loadProductDropdowns() {
+export async function loadGigDropdowns() {
     try {
-        const response = await fetch("http://localhost:8080/hireup_backend/LoadProductDropdowns");
+        const response = await fetch("http://localhost:8080/hireup_backend/LoadGigDropdowns");
 
         if (response.ok) {
             const json = await response.json();

@@ -95,7 +95,7 @@ export const steps = [
   },
   {
     id: 3,
-    name: "FAQ",
+    name: "FAQ & Search Tag",
   },
   {
     id: 4,

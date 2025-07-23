@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import SecondaryButton from "../components/SecondaryButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
+import { faLightbulb, faClose } from "@fortawesome/free-solid-svg-icons";
 import { steps } from "../constants/script";
-import { loadProductDropdowns } from "../api/LoadProductDropdowns";
-import { loadSubCategoryDropdownsData } from "../api/LoadProductDropdowns";
+import { loadGigDropdowns } from "../api/LoadGigDropdowns";
+import { loadSubCategoryDropdownsData } from "../api/LoadGigDropdowns";
 import { Slab } from "react-loading-indicators";
 import logo from "../assets/icons/logo.svg";
 import { saveGig } from "../api/SaveGig";
+import Button from "../components/Button";
+import { addSearchTag } from "../api/AddSearchTagAndFAQ";
 
 const GigRegister = () => {
 
@@ -36,7 +38,7 @@ const GigRegister = () => {
             setLoading(true);
 
             try {
-                await loadProductDropdowns(setLoading);
+                await loadGigDropdowns(setLoading);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -311,11 +313,19 @@ const GigRegister = () => {
                                 <>
                                     <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
                                         <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
-                                            <h2 className="text-2xl font-semibold">Gig Title</h2>
-                                            <p>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.</p>
+                                            <h2 className="text-2xl font-semibold">Search Tag</h2>
+                                            <p>Add relevant keywords that best describe your Gig. These tags help buyers find your service when they search on the platform.</p>
                                         </div>
                                         <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
-                                            <input id="" name="" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="Web Development" required />
+                                            <input id="searchTag" name="searchTag" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="eg:- Web Development" required />
+                                            <Button onClick={() => addSearchTag(setLoading)} name="Save" containerClass="mt-6" frontClasses="text-black h-10 w-full border-2 border-black" backClasses="h-10 w-full bg-cus-light-yellow-high" />
+                                        </div>
+                                    </div>
+
+                                    <div id="search-tag-main" className="mt-2 h-auto w-full flex flex-wrap items-start justify-start gap-4">
+                                        <div id="search-tag" className="h-auto w-auto flex flex-row items-center justify-center border border-gray-400 rounded-3xl px-4 py-1 gap-4">
+                                            <p id="search-tag-name" className="text-lg">HTML</p>
+                                            <FontAwesomeIcon icon={faClose} className="text-lg cursor-pointer" />
                                         </div>
                                     </div>
 
@@ -323,13 +333,31 @@ const GigRegister = () => {
 
                                     <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
                                         <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
-                                            <h2 className="text-2xl font-semibold">Category</h2>
-                                            <p>Choose the category and sub-category most suitable for your Gig.</p>
+                                            <h2 className="text-2xl font-semibold">FAQ</h2>
+                                            <p>Provide common questions and helpful answers about your service. This builds trust and clears up any doubts potential buyers might have.</p>
                                         </div>
-                                        <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
-                                            <select id="city" name="city" defaultValue="0" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base appearance-none" required>
-                                                <option className="text-black text-base" value="0">Select City</option>
-                                            </select>
+                                        <div className="col-span-12 md:col-span-8 flex flex-col gap-6 items-end justify-center">
+                                            <div className="h-auto w-full flex flex-col items-end justify-center gap-2">
+                                                <h3 className="text-black">Question</h3>
+                                                <input id="faqQues" name="faqQues" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="What technologies are used..." required />
+                                            </div>
+                                            <div className="h-auto w-full flex flex-col items-end justify-center gap-2">
+                                                <h3 className="text-black">Answer</h3>
+                                                <input id="faqQues" name="faqQues" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="HTML, CSS, JS to the frontend..." required />
+                                            </div>
+                                            <Button name="Save" containerClass="mt-2" frontClasses="text-black h-10 w-full border-2 border-black" backClasses="h-10 w-full bg-cus-light-yellow-high" />
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-2 h-auto w-full flex flex-col items-start justify-start gap-4">
+                                        <div className="h-auto w-full flex flex-col items-center justify-center border border-gray-400 rounded-md">
+                                            <div className="h-auto w-full bg-cus-black-low flex flex-row items-start justify-between rounded-tl-md rounded-tr-md p-4 gap-5">
+                                                <p className="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo ab officiis, facilis sit maiores dolorum nemo vero qui, ullam beatae reprehenderit voluptates quam ipsam repellendus assumenda fuga enim veritatis necessitatibus?</p>
+                                                <FontAwesomeIcon icon={faClose} className="text-white text-xl cursor-pointer" />
+                                            </div>
+                                            <div className="h-auto w-full bg-transparent flex items-start justify-start rounded-bl-md rounded-br-md p-4">
+                                                <p className="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo ab officiis, facilis sit maiores dolorum nemo vero qui, ullam beatae reprehenderit voluptates quam ipsam repellendus assumenda fuga enim veritatis necessitatibus?</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </>
@@ -365,7 +393,7 @@ const GigRegister = () => {
                                 )}
 
                                 {activStep === 3 && (
-                                    <p className="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus eius similique, culpa, omnis delectus nulla exercitationem aspernatur sequi, atque voluptatum ipsa quibusdam est ea necessitatibus numquam reprehenderit perspiciatis assumenda fugit?</p>
+                                    <p className="text-white">Enter the Search key words to visible to the searching results and FAQ list to get a idea to the buyers.</p>
                                 )}
                             </div>
                         </div>
