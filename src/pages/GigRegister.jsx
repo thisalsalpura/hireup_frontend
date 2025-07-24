@@ -10,6 +10,7 @@ import logo from "../assets/icons/logo.svg";
 import { saveGig } from "../api/SaveGig";
 import Button from "../components/Button";
 import { addSearchTag } from "../api/AddSearchTagAndFAQ";
+import { addFAQ } from "../api/AddSearchTagAndFAQ";
 
 const GigRegister = () => {
 
@@ -314,7 +315,7 @@ const GigRegister = () => {
                                     <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
                                         <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
                                             <h2 className="text-2xl font-semibold">Search Tag</h2>
-                                            <p>Add relevant keywords that best describe your Gig. These tags help buyers find your service when they search on the platform.</p>
+                                            <p>Add relevant keywords that best describe your Gig. These tags help buyers find your service when they search on the platform. (Must add 10 Search Tags)</p>
                                         </div>
                                         <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
                                             <input id="searchTag" name="searchTag" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="eg:- Web Development" required />
@@ -323,9 +324,9 @@ const GigRegister = () => {
                                     </div>
 
                                     <div id="search-tag-main" className="mt-2 h-auto w-full flex flex-wrap items-start justify-start gap-4">
-                                        <div id="search-tag" className="h-auto w-auto flex flex-row items-center justify-center border border-gray-400 rounded-3xl px-4 py-1 gap-4">
-                                            <p id="search-tag-name" className="text-lg">HTML</p>
-                                            <FontAwesomeIcon icon={faClose} className="text-lg cursor-pointer" />
+                                        <div id="search-tag-temp" className="search-tag-item h-auto w-auto hidden flex-row items-center justify-center border border-gray-400 rounded-3xl px-4 py-1 gap-4">
+                                            <p id="search-tag-name" className="text-lg"></p>
+                                            <FontAwesomeIcon id="search-tag-remove" icon={faClose} className="text-lg cursor-pointer" />
                                         </div>
                                     </div>
 
@@ -334,30 +335,80 @@ const GigRegister = () => {
                                     <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
                                         <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
                                             <h2 className="text-2xl font-semibold">FAQ</h2>
-                                            <p>Provide common questions and helpful answers about your service. This builds trust and clears up any doubts potential buyers might have.</p>
+                                            <p>Provide common questions and helpful answers about your service. This builds trust and clears up any doubts potential buyers might have. (Must add 3 FAQs)</p>
                                         </div>
                                         <div className="col-span-12 md:col-span-8 flex flex-col gap-6 items-end justify-center">
                                             <div className="h-auto w-full flex flex-col items-end justify-center gap-2">
                                                 <h3 className="text-black">Question</h3>
-                                                <input id="faqQues" name="faqQues" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="What technologies are used..." required />
+                                                <textarea id="faqQues" name="faqQues" rows="4" className="bg-cus-black-low w-full md:w-11/12 p-2.5 rounded-md text-white text-base resize-none" type="text" placeholder="What technologies are used..." required />
                                             </div>
                                             <div className="h-auto w-full flex flex-col items-end justify-center gap-2">
                                                 <h3 className="text-black">Answer</h3>
-                                                <input id="faqQues" name="faqQues" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="text" placeholder="HTML, CSS, JS to the frontend..." required />
+                                                <textarea id="faqAns" name="faqAns" rows="4" className="bg-cus-black-low w-full md:w-11/12 p-2.5 rounded-md text-white text-base resize-none" type="text" placeholder="HTML, CSS, JS to the frontend..." required />
                                             </div>
-                                            <Button name="Save" containerClass="mt-2" frontClasses="text-black h-10 w-full border-2 border-black" backClasses="h-10 w-full bg-cus-light-yellow-high" />
+                                            <Button onClick={() => addFAQ(setLoading)} name="Save" containerClass="mt-2" frontClasses="text-black h-10 w-full border-2 border-black" backClasses="h-10 w-full bg-cus-light-yellow-high" />
                                         </div>
                                     </div>
 
-                                    <div className="mt-2 h-auto w-full flex flex-col items-start justify-start gap-4">
-                                        <div className="h-auto w-full flex flex-col items-center justify-center border border-gray-400 rounded-md">
+                                    <div id="faq-main" className="mt-2 h-auto w-full flex flex-col items-start justify-start gap-4">
+                                        <div id="faq-temp" className="faq-item h-auto w-full hidden flex-col items-center justify-center border border-gray-400 rounded-md overflow-hidden">
                                             <div className="h-auto w-full bg-cus-black-low flex flex-row items-start justify-between rounded-tl-md rounded-tr-md p-4 gap-5">
-                                                <p className="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo ab officiis, facilis sit maiores dolorum nemo vero qui, ullam beatae reprehenderit voluptates quam ipsam repellendus assumenda fuga enim veritatis necessitatibus?</p>
-                                                <FontAwesomeIcon icon={faClose} className="text-white text-xl cursor-pointer" />
+                                                <p id="faq-ques" className="text-white break-words w-[90%]"></p>
+                                                <FontAwesomeIcon id="faq-remove" icon={faClose} className="text-white text-xl cursor-pointer flex-shrink-0" />
                                             </div>
                                             <div className="h-auto w-full bg-transparent flex items-start justify-start rounded-bl-md rounded-br-md p-4">
-                                                <p className="text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo ab officiis, facilis sit maiores dolorum nemo vero qui, ullam beatae reprehenderit voluptates quam ipsam repellendus assumenda fuga enim veritatis necessitatibus?</p>
+                                                <p id="faq-ans" className="text-black break-words"></p>
                                             </div>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+
+                            {activStep === 4 && (
+                                <>
+                                    <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
+                                        <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
+                                            <h2 className="text-2xl font-semibold">Image 1</h2>
+                                            <p>Upload the main visual for your Gig. This image will appear as the cover photo and is essential for grabbing buyers' attention. (Allowed only png, jpg nad jpeg types)</p>
+                                        </div>
+                                        <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
+                                            <input id="image1" name="image1" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="file" accept=".png, .jpg, .jpeg" required />
+                                        </div>
+                                    </div>
+
+                                    <hr className="border-gray-300 h-0.5 w-full" />
+
+                                    <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
+                                        <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
+                                            <h2 className="text-2xl font-semibold">Image 2</h2>
+                                            <p>Add a second image to showcase more details or examples of your service. This helps build trust and showcase your work quality. (Allowed only png, jpg nad jpeg types)</p>
+                                        </div>
+                                        <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
+                                            <input id="image2" name="image2" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="file" accept=".png, .jpg, .jpeg" required />
+                                        </div>
+                                    </div>
+
+                                    <hr className="border-gray-300 h-0.5 w-full" />
+
+                                    <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
+                                        <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
+                                            <h2 className="text-2xl font-semibold">Image 3</h2>
+                                            <p>Upload a third image to further showcase your work or highlight an additional aspect of your service. This helps provide buyers with a complete visual understanding of your Gig. (Allowed only png, jpg nad jpeg types)</p>
+                                        </div>
+                                        <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
+                                            <input id="image3" name="image3" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="file" accept=".png, .jpg, .jpeg" required />
+                                        </div>
+                                    </div>
+
+                                    <hr className="border-gray-300 h-0.5 w-full" />
+
+                                    <div className="grid grid-cols-12 gap-4 md:gap-2.5 w-full items-start justify-center">
+                                        <div className="col-span-12 md:col-span-4 flex flex-col gap-2 items-start justify-start">
+                                            <h2 className="text-2xl font-semibold">Document</h2>
+                                            <p>Attach a supporting document (PDF), such as a portfolio, case study, or detailed service breakdown. This can help buyers evaluate your expertise. (Allowed only pdf types)</p>
+                                        </div>
+                                        <div className="col-span-12 md:col-span-8 flex flex-col gap-2 items-end justify-center">
+                                            <input id="doc" name="doc" className="bg-cus-black-low h-10 w-full md:w-11/12 py-0.5 px-2.5 rounded-md text-white text-base" type="file" accept=".pdf" required />
                                         </div>
                                     </div>
                                 </>
@@ -394,6 +445,10 @@ const GigRegister = () => {
 
                                 {activStep === 3 && (
                                     <p className="text-white">Enter the Search key words to visible to the searching results and FAQ list to get a idea to the buyers.</p>
+                                )}
+
+                                {activStep === 4 && (
+                                    <p className="text-white">Enter the Three Cover images about your Gig, brief Documentation about your Gig.</p>
                                 )}
                             </div>
                         </div>

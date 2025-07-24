@@ -99,15 +99,7 @@ export const steps = [
   },
   {
     id: 4,
-    name: "Requirements"
-  },
-  {
-    id: 5,
-    name: "Gallery"
-  },
-  {
-    id: 6,
-    name: "Publish"
+    name: "Assets & Publish"
   }
 ];
 
