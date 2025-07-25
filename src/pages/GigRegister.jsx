@@ -29,6 +29,8 @@ const GigRegister = () => {
                 const json = await response.json();
                 if (json.redirect === "NO") {
                     window.location.href = "/home";
+                } else if (json.redirect === "NOTOP") {
+                    window.location.href = "/userProfile";
                 }
             }
         })();
@@ -416,9 +418,13 @@ const GigRegister = () => {
 
                         </div>
 
-                        <div className="h-full w-full flex items-center md:items-end justify-center md:justify-end mt-6 sm:mt-4">
+                        <div className="h-full w-full flex flex-col md:flex-row items-center md:items-end justify-center md:justify-end mt-6 sm:mt-4 gap-4">
                             <div className="h-auto w-full md:w-auto">
-                                <SecondaryButton onClick={() => saveGig(setLoading, activStep, setActiveStep)} containerClass="w-full md:w-fit h-full bg-cus-black-low text-white" name="Save & Continue" />
+                                <SecondaryButton onClick={() => window.location.reload()} containerClass="w-full md:w-fit h-full bg-white text-black border-2 border-cus-black-low" name="Clear All" />
+                            </div>
+
+                            <div className="h-auto w-full md:w-auto">
+                                <SecondaryButton onClick={() => saveGig(setLoading, activStep, setActiveStep)} containerClass="w-full md:w-fit h-full bg-cus-black-low text-white border-2 border-cus-black-low" name="Save & Continue" />
                             </div>
                         </div>
                     </div>

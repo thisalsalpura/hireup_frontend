@@ -16,6 +16,8 @@ const SellerDashboard = () => {
                 const json = await response.json();
                 if (json.redirect === "NO") {
                     window.location.href = "/home";
+                } else if (json.redirect === "NOTOP") {
+                    window.location.href = "/userProfile";
                 }
             }
         })();

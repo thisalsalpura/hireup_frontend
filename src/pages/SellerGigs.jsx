@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const SellerGigs = () => {
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetch("http://localhost:8080/hireup_backend/SessionServletSeller", {
+                method: "GET",
+                credentials: "include"
+            });
+
+            if (response.ok) {
+                const json = await response.json();
+                if (json.redirect === "NO") {
+                    window.location.href = "/home";
+                } else if (json.redirect === "NOTOP") {
+                    window.location.href = "/userProfile";
+                }
+            }
+        })();
+    }, []);
+
     return (
         <>
-
             <div className="h-full w-full flex flex-col items-center justify-center rounded-md p-6 gap-10">
                 <div className="h-full w-full">
                     <div className="relative overflow-x-auto cusxscroll">
@@ -123,7 +141,6 @@ const SellerGigs = () => {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }

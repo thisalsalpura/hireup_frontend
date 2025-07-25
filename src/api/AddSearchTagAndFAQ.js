@@ -20,12 +20,12 @@ export async function addSearchTag(setLoading) {
         const onlyLetters = /^[A-Z]+$/;
 
         if (!onlyLetters.test(searchTagValue)) {
-            toast.error("Invalid Search Tag Name");
+            toast.error("Invalid Search Tag Name!");
             return;
         }
 
         if (existingSearchTag.length >= 10) {
-            toast.error("You can only add 10 Tag Names.");
+            toast.error("You can only add 10 Tag Names!");
             return;
         }
 
@@ -83,7 +83,7 @@ export async function addFAQ(setLoading) {
         }
 
         if (existingFaq.length >= 3) {
-            toast.error("You can only add 3 FAQs.");
+            toast.error("You can only add 3 FAQs!");
             return;
         }
 

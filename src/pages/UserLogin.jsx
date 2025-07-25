@@ -104,7 +104,7 @@ const Login = () => {
                                                     </div>
 
                                                     <div className="flex flex-col w-full gap-1.5 mt-5">
-                                                        <label htmlFor="fpVerification" className="font-semibold text-black text-sm">Verification Code</label>
+                                                        <label htmlFor="fpVerification" className="text-black text-sm">Verification Code</label>
                                                         <input id="fpVerification" name="fpVerification" className="bg-cus-black-low h-10 py-0.5 px-2.5 rounded-md text-white text-base" type="text" required />
                                                     </div>
 

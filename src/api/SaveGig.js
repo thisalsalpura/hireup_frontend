@@ -116,7 +116,14 @@ export async function saveGig(setLoading, activeStep, setActiveStep) {
                     setActiveStep(Number(json.setStep));
                 }
             } else {
-                toast.error(json.message);
+                if (json.sp === "EMPTY") {
+                    toast.error(json.message);
+                    setTimeout(() => {
+                        window.location = "/sellerDashboard";
+                    }, 2000);
+                } else {
+                    toast.error(json.message);
+                }
             }
         } else {
             toast.error("Something went wrong! Please try again later.");

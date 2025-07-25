@@ -34,7 +34,14 @@ export async function registerAsSeller(setLoading, setShowFPModal) {
                     window.location.reload();
                 }, 2000);
             } else {
-                toast.error(json.message);
+                if (json.user === "NOTUPDATED") {
+                    toast.error(json.message);
+                    setTimeout(() => {
+                        window.location = "/userProfile";
+                    }, 2000);
+                } else {
+                    toast.error(json.message);
+                }
             }
         } else {
             toast.error("Something went wrong! Please try again later.");
