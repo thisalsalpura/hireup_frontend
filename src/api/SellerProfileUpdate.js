@@ -7,13 +7,13 @@ export async function updateSellerProfile(setLoading) {
     const qualificationList = Array.from(
         document.querySelectorAll("#edu-qualification-main .edu-qualification-item:not(#edu-qualification-temp)")
     ).map(qualification => ({
-        qualificationName: qualification.querySelector("#edu-qualification-name").textContent,
-        qualificationPlace: qualification.querySelector("#edu-qualification-place").textContent,
+        qualificationName: qualification.querySelector("#edu-qualification-name").textContent.trim(),
+        qualificationPlace: qualification.querySelector("#edu-qualification-place").textContent.trim(),
     }));
 
     const skillList = Array.from(
-        document.querySelectorAll("#skill-main .skill-item:not(#skill-temp) skill-name")
-    ).map(skill => skill.textContent);
+        document.querySelectorAll("#skill-main .skill-item:not(#skill-temp) #skill-name")
+    ).map(skill => skill.textContent.trim().toUpperCase());
 
 
     const sellerObject = {
@@ -28,7 +28,7 @@ export async function updateSellerProfile(setLoading) {
 
     try {
         const response = await fetch("http://localhost:8080/hireup_backend/SellerProfileUpdate", {
-            method: "GET",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -39,9 +39,12 @@ export async function updateSellerProfile(setLoading) {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-
+                toast.success(json.message);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             } else {
-
+                toast.error(json.message);
             }
         } else {
             toast.error("Something went wrong! Please try again later.");

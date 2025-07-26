@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const SellerGigs = () => {
+const SellerGigs = ({ setLoading }) => {
 
     useEffect(() => {
         (async () => {

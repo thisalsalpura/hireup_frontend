@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import TabsComponent from "../components/TabsComponent";
 import { sellerDashboardTabs } from "../constants/script";
 import logo from "../assets/icons/logo.svg";
+import { Slab } from "react-loading-indicators";
 
 const SellerDashboard = () => {
+
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -29,9 +32,13 @@ const SellerDashboard = () => {
     }, []);
 
     return (
-        <section className="bg-white custom2">
+        <section className="bg-white custom2 relative">
 
-            <nav className="fixed top-0 left-0 right-0 z-50">
+            <div className={`fixed inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center z-[9999]`}>
+                <Slab color="#000000" size="large" text="" textColor="" />
+            </div>
+
+            <nav className={`fixed top-0 left-0 right-0 ${loading ? "opacity-20 pointer-events-none" : ""} z-50`}>
                 <div className="max-w-7xl mx-auto h-36 md:h-24 bg-white flex flex-col md:flex-row items-center justify-between py-4 md:py-0 px-7">
                     <a href="/home">
                         <img className="h-10 sm:h-12" src={logo} alt="logo" />
@@ -45,7 +52,7 @@ const SellerDashboard = () => {
                 </div>
             </nav>
 
-            <div className="max-w-7xl mx-auto h-full mt-36 md:mt-24 bg-white p-5">
+            <div className={`max-w-7xl mx-auto ${loading ? "opacity-20 pointer-events-none" : ""} h-full mt-36 md:mt-24 bg-white p-5`}>
 
                 <div className="flex items-center justify-start">
                     <div className="flex flex-wrap md:flex-row items-center justify-start md:justify-center">
@@ -59,7 +66,7 @@ const SellerDashboard = () => {
                 </div>
 
                 <div className="mt-10 h-full w-full flex items-center justify-center">
-                    <TabsComponent tabs={sellerDashboardTabs} />
+                    <TabsComponent setLoading={setLoading} tabs={sellerDashboardTabs} />
                 </div>
 
             </div>

@@ -57,7 +57,7 @@ export async function addQualification(setLoading, setShowEduModal) {
             }
         });
 
-        if (isQualificationNameDuplicate || isQualificationPlaceDuplicate) {
+        if (isQualificationNameDuplicate && isQualificationPlaceDuplicate) {
             toast.error("This Education Qualification already exists!");
             return;
         }

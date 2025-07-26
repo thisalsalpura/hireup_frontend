@@ -74,13 +74,13 @@ import SellerProfile from "../pages/SellerProfile";
 export const sellerDashboardTabs = [
   {
     id: "1",
-    tabName: "Seller's Gigs",
-    tabContent: SellerGigs,
+    tabName: "Seller's Profile",
+    tabContent: SellerProfile,
   },
   {
     id: "2",
-    tabName: "Seller's Profile",
-    tabContent: SellerProfile,
+    tabName: "Seller's Gigs",
+    tabContent: SellerGigs,
   },
 ];
 

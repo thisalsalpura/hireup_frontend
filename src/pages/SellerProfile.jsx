@@ -4,16 +4,13 @@ import { faLocationDot, faArrowUpRightFromSquare, faPen, faUserGraduate, faTrash
 import { loadSellerData } from "../api/LoadSellerData";
 import { addQualification, addSkill } from "../api/AddQualificationAndSkill";
 import { updateSellerProfile } from "../api/SellerProfileUpdate";
-import { Slab } from "react-loading-indicators";
 import SecondaryButton from "../components/SecondaryButton";
 
-const SellerProfile = () => {
+const SellerProfile = ({ setLoading }) => {
 
     const [showEduModal, setShowEduModal] = useState(false);
 
     const [showSkillModal, setShowSkillModal] = useState(false);
-
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -49,10 +46,6 @@ const SellerProfile = () => {
 
     return (
         <>
-            <div className={`fixed inset-0 h-screen w-full bg-transparent ${loading ? "flex" : "hidden"} items-center justify-center z-[9999]`}>
-                <Slab color="#000000" size="large" text="" textColor="" />
-            </div>
-
             {showEduModal && (
                 <>
                     <div role="dialog" aria-modal="true" aria-labelledby="dialog-title" className="relative z-50">
@@ -127,7 +120,7 @@ const SellerProfile = () => {
             )}
 
             <>
-                <div className={`h-full w-full flex flex-col items-center justify-center ${loading ? "opacity-20 pointer-events-none" : ""} rounded-md p-6 gap-10`}>
+                <div className="h-full w-full flex flex-col items-center justify-center rounded-md p-6 gap-10">
                     <div className="h-full w-full flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-0">
                         <div className="h-full w-auto flex flex-row items-center justify-center gap-6">
                             <div className="h-24 md:h-32 w-24 md:w-32 flex items-center justify-center border-2 border-black rounded-full p-1">
