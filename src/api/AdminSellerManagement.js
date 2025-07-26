@@ -18,9 +18,8 @@ export async function loadPendingSellers(setLoading) {
             if (json.status) {
                 json.sellerList.forEach(seller => {
                     let pendingSellerClone = pendingSeller.cloneNode(true);
+                    pendingSellerClone.removeAttribute("id");
                     pendingSellerClone.classList.remove("hidden");
-                    pendingSellerClone.classList.add("flex");
-                    emptyPendingSellers.classList.remove("flex");
                     emptyPendingSellers.classList.add("hidden");
                     pendingSellerClone.querySelector("#pending-seller-name").innerHTML = seller.user.fname + " " + seller.user.lname;
                     pendingSellerClone.querySelector("#pending-seller-email").innerHTML = seller.user.email;
@@ -30,10 +29,8 @@ export async function loadPendingSellers(setLoading) {
                     pendingSellersMain.append(pendingSellerClone);
                 });
             } else if (json.message === "EMPTY") {
-                pendingSeller.classList.remove("flex");
                 pendingSeller.classList.add("hidden");
                 emptyPendingSellers.classList.remove("hidden");
-                emptyPendingSellers.classList.add("flex");
                 pendingSellersMain.append(emptyPendingSellers);
             }
         }

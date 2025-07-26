@@ -63,23 +63,61 @@ const AdminSellerManagement = () => {
                     </div>
                 </div>
 
-                <div className="mt-5 h-full w-full flex flex-col gap-6 items-center justify-center border border-gray-300 rounded-2xl p-4 sm:p-8">
-                    <h2 className="text-2xl text-black text-center font-londrinasolid tracking-wide">Seller Registration Requests</h2>
+                <div className="mt-5 h-full w-full flex flex-col gap-6 items-center justify-center border border-gray-300 rounded-md p-5">
+                    <div className="h-full w-full relative overflow-x-auto cusxscroll">
+                        <table className="h-full w-full border-separate border-spacing-y-1">
+                            <caption className="p-5 bg-cus-black-low rounded-md">
+                                <h2 className="text-3xl text-white text-left font-londrinasolid tracking-wide">Seller Registration Requests</h2>
+                            </caption>
 
-                    <div id="pending-sellers-main" className="mt-2 h-full w-full grid grid-cols-12 gap-5">
-                        <div id="pending-seller" className="h-full col-span-12 md:col-span-6 lg:col-span-4 hidden flex-col items-center justify-between border border-gray-300 rounded-2xl p-4 gap-4 group">
-                            <div className="h-32 w-32 flex items-center justify-center border-2 border-gray-300 rounded-full p-1">
-                                <div className="h-full w-full flex items-center justify-center bg-cus-light-yellow-high rounded-full"></div>
-                            </div>
-                            <div className="h-0.5 w-full bg-gray-300 my-4"></div>
-                            <p id="pending-seller-name" className="font-bold text-center text-black tracking-wider">###############</p>
-                            <p id="pending-seller-email" className="font-bold text-center text-black tracking-wider">###############</p>
-                            <button id="verify-seller-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-cus-light-yellow-high px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-cus-light-yellow-high ring-inset hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Verify</button>
-                        </div>
+                            <thead className="bg-gray-500">
+                                <tr>
+                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tl-md rounded-bl-md">
+                                        Seller
+                                    </th>
+                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                        Name
+                                    </th>
+                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                        Email
+                                    </th>
+                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tr-md rounded-br-md"></th>
+                                </tr>
+                            </thead>
 
-                        <div id="empty-pending-sellers" className="h-full col-span-12 hidden flex-col items-center justify-center group">
-                            <p className="text-3xl font-semibold text-center text-black tracking-wider">No Pending Requests Found!</p>
-                        </div>
+                            <tbody id="pending-sellers-main">
+                                <tr id="pending-seller" className="bg-cus-black-low hidden border-b border-gray-500">
+                                    <td className="px-6 py-4 rounded-tl-md rounded-bl-md">
+                                        <div className="flex items-start justify-start gap-4">
+                                            <div className="h-20 w-20 bg-white rounded-full shrink-0">
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="flex items-center justify-start text-white text-xs lg:text-base h-full w-full">
+                                            <p id="pending-seller-name"></p>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="flex items-center justify-start text-white text-xs lg:text-base h-full w-full">
+                                            <p id="pending-seller-email"></p>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4 rounded-tr-md rounded-br-md">
+                                        <div className="flex items-center justify-start text-white text-xs lg:text-base h-full w-full">
+                                            <button id="verify-seller-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-white px-3 py-1 text-lg font-semibold text-black shadow-xs hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Verify</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr id="empty-pending-sellers" className="bg-cus-black-low hidden border-b border-gray-500">
+                                    <td className="px-6 py-4 text-center text-white text-lg rounded-md" colSpan="4">
+                                        <p>No Pending Requests Found!</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

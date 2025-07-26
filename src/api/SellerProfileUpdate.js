@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { loadSellerData } from "./LoadSellerData";
 
 export async function updateSellerProfile(setLoading) {
 
@@ -42,6 +43,7 @@ export async function updateSellerProfile(setLoading) {
                 toast.success(json.message);
                 setTimeout(() => {
                     window.location.reload();
+                    loadSellerData();
                 }, 2000);
             } else {
                 toast.error(json.message);
