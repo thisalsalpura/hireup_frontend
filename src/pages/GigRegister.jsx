@@ -3,14 +3,12 @@ import SecondaryButton from "../components/SecondaryButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb, faClose } from "@fortawesome/free-solid-svg-icons";
 import { steps } from "../constants/script";
-import { loadGigDropdowns } from "../api/LoadGigDropdowns";
-import { loadSubCategoryDropdownsData } from "../api/LoadGigDropdowns";
+import { loadGigDropdowns, loadSubCategoryDropdownsData } from "../api/LoadGigDropdowns";
 import { Slab } from "react-loading-indicators";
 import logo from "../assets/icons/logo.svg";
 import { saveGig } from "../api/SaveGig";
 import Button from "../components/Button";
-import { addSearchTag } from "../api/AddSearchTagAndFAQ";
-import { addFAQ } from "../api/AddSearchTagAndFAQ";
+import { addSearchTag, addFAQ } from "../api/AddSearchTagAndFAQ";
 
 const GigRegister = () => {
 

@@ -11,11 +11,9 @@ import { useNavigate } from "react-router-dom";
 import { signUp } from "../api/SignUp";
 import { signIn } from "../api/SignIn";
 import { Slab } from "react-loading-indicators";
-import { forgotPassword } from "../api/ForgotPassword";
-import { changeForgotPassword } from "../api/ForgotPassword";
+import { forgotPassword, changeForgotPassword } from "../api/ForgotPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { showPassword } from "../api/ShowPassword";
-import { setHideBtnIcon } from "../api/ShowPassword";
+import { showPassword, setHideBtnIcon } from "../api/ShowPassword";
 
 const Login = () => {
 

@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import SecondaryButton from "../components/SecondaryButton";
-import { loadUserDropdowns } from "../api/LoadUserDropdowns";
-import { loadOtherDropdownsData } from "../api/LoadUserDropdowns";
+import { loadUserDropdowns, loadOtherDropdownsData } from "../api/LoadUserDropdowns";
 import { loadUserData } from "../api/LoadUserData";
 import { userProfileUpdate } from "../api/UserProfileUpdate";
 import { Slab } from "react-loading-indicators";
 import FooterMain from "./Footer";
 import { changePassword } from "../api/ChangePassword";
-import { showPassword } from "../api/ShowPassword";
+import { showPassword, setHideBtnIcon } from "../api/ShowPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { setHideBtnIcon } from "../api/ShowPassword";
 import { registerAsSeller } from "../api/RegisterAsSeller";
 
 const Profile = () => {

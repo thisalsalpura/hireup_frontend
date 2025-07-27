@@ -7,8 +7,7 @@ import { paths } from "../constants/script";
 import Button from "../components/Button";
 import FooterMain from "./Footer";
 import { Slab } from "react-loading-indicators";
-import { showPassword } from "../api/ShowPassword";
-import { setHideBtnIcon } from "../api/ShowPassword";
+import { showPassword, setHideBtnIcon } from "../api/ShowPassword";
 import { registerAsSeller } from "../api/RegisterAsSeller";
 
 const Home = () => {
