@@ -26,12 +26,12 @@ export async function loadPendingSellers(setLoading) {
                     pendingSellerClone.querySelector("#verify-seller-btn").addEventListener("click", (e) => {
                         verifySeller(setLoading, seller.user.email);
                     });
-                    pendingSellersMain.append(pendingSellerClone);
+                    pendingSellersMain.appendChild(pendingSellerClone);
                 });
             } else if (json.message === "EMPTY") {
                 pendingSeller.classList.add("hidden");
                 emptyPendingSellers.classList.remove("hidden");
-                pendingSellersMain.append(emptyPendingSellers);
+                pendingSellersMain.appendChild(emptyPendingSellers);
             }
         }
     } catch (error) {
@@ -64,8 +64,10 @@ async function verifySeller(setLoading, email) {
             const json = await response.json();
             if (json.status) {
                 toast.success(json.message);
-                loadPendingSellers();
-                window.location.reload();
+                loadPendingSellers(setLoading);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             } else {
                 toast.error("Something went wrong! Please try again later.");
             }

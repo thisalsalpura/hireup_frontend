@@ -66,8 +66,8 @@ const AdminDashboard = () => {
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faStore} />
                             </a>
 
-                            <a className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
-                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Service Management</p>
+                            <a href="/adminGigManagement" className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
+                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Gig Management</p>
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faBellConcierge} />
                             </a>
                         </div>

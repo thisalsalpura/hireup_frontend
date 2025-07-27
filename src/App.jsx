@@ -13,6 +13,7 @@ import AdminLogin from "./pages/AdminLogin";
 import SellerDashboard from "./pages/SellerDashboard";
 import UserVerification from "./pages/UserVerification";
 import AdminSellerManagement from "./pages/AdminSellerManagement";
+import AdminGigManagement from "./pages/AdminGigManagement";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -39,6 +40,7 @@ const App = () => {
                     <Route path="/sellerDashboard" element={<SellerDashboard />} />
                     <Route path="/userVerification" element={<UserVerification />} />
                     <Route path="/adminSellerManagement" element={<AdminSellerManagement />} />
+                    <Route path="/adminGigManagement" element={<AdminGigManagement />} />
                 </Routes>
 
                 <ToastContainer position="top-right" autoClose={2000} newestOnTop={true} closeOnClick pauseOnHover closeButton={false} />
