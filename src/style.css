@@ -198,7 +198,37 @@ body.custom2::-webkit-scrollbar-track {
     animation: translate5 14s infinite;
 }
 
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.fade-in-transform {
+    animation: fadeInTransform 0.4s ease-in-out;
+}
+
 /* key frames */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.3;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInTransform {
+    from {
+        transform: scale(0.97);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
 
 @keyframes scale {
     0% {

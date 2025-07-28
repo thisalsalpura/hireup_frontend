@@ -1,23 +1,34 @@
 import React, { useRef, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShareNodes, faStar, faLeftLong, faRightLong, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { loadSingleGigData } from "../api/LoadSingleGigData";
+import { faShareNodes, faStar, faLeftLong, faRightLong, faEye, faEyeSlash, faCloudDownload, faClock, faCommentDollar } from "@fortawesome/free-solid-svg-icons";
+import { loadSingleGigData, changeMainImage } from "../api/LoadSingleGigData";
 import { Slab } from "react-loading-indicators";
 import { showPassword, setHideBtnIcon } from "../api/ShowPassword";
+import emptyImg from "../assets/images/empty-img.svg";
+import FooterMain from "./Footer";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import 'react-tabs/style/react-tabs.css';
+import SecondaryButton from "../components/SecondaryButton";
 
 const SingleGigView = () => {
 
     const [loading, setLoading] = useState(false);
 
-    const [showFPModal, setShowFPModal] = useState(false);
+    const [selectedTab, setSelectedTab] = useState(0);
+
+    const [gigBronzePackage, setGigBronzePackage] = useState(null);
+
+    const [gigSilverPackage, setGigSilverPackage] = useState(null);
+
+    const [gigGoldPackage, setGigGoldPackage] = useState(null);
 
     useEffect(() => {
         (async () => {
             setLoading(true);
 
             try {
-                await loadSingleGigData(setLoading);
+                await loadSingleGigData(setLoading, setGigBronzePackage, setGigSilverPackage, setGigGoldPackage);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -27,29 +38,53 @@ const SingleGigView = () => {
     }, []);
 
     useEffect(() => {
-        document.body.classList.add("custom2");
-        return () => document.body.classList.remove("custom2");
-    }, []);
+        if (selectedTab === 0 && gigBronzePackage) {
+            document.getElementById("bronze-package-note").innerHTML = gigBronzePackage.extra_note;
+            document.getElementById("bronze-package-delivery-time").innerHTML = gigBronzePackage.delivery_time;
+            document.getElementById("bronze-package-price").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(gigBronzePackage.price);
+        }
+
+        if (selectedTab === 1 && gigSilverPackage) {
+            document.getElementById("silver-package-note").innerHTML = gigSilverPackage.extra_note;
+            document.getElementById("silver-package-delivery-time").innerHTML = gigSilverPackage.delivery_time;
+            document.getElementById("silver-package-price").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(gigSilverPackage.price);
+        }
+
+        if (selectedTab === 2 && gigGoldPackage) {
+            document.getElementById("gold-package-note").innerHTML = gigGoldPackage.extra_note;
+            document.getElementById("gold-package-delivery-time").innerHTML = gigGoldPackage.delivery_time;
+            document.getElementById("gold-package-price").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(gigGoldPackage.price);
+        }
+    }, [selectedTab, gigBronzePackage, gigSilverPackage, gigGoldPackage]);
+
+    const [showFPModal, setShowFPModal] = useState(false);
 
     const scrollRef = useRef(null);
 
-    const scrollLeft = () => {
+    const scrollLeft = (e) => {
+        e.stopPropagation();
         if (scrollRef.current) {
             scrollRef.current.scrollBy({
-                left: -300,
+                left: -150,
                 behavior: "smooth",
             });
         }
     };
 
-    const scrollRight = () => {
+    const scrollRight = (e) => {
+        e.stopPropagation();
         if (scrollRef.current) {
             scrollRef.current.scrollBy({
-                left: 300,
+                left: 150,
                 behavior: "smooth",
             });
         }
     };
+
+    useEffect(() => {
+        document.body.classList.add("custom2");
+        return () => document.body.classList.remove("custom2");
+    }, []);
 
     return (
         <section className="bg-white custom2 relative">
@@ -111,10 +146,10 @@ const SingleGigView = () => {
 
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-0">
                     <div className="flex flex-wrap md:flex-row items-center justify-start md:justify-center">
-                        <span className="text-base text-blue-700 opacity-50 cursor-pointer">Home &nbsp;{">"}&nbsp;</span>
-                        <span className="text-base text-blue-700 opacity-50 cursor-pointer">&nbsp; SingleGigView &nbsp;{">"}&nbsp;</span>
-                        <span className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; Programming & Tech &nbsp;{">"}&nbsp;</span>
-                        <span className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; Web Development</span>
+                        <a href="/home" className="text-base text-blue-700 opacity-50 cursor-pointer">Home &nbsp;{">"}&nbsp;</a>
+                        <a href="#" className="text-base text-blue-700 opacity-50 cursor-pointer">&nbsp; SingleGigView &nbsp;{">"}&nbsp;</a>
+                        <a href="#" className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; <span id="category">#########</span> &nbsp;{">"}&nbsp;</a>
+                        <a href="#" className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; <span id="sub-category">#########</span></a>
                     </div>
 
                     <div className="flex items-center justify-start md:justify-center">
@@ -122,179 +157,193 @@ const SingleGigView = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-12 items-start mt-8 h-full relative">
-                    <div className="col-span-12 lg:col-span-7 h-full flex flex-col justify-center p-0.5 lg:py-0 lg:pl-0 lg:pr-5">
-                        <p id="gig-title" className="text-3xl text-black text-left">develop custom web applications business e commerce and landing pages</p>
+                <div className="grid grid-cols-12 items-start mt-8 h-full w-full relative py-2.5 gap-6">
+                    <div className="col-span-12 lg:col-span-7 h-full flex flex-col justify-center">
+                        <p id="gig-title" className="text-3xl text-black font-semibold text-left"></p>
 
                         <div className="flex flex-row items-center justify-start gap-3.5 mt-8">
-                            <div className="h-12 w-12 flex items-center justify-center rounded-xl border-2 border-black p-0.5">
-                                <a className="h-full w-full rounded-xl bg-cus-light-yellow-high"></a>
+                            <div className="h-12 w-12 flex items-center justify-center rounded-full border-2 border-black p-0.5">
+                                <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
                             </div>
 
                             <div className="flex flex-col justify-start">
-                                <p className="text-md text-black font-semibold text-left">Ben Stokes</p>
-                                <p className="text-md text-black font-semibold text-left"><FontAwesomeIcon icon={faStar} className="text-md mr-2" />4.9</p>
+                                <p id="seller-name" className="text-md text-black font-semibold text-left">#########</p>
+                                <p id="gig-rating" className="text-md text-black font-semibold text-left"><FontAwesomeIcon icon={faStar} className="text-md mr-2" />#########</p>
                             </div>
                         </div>
 
                         <div className="relative flex items-center mt-8">
-                            <div className="absolute left-0 items-center justify-start ml-3">
-                                <div className="h-full w-full bg-white flex items-center justify-center rounded-full p-2 cursor-pointer">
-                                    <FontAwesomeIcon icon={faLeftLong} className="text-black text-lg" />
-                                </div>
-                            </div>
-
-                            <div className="w-full h-96 bg-amber-400 rounded-md">
-
-                            </div>
-
-                            <div className="absolute right-0 items-center justify-end mr-3">
-                                <div className="h-full w-full bg-white flex items-center justify-center rounded-full p-2 cursor-pointer">
-                                    <FontAwesomeIcon icon={faRightLong} className="text-black text-lg" />
-                                </div>
+                            <div className="w-full h-96 rounded-md overflow-hidden cursor-pointer">
+                                <img id="gigMainImage" className="h-full w-full object-cover" src={emptyImg} alt="gig-main-img" />
                             </div>
                         </div>
 
                         <div className="relative w-full h-full mt-2.5">
-                            <div onClick={scrollLeft} className="absolute left-0 top-1/2 -translate-y-1/2 ml-3">
-                                <div className="h-full w-full bg-cus-black-low flex items-center justify-center rounded-lg p-2 cursor-pointer">
+                            <div onClick={scrollLeft} className="absolute left-0 top-1/2 -translate-y-1/2 ml-3 z-10">
+                                <div className="w-10 h-10 bg-cus-black-low flex items-center justify-center border border-white rounded-lg p-2 cursor-pointer">
                                     <FontAwesomeIcon icon={faLeftLong} className="text-white text-lg" />
                                 </div>
                             </div>
 
                             <div ref={scrollRef} className="w-full overflow-x-auto hide-scrollbar flex items-center gap-1.5">
-                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
-
+                                <div onClick={changeMainImage} className="h-28 w-72 rounded-md flex-shrink-0 overflow-hidden cursor-pointer">
+                                    <img id="gigImage1" className="gig-img-container h-full w-full object-cover transition-opacity duration-300" src={emptyImg} alt="gig-image-1" />
                                 </div>
 
-                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
-
+                                <div onClick={changeMainImage} className="h-28 w-72 rounded-md flex-shrink-0 overflow-hidden cursor-pointer">
+                                    <img id="gigImage2" className="gig-img-container h-full w-full object-cover transition-opacity duration-300" src={emptyImg} alt="gig-image-2" />
                                 </div>
 
-                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
-
-                                </div>
-
-                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
-
-                                </div>
-
-                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
-
-                                </div>
-
-                                <div className="h-24 w-36 bg-cus-light-orange rounded-md flex-shrink-0">
-
+                                <div onClick={changeMainImage} className="h-28 w-72 rounded-md flex-shrink-0 overflow-hidden cursor-pointer">
+                                    <img id="gigImage3" className="gig-img-container h-full w-full object-cover transition-opacity duration-300" src={emptyImg} alt="gig-image-3" />
                                 </div>
                             </div>
 
-                            <div onClick={scrollRight} className="absolute right-0 top-1/2 -translate-y-1/2 mr-3">
-                                <div className="h-full w-full bg-cus-black-low flex items-center justify-center rounded-lg p-2 cursor-pointer">
+                            <div onClick={scrollRight} className="absolute right-0 top-1/2 -translate-y-1/2 mr-3 z-10">
+                                <div className="w-10 h-10 bg-cus-black-low flex items-center justify-center border border-white rounded-lg p-2 cursor-pointer">
                                     <FontAwesomeIcon icon={faRightLong} className="text-white text-lg" />
                                 </div>
                             </div>
                         </div>
 
-                        <p className="text-3xl text-black text-left mt-10">Reviews</p>
-
-                        <div className="h-full w-full flex flex-col p-2.5 border border-black rounded-md mt-4">
-                            <div className="flex flex-row items-center justify-start gap-3.5">
-                                <div className="h-12 w-12 flex items-center justify-center rounded-full border-2 border-black p-0.5">
-                                    <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
-                                </div>
-
-                                <div className="flex flex-col justify-start">
-                                    <p className="text-md text-black font-semibold text-left">Ben Stokes</p>
-                                    <p className="text-md text-black font-semibold text-left"><FontAwesomeIcon icon={faStar} className="text-md mr-2" />4.9</p>
-                                </div>
-                            </div>
-
-                            <p className="mt-3.5 text-black">SMCSE was wonderful to work with! They understood my business needs and expectations and went above and beyond with their deliverables. I will hire them again</p>
+                        <div className="h-auto w-full flex items-center justify-between bg-red-400 rounded-md px-4 py-3 mt-4">
+                            <p className="text-white text-xl font-londrinasolid tracking-wide">Documentation</p>
+                            <a id="gigDocument" href="#" target="_blank" download className="flex items-center justify-center cursor-pointer"><FontAwesomeIcon icon={faCloudDownload} className="text-white text-xl z-10" /></a>
                         </div>
 
-                        <p className="text-3xl text-black text-left mt-10">About this Gig</p>
+                        <div className="h-auto w-full flex flex-col items-start justify-start bg-white shadow rounded-md border border-gray-300 p-4 mt-10">
+                            <p className="text-3xl font-semibold text-black text-left">Description</p>
 
-                        <div className="h-full w-full mt-4">
-                            <div className="relative overflow-x-auto cusxscroll">
+                            <div className="h-auto w-full flex items-center justify-start border border-gray-500 rounded-md p-2.5 mt-4">
+                                <p id="gig-desc" className="text-black">#########</p>
+                            </div>
+                        </div>
 
-                                <table className="h-full w-full border-separate border-spacing-y-1">
-                                    <caption className="p-5 bg-cus-black-low rounded-md">
-                                        <h2 className="text-3xl text-white text-left">Our products</h2>
-                                        <p className="text-sm text-white text-left mt-2">Browse a list of Flowbite products designed to help you work and play, stay organized, get answers, keep in touch, grow your business, and more.</p>
-                                    </caption>
+                        <div className="h-auto w-full flex flex-col items-start justify-start bg-white shadow rounded-md border border-gray-300 p-4 mt-6">
+                            <p className="text-lg font-semibold text-black text-left">Category: &nbsp;&nbsp;<span id="category2" className="font-normal">#########</span></p>
+                            <p className="text-lg font-semibold text-black text-left mt-2">Sub Category: &nbsp;&nbsp;<span id="sub-category2" className="font-normal">#########</span></p>
+                        </div>
 
-                                    <thead className="bg-gray-500">
-                                        <tr>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tl-md rounded-bl-md">
-                                                Package
-                                            </th>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
-                                                Bronze
-                                            </th>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
-                                                Silver
-                                            </th>
-                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tr-md rounded-br-md">
-                                                Gold
-                                            </th>
-                                        </tr>
-                                    </thead>
+                        <div className="h-auto w-full flex flex-col items-start justify-start bg-white shadow rounded-md border border-gray-300 p-4 mt-6">
+                            <p className="text-3xl font-semibold text-black text-left">Search Tags</p>
 
-                                    <tbody>
-                                        <tr className="bg-cus-black-low border-b border-gray-500">
-                                            <th className="px-6 py-4 text-white text-base text-left rounded-tl-md rounded-bl-md">
-                                                Apple MacBook Pro 17
-                                            </th>
-                                            <td className="px-6 py-4 text-white text-base text-left">
-                                                Silver
-                                            </td>
-                                            <td className="px-6 py-4 text-white text-base text-left">
-                                                Laptop
-                                            </td>
-                                            <td className="px-6 py-4 text-white text-base text-left rounded-tr-md rounded-br-md">
-                                                $2999
-                                            </td>
-                                        </tr>
-                                        <tr className="bg-cus-black-low border-b border-gray-500">
-                                            <th className="px-6 py-4 text-white text-base text-left rounded-tl-md rounded-bl-md">
-                                                Apple MacBook Pro 17
-                                            </th>
-                                            <td className="px-6 py-4 text-white text-base text-left">
-                                                Silver
-                                            </td>
-                                            <td className="px-6 py-4 text-white text-base text-left">
-                                                Laptop
-                                            </td>
-                                            <td className="px-6 py-4 text-white text-base text-left rounded-tr-md rounded-br-md">
-                                                $2999
-                                            </td>
-                                        </tr>
-                                        <tr className="bg-cus-black-low border-b border-gray-500">
-                                            <th className="px-6 py-4 text-white text-base text-left rounded-tl-md rounded-bl-md">
-                                                Apple MacBook Pro 17
-                                            </th>
-                                            <td className="px-6 py-4 text-white text-base text-left">
-                                                Silver
-                                            </td>
-                                            <td className="px-6 py-4 text-white text-base text-left">
-                                                Laptop
-                                            </td>
-                                            <td className="px-6 py-4 text-white text-base text-left rounded-tr-md rounded-br-md">
-                                                $2999
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div id="search-tags-main" className="h-auto w-full hidden flex-wrap items-center justify-start mt-4 gap-5">
+                                <div id="search-tag-temp" className="search-tag-item h-auto w-auto hidden flex-row items-center justify-center border border-gray-500 rounded-3xl px-4 py-1 gap-4">
+                                    <p id="search-tag-name" className="text-lg"></p>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div className="h-auto w-full flex flex-col items-start justify-start bg-white shadow rounded-md border border-gray-300 p-4 mt-6">
+                            <p className="text-3xl font-semibold text-black text-left">FAQs</p>
+
+                            <div id="faq-main" className="h-auto w-full hidden flex-wrap items-center justify-start mt-4 gap-5">
+                                <div id="faq-temp" className="faq-item h-auto w-full hidden flex-col items-center justify-center border border-gray-500 rounded-md overflow-hidden">
+                                    <div className="h-auto w-full bg-cus-black-low flex items-start justify-start rounded-tl-md rounded-tr-md p-4">
+                                        <p id="faq-ques" className="text-white break-words"></p>
+                                    </div>
+                                    <div className="h-auto w-full bg-transparent flex items-start justify-start rounded-bl-md rounded-br-md p-4">
+                                        <p id="faq-ans" className="text-black break-words"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="h-auto w-full flex flex-col items-start justify-start bg-white shadow rounded-md border border-gray-300 p-4 mt-6">
+                            <p className="text-3xl font-semibold text-black text-left">Reviews</p>
+
+                            <div className="h-auto w-full flex flex-col border border-gray-500 rounded-md p-2.5 mt-4">
+                                <div className="flex flex-row items-center justify-start gap-3.5">
+                                    <div className="h-12 w-12 flex items-center justify-center rounded-full border-2 border-gray-300 p-0.5">
+                                        <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
+                                    </div>
+
+                                    <div className="flex flex-col justify-start">
+                                        <p className="text-md text-black font-semibold text-left">Ben Stokes</p>
+                                        <p className="text-md text-black font-semibold text-left"><FontAwesomeIcon icon={faStar} className="text-md mr-2" />4.9</p>
+                                    </div>
+                                </div>
+
+                                <p className="mt-3.5 text-black">SMCSE was wonderful to work with! They understood my business needs and expectations and went above and beyond with their deliverables. I will hire them again</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="mt-16 lg:mt-0 col-span-12 lg:col-span-5 lg:sticky lg:top-6 h-fit w-full flex items-start justify-center px-0.5 sm:px-5">
-                        {/* <TabsComponent /> */}
+                    <div className="mt-16 lg:mt-0 col-span-12 lg:col-span-5 lg:sticky lg:top-28 self-start">
+                        <div className="bg-white shadow p-4 rounded-md w-full border border-gray-300">
+                            <Tabs className={"w-full"} selectedIndex={selectedTab} onSelect={(index) => setSelectedTab(index)} forceRenderTabPanel>
+                                <TabList>
+                                    <Tab>Bronze</Tab>
+                                    <Tab>Silver</Tab>
+                                    <Tab>Gold</Tab>
+                                </TabList>
+
+                                <TabPanel>
+                                    <div className="flex flex-col items-start justify-start p-2.5 gap-8 mt-4">
+                                        <h2 className="text-2xl font-semibold">Bronze Package</h2>
+
+                                        <div className="flex flex-wrap">
+                                            <p id="bronze-package-note">#########</p>
+                                        </div>
+
+                                        <div className="h-auto w-full flex flex-row items-center justify-end gap-2.5">
+                                            <FontAwesomeIcon icon={faClock} className="text-xl" />
+                                            <p className="text-xl font-semibold"><span id="bronze-package-delivery-time">##</span> Days</p>
+                                        </div>
+
+                                        <div className="h-auto w-full flex items-center justify-end">
+                                            <p className="text-3xl font-semibold">$ <span id="bronze-package-price">####</span></p>
+                                        </div>
+
+                                        <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                    </div>
+                                </TabPanel>
+                                <TabPanel>
+                                    <div className="flex flex-col items-start justify-start p-2.5 gap-8 mt-4">
+                                        <h2 className="text-2xl font-semibold">Silver Package</h2>
+
+                                        <div className="flex flex-wrap">
+                                            <p id="silver-package-note">#########</p>
+                                        </div>
+
+                                        <div className="h-auto w-full flex flex-row items-center justify-end gap-2.5">
+                                            <FontAwesomeIcon icon={faClock} className="text-xl" />
+                                            <p className="text-xl font-semibold"><span id="silver-package-delivery-time">##</span> Days</p>
+                                        </div>
+
+                                        <div className="h-auto w-full flex items-center justify-end">
+                                            <p className="text-3xl font-semibold">$ <span id="silver-package-price">####</span></p>
+                                        </div>
+
+                                        <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                    </div>
+                                </TabPanel>
+                                <TabPanel>
+                                    <div className="flex flex-col items-start justify-start p-2.5 gap-8 mt-4">
+                                        <h2 className="text-2xl font-semibold">Gold Package</h2>
+
+                                        <div className="flex flex-wrap">
+                                            <p id="gold-package-note">#########</p>
+                                        </div>
+
+                                        <div className="h-auto w-full flex flex-row items-center justify-end gap-2.5">
+                                            <FontAwesomeIcon icon={faClock} className="text-xl" />
+                                            <p className="text-xl font-semibold"><span id="gold-package-delivery-time">##</span> Days</p>
+                                        </div>
+
+                                        <div className="h-auto w-full flex items-center justify-end">
+                                            <p className="text-3xl font-semibold">$ <span id="gold-package-price">####</span></p>
+                                        </div>
+
+                                        <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                    </div>
+                                </TabPanel>
+                            </Tabs>
+                        </div>
                     </div>
                 </div>
 
+                <FooterMain />
             </div>
 
         </section>
