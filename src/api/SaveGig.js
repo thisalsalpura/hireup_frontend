@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { loadGigDropdowns } from "./LoadGigDropdowns";
 
 export async function saveGig(setLoading, activeStep, setActiveStep) {
     let requestBody;
@@ -111,6 +112,7 @@ export async function saveGig(setLoading, activeStep, setActiveStep) {
                     toast.success(json.message);
                     setTimeout(() => {
                         window.location.reload();
+                        loadGigDropdowns();
                     }, 2000);
                 } else {
                     setActiveStep(Number(json.setStep));
