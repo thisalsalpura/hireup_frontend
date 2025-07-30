@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import TabsComponent from "../components/TabsComponent";
-import { sellerDashboardTabs } from "../constants/script";
 import logo from "../assets/icons/logo.svg";
 import { Slab } from "react-loading-indicators";
+import SellerProfile from "./SellerProfile";
+import SellerGigs from "./SellerGigs";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import 'react-tabs/style/react-tabs.css';
 
 const SellerDashboard = () => {
 
@@ -66,7 +68,19 @@ const SellerDashboard = () => {
                 </div>
 
                 <div className="mt-10 h-full w-full flex items-center justify-center">
-                    <TabsComponent setLoading={setLoading} tabs={sellerDashboardTabs} />
+                    <Tabs className={"w-full"} forceRenderTabPanel>
+                        <TabList>
+                            <Tab><p className="text-black font-semibold">Seller's Profile</p></Tab>
+                            <Tab><p className="text-black font-semibold">Seller's Gigs</p></Tab>
+                        </TabList>
+
+                        <TabPanel>
+                            <SellerProfile setLoading={setLoading} />
+                        </TabPanel>
+                        <TabPanel>
+                            <SellerGigs setLoading={setLoading} />
+                        </TabPanel>
+                    </Tabs>
                 </div>
 
             </div>

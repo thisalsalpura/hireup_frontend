@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from "../assets/icons/logo-white.svg";
 import { Slab } from "react-loading-indicators";
 import { loadPendingGigs } from "../api/AdminGigManagement";
+import emptyImg from "../assets/images/empty-img.svg";
 
 const AdminGigManagement = () => {
 
@@ -92,7 +93,9 @@ const AdminGigManagement = () => {
                                 <tr id="pending-gig" className="bg-cus-black-low hidden border-b border-gray-500">
                                     <td className="px-6 py-4 rounded-tl-md rounded-bl-md">
                                         <div className="flex items-start justify-start gap-4">
-                                            <div id="pending-gig-image" className="h-12 w-20 bg-white rounded-md shrink-0"></div>
+                                            <div className="h-12 w-20 bg-white rounded-md overflow-hidden shrink-0">
+                                                <img id="pending-gig-image" className="h-full w-full object-cover" src={emptyImg} alt="gig-main-img" />
+                                            </div>
                                             <p id="pending-gig-title" className="w-64 text-white text-xs lg:text-base text-left font-normal break-words line-clamp-3"></p>
                                         </div>
                                     </td>

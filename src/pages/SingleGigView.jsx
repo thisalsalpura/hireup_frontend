@@ -273,9 +273,9 @@ const SingleGigView = () => {
                         <div className="bg-white shadow p-4 rounded-md w-full border border-gray-300">
                             <Tabs className={"w-full"} selectedIndex={selectedTab} onSelect={(index) => setSelectedTab(index)} forceRenderTabPanel>
                                 <TabList>
-                                    <Tab>Bronze</Tab>
-                                    <Tab>Silver</Tab>
-                                    <Tab>Gold</Tab>
+                                    <Tab><p className="text-black font-semibold">Bronze</p></Tab>
+                                    <Tab><p className="text-black font-semibold">Silver</p></Tab>
+                                    <Tab><p className="text-black font-semibold">Gold</p></Tab>
                                 </TabList>
 
                                 <TabPanel>

@@ -1,4 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { loadSellerActiveGigsData } from "../api/LoadSellerActiveGigsData";
+import { loadSellerInactiveGigsData } from "../api/LoadSellerInactiveGigsData";
+import emptyImg from "../assets/images/empty-img.svg";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import 'react-tabs/style/react-tabs.css';
 
 const SellerGigs = ({ setLoading }) => {
 
@@ -20,125 +25,152 @@ const SellerGigs = ({ setLoading }) => {
         })();
     }, []);
 
+    useEffect(() => {
+        (async () => {
+            setLoading(true);
+
+            try {
+                await loadSellerActiveGigsData(setLoading);
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false);
+            }
+        })();
+    }, []);
+
+    const [selectedTab, setSelectedTab] = useState(0);
+
     return (
         <>
-            <div className="h-full w-full flex flex-col items-center justify-center rounded-md p-6 gap-10">
+            <div className="h-full w-full flex flex-col items-center justify-center border border-gray-300 rounded-md p-6 gap-10">
                 <div className="h-full w-full">
-                    <div className="relative overflow-x-auto cusxscroll">
-                        <table className="h-full w-full border-separate border-spacing-y-1">
-                            <caption className="p-5 bg-cus-black-low rounded-md">
-                                <h2 className="text-3xl text-white text-left">My Gigs</h2>
-                                <p className="text-xs md:text-sm text-white text-left mt-2">Here you can manage all the services you offer on the platform. Track the status of your gigs, update pricing or descriptions, and showcase your skills to potential buyers. Keep your listings fresh to attract more clients.</p>
-                            </caption>
+                    <Tabs className={"w-full"} forceRenderTabPanel>
+                        <TabList>
+                            <Tab><p className="text-black font-semibold">Active Gigs</p></Tab>
+                            <Tab><p className="text-black font-semibold">Inactive Gigs</p></Tab>
+                        </TabList>
 
-                            <thead className="bg-gray-500">
-                                <tr>
-                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tl-md rounded-bl-md">
-                                        Gig
-                                    </th>
-                                    <th className="px-6 py-3 text-black text-lg font-semibold text-center">
-                                        Price
-                                    </th>
-                                    <th className="px-6 py-3 text-black text-lg font-semibold text-center">
-                                        Rating
-                                    </th>
-                                    <th className="px-6 py-3 text-black text-lg font-semibold text-center rounded-tr-md rounded-br-md">
-                                        Orders
-                                    </th>
-                                </tr>
-                            </thead>
+                        <TabPanel>
+                            <div className="relative overflow-x-auto cusxscroll">
+                                <table className="h-full w-full border-separate border-spacing-y-1">
+                                    <caption className="p-5 bg-cus-black-low rounded-md">
+                                        <h2 className="text-3xl text-white text-left font-londrinasolid tracking-wide">My Active Gig</h2>
+                                        <p className="text-white text-left mt-2.5">Change your Active Gig status as Inactive</p>
+                                    </caption>
 
-                            <tbody>
-                                <tr className="bg-cus-black-low border-b border-gray-500">
-                                    <th className="px-6 py-4 rounded-tl-md rounded-bl-md">
-                                        <div className="flex items-start justify-start gap-4">
-                                            <div className="h-12 w-20 bg-white rounded-md shrink-0">
+                                    <thead className="bg-gray-500">
+                                        <tr>
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tl-md rounded-bl-md">
+                                                Gig
+                                            </th>
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                                Category
+                                            </th>
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                                Sub Category
+                                            </th>
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tr-md rounded-br-md">                                    </th>
+                                        </tr>
+                                    </thead>
 
-                                            </div>
-                                            <p className="w-full text-white text-xs lg:text-base text-left font-normal break-words">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nesciunt cumque rem reiciendis sequi molestias optio perspiciatis,
-                                                autem maxime ipsa fuga placeat non, repellendus modi officiis quae natus alias repellat.
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-start justify-center text-white text-xs lg:text-base h-full w-full">
-                                            <p>$3200</p>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-start justify-center text-white text-xs lg:text-base h-full w-full">
-                                            <p>4.7</p>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 rounded-tr-md rounded-br-md">
-                                        <div className="flex items-start justify-center text-white text-xs lg:text-base h-full w-full">
-                                            <p>21+</p>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    <tbody id="seller-active-gigs-main">
+                                        <tr id="seller-active-gig" className="bg-cus-black-low hidden border-b border-gray-500">
+                                            <td className="px-6 py-4 rounded-tl-md rounded-bl-md">
+                                                <div className="flex items-start justify-start gap-4">
+                                                    <div className="h-12 w-20 bg-white rounded-md overflow-hidden shrink-0">
+                                                        <img id="seller-active-gig-image" className="h-full w-full object-cover" src={emptyImg} alt="gig-main-img" />
+                                                    </div>
+                                                    <p id="seller-active-gig-title" className="w-64 text-white text-xs lg:text-base text-left font-normal break-words line-clamp-3"></p>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                    <p id="seller-active-gig-category"></p>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                    <p id="seller-active-gig-subcategory"></p>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4 rounded-tr-md rounded-br-md">
+                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                    <button id="change-active-gig-visible-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-white px-3 py-1 text-lg font-semibold text-black shadow-xs hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Change Visible</button>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                <tr className="bg-cus-black-low border-b border-gray-500">
-                                    <th className="px-6 py-4 rounded-tl-md rounded-bl-md">
-                                        <div className="flex items-start justify-start gap-4">
-                                            <div className="h-12 w-20 bg-white rounded-md shrink-0">
+                                        <tr id="empty-seller-active-gigs" className="bg-cus-black-low border-b border-gray-500">
+                                            <td className="px-6 py-4 text-center text-white text-lg rounded-md" colSpan="5">
+                                                <p>No Active Gigs Found!</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </TabPanel>
 
-                                            </div>
-                                            <p className="w-full text-white text-xs lg:text-base text-left font-normal break-words">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-start justify-center text-white text-xs lg:text-base h-full w-full">
-                                            <p>$3200</p>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-start justify-center text-white text-xs lg:text-base h-full w-full">
-                                            <p>4.7</p>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 rounded-tr-md rounded-br-md">
-                                        <div className="flex items-start justify-center text-white text-xs lg:text-base h-full w-full">
-                                            <p>21+</p>
-                                        </div>
-                                    </td>
-                                </tr>
+                        <TabPanel>
+                            <div className="relative overflow-x-auto cusxscroll">
+                                <table className="h-full w-full border-separate border-spacing-y-1">
+                                    <caption className="p-5 bg-cus-black-low rounded-md">
+                                        <h2 className="text-3xl text-white text-left font-londrinasolid tracking-wide">My Inactive Gig</h2>
+                                        <p className="text-white text-left mt-2.5">Change your Inactive Gig status as Active</p>
+                                    </caption>
 
-                                <tr className="bg-cus-black-low border-b border-gray-500">
-                                    <th className="px-6 py-4 rounded-tl-md rounded-bl-md">
-                                        <div className="flex items-start justify-start gap-4">
-                                            <div className="h-12 w-20 bg-white rounded-md shrink-0">
+                                    <thead className="bg-gray-500">
+                                        <tr>
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tl-md rounded-bl-md">
+                                                Gig
+                                            </th>
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                                Category
+                                            </th>
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                                Sub Category
+                                            </th>
+                                            <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tr-md rounded-br-md">                                    </th>
+                                        </tr>
+                                    </thead>
 
-                                            </div>
-                                            <p className="w-full text-white text-xs lg:text-base text-left font-normal break-words">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nesciunt cumque rem reiciendis sequi molestias optio perspiciatis,
-                                                autem maxime ipsa fuga placeat non, repellendus modi officiis quae natus alias repellat. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                Voluptatum, ab. Voluptate, fuga quibusdam. Numquam soluta reprehenderit fuga, quasi odio eligendi, eius eos optio sapiente dolor sit voluptates
-                                                ducimus enim inventore.
-                                            </p>
-                                        </div>
-                                    </th>
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-start justify-center text-white text-xs lg:text-base h-full w-full">
-                                            <p>$3200</p>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-start justify-center text-white text-xs lg:text-base h-full w-full">
-                                            <p>4.7</p>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 rounded-tr-md rounded-br-md">
-                                        <div className="flex items-start justify-center text-white text-xs lg:text-base h-full w-full">
-                                            <p>21+</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                    <tbody id="seller-inactive-gigs-main">
+                                        <tr id="seller-inactive-gig" className="bg-cus-black-low hidden border-b border-gray-500">
+                                            <td className="px-6 py-4 rounded-tl-md rounded-bl-md">
+                                                <div className="flex items-start justify-start gap-4">
+                                                    <div className="h-12 w-20 bg-white rounded-md overflow-hidden shrink-0">
+                                                        <img id="seller-inactive-gig-image" className="h-full w-full object-cover" src={emptyImg} alt="gig-main-img" />
+                                                    </div>
+                                                    <p id="seller-inactive-gig-title" className="w-64 text-white text-xs lg:text-base text-left font-normal break-words line-clamp-3"></p>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                    <p id="seller-inactive-gig-category"></p>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                    <p id="seller-inactive-gig-subcategory"></p>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4 rounded-tr-md rounded-br-md">
+                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                    <button id="change-inactive-gig-visible-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-white px-3 py-1 text-lg font-semibold text-black shadow-xs hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Change Visible</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr id="empty-seller-inactive-gigs" className="bg-cus-black-low border-b border-gray-500">
+                                            <td className="px-6 py-4 text-center text-white text-lg rounded-md" colSpan="5">
+                                                <p>No Inactive Gigs Found!</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </TabPanel>
+                    </Tabs>
                 </div>
             </div>
         </>

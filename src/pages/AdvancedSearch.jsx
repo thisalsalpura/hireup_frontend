@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Navbar from "./Navbar";
-import DropdownComponent from "../components/DropdownComponent";
 import SecondaryButton from "../components/SecondaryButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -38,7 +37,6 @@ const AdvancedSearch = () => {
                         <div className="col-span-12 md:col-span-6 flex items-center justify-center pt-3 px-3 sm:px-5 pb-3">
                             <div className="flex flex-col w-full gap-1.5">
                                 <label className="text-white text-sm">Category</label>
-                                <DropdownComponent name="Select Category" dropdownBtnClass="w-full" dropdownMenuClass="bg-white" dropdownMenuItemClass="text-black" />
                             </div>
                         </div>
 

@@ -68,22 +68,6 @@ export const paths = [
   },
 ];
 
-import SellerGigs from "../pages/SellerGigs";
-import SellerProfile from "../pages/SellerProfile";
-
-export const sellerDashboardTabs = [
-  {
-    id: "1",
-    tabName: "Seller's Profile",
-    tabContent: SellerProfile,
-  },
-  {
-    id: "2",
-    tabName: "Seller's Gigs",
-    tabContent: SellerGigs,
-  },
-];
-
 export const steps = [
   {
     id: 1,

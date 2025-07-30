@@ -55,6 +55,35 @@ export async function saveGig(setLoading, activeStep, setActiveStep) {
         image3 = document.getElementById("image3").files[0];
         doc = document.getElementById("doc").files[0];
 
+        if (!image1 || !image2 || !image3) {
+            toast.error("Please upload all three images.");
+            return;
+        }
+        if (!doc) {
+            toast.error("Please upload a document.");
+            return;
+        }
+
+        const maxSizeMB = 5;
+        const maxSize = maxSizeMB * 1024 * 1024;
+
+        if (image1.size > maxSize || image2.size > maxSize || image3.size > maxSize || doc.size > maxSize) {
+            toast.error(`Files must be smaller than ${maxSizeMB} MB.`);
+            return;
+        }
+
+        const allowedImageTypes = ["image/jpeg", "image/png", "image/jpg"];
+        const allowedDocTypes = ["application/pdf"];
+
+        if (![image1, image2, image3].every(img => allowedImageTypes.includes(img.type))) {
+            toast.error("Only JPG or PNG images are allowed.");
+            return;
+        }
+        if (!allowedDocTypes.includes(doc.type)) {
+            toast.error("Only PDF documents are allowed.");
+            return;
+        }
+
         form = new FormData();
         form.append("activeStep", activeStep.toString());
         form.append("image1", image1);

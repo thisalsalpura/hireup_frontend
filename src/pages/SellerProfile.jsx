@@ -120,7 +120,7 @@ const SellerProfile = ({ setLoading }) => {
             )}
 
             <>
-                <div className="h-full w-full flex flex-col items-center justify-center rounded-md p-6 gap-10">
+                <div className="h-full w-full flex flex-col items-center justify-center border border-gray-300 rounded-md p-6 gap-10">
                     <div className="h-full w-full flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-0">
                         <div className="h-full w-auto flex flex-row items-center justify-center gap-6">
                             <div className="h-24 md:h-32 w-24 md:w-32 flex items-center justify-center border-2 border-black rounded-full p-1">

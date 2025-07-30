@@ -16,11 +16,13 @@ export async function loadPendingGigs(setLoading) {
             let emptyPendingGigs = document.getElementById("empty-pending-gigs");
             pendingGigsMain.innerHTML = "";
             if (json.status) {
-                json.allPendingGigsList.forEach(gig => {
+                json.allPendingGigsList.forEach((gig, i) => {
                     let pendingGigClone = pendingGig.cloneNode(true);
                     pendingGigClone.removeAttribute("id");
                     pendingGigClone.classList.remove("hidden");
                     emptyPendingGigs.classList.add("hidden");
+                    const imageURL = json.allPendingGigsImagesList[i];
+                    pendingGigClone.querySelector("#pending-gig-image").src = imageURL;
                     pendingGigClone.querySelector("#pending-gig-title").innerHTML = gig.title;
                     pendingGigClone.querySelector("#pending-gig-category").innerHTML = gig.sub_Category.category.name;
                     pendingGigClone.querySelector("#pending-gig-subcategory").innerHTML = gig.sub_Category.name;
