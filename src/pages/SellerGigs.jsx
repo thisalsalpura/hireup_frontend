@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { loadSellerActiveGigsData } from "../api/LoadSellerActiveGigsData";
-import { loadSellerInactiveGigsData } from "../api/LoadSellerInactiveGigsData";
-import emptyImg from "../assets/images/empty-img.svg";
+import { loadSellerActiveGigsData, changeToInactiveGig } from "../api/LoadSellerActiveGigsData";
+import { loadSellerInactiveGigsData, changeToActiveGig } from "../api/LoadSellerInactiveGigsData";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 
@@ -25,12 +24,17 @@ const SellerGigs = ({ setLoading }) => {
         })();
     }, []);
 
+    const [activeGigs, setActiveGigs] = useState([]);
+
+    const [inactiveGigs, setInactiveGigs] = useState([]);
+
     useEffect(() => {
         (async () => {
             setLoading(true);
 
             try {
-                await loadSellerActiveGigsData(setLoading);
+                await loadSellerActiveGigsData(setLoading, setActiveGigs);
+                await loadSellerInactiveGigsData(setLoading, setInactiveGigs)
             } catch (error) {
                 console.log(error);
             } finally {
@@ -38,8 +42,6 @@ const SellerGigs = ({ setLoading }) => {
             }
         })();
     }, []);
-
-    const [selectedTab, setSelectedTab] = useState(0);
 
     return (
         <>
@@ -75,37 +77,41 @@ const SellerGigs = ({ setLoading }) => {
                                     </thead>
 
                                     <tbody id="seller-active-gigs-main">
-                                        <tr id="seller-active-gig" className="bg-cus-black-low hidden border-b border-gray-500">
-                                            <td className="px-6 py-4 rounded-tl-md rounded-bl-md">
-                                                <div className="flex items-start justify-start gap-4">
-                                                    <div className="h-12 w-20 bg-white rounded-md overflow-hidden shrink-0">
-                                                        <img id="seller-active-gig-image" className="h-full w-full object-cover" src={emptyImg} alt="gig-main-img" />
-                                                    </div>
-                                                    <p id="seller-active-gig-title" className="w-64 text-white text-xs lg:text-base text-left font-normal break-words line-clamp-3"></p>
-                                                </div>
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                                    <p id="seller-active-gig-category"></p>
-                                                </div>
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                                    <p id="seller-active-gig-subcategory"></p>
-                                                </div>
-                                            </td>
-                                            <td className="px-6 py-4 rounded-tr-md rounded-br-md">
-                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                                    <button id="change-active-gig-visible-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-white px-3 py-1 text-lg font-semibold text-black shadow-xs hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Change Visible</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr id="empty-seller-active-gigs" className="bg-cus-black-low border-b border-gray-500">
-                                            <td className="px-6 py-4 text-center text-white text-lg rounded-md" colSpan="5">
-                                                <p>No Active Gigs Found!</p>
-                                            </td>
-                                        </tr>
+                                        {activeGigs.length > 0 ? (
+                                            activeGigs.map((gig, index) => (
+                                                <tr key={index} id="seller-active-gig" className="bg-cus-black-low border-b border-gray-500">
+                                                    <td className="px-6 py-4 rounded-tl-md rounded-bl-md">
+                                                        <div className="flex items-start justify-start gap-4">
+                                                            <div className="h-12 w-20 bg-white rounded-md overflow-hidden shrink-0">
+                                                                <img id="seller-active-gig-image" className="h-full w-full object-cover" src={gig.image} alt="gig-main-img" />
+                                                            </div>
+                                                            <p id="seller-active-gig-title" className="w-64 text-white text-xs lg:text-base text-left font-normal break-words line-clamp-3">{gig.title}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                            <p id="seller-active-gig-category">{gig.sub_Category.category.name}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                            <p id="seller-active-gig-subcategory">{gig.sub_Category.name}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-6 py-4 rounded-tr-md rounded-br-md">
+                                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                            <button onClick={() => changeToInactiveGig(setLoading, gig.id, activeGigs, setActiveGigs, inactiveGigs, setInactiveGigs)} id="change-active-gig-visible-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-white px-3 py-1 text-lg font-semibold text-black shadow-xs hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Change Visible</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        ) : (
+                                            <tr id="empty-seller-active-gigs" className="bg-cus-black-low border-b border-gray-500">
+                                                <td className="px-6 py-4 text-center text-white text-lg rounded-md" colSpan="5">
+                                                    <p>No Active Gigs Found!</p>
+                                                </td>
+                                            </tr>
+                                        )}
                                     </tbody>
                                 </table>
                             </div>
@@ -135,37 +141,41 @@ const SellerGigs = ({ setLoading }) => {
                                     </thead>
 
                                     <tbody id="seller-inactive-gigs-main">
-                                        <tr id="seller-inactive-gig" className="bg-cus-black-low hidden border-b border-gray-500">
-                                            <td className="px-6 py-4 rounded-tl-md rounded-bl-md">
-                                                <div className="flex items-start justify-start gap-4">
-                                                    <div className="h-12 w-20 bg-white rounded-md overflow-hidden shrink-0">
-                                                        <img id="seller-inactive-gig-image" className="h-full w-full object-cover" src={emptyImg} alt="gig-main-img" />
-                                                    </div>
-                                                    <p id="seller-inactive-gig-title" className="w-64 text-white text-xs lg:text-base text-left font-normal break-words line-clamp-3"></p>
-                                                </div>
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                                    <p id="seller-inactive-gig-category"></p>
-                                                </div>
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                                    <p id="seller-inactive-gig-subcategory"></p>
-                                                </div>
-                                            </td>
-                                            <td className="px-6 py-4 rounded-tr-md rounded-br-md">
-                                                <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                                    <button id="change-inactive-gig-visible-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-white px-3 py-1 text-lg font-semibold text-black shadow-xs hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Change Visible</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr id="empty-seller-inactive-gigs" className="bg-cus-black-low border-b border-gray-500">
-                                            <td className="px-6 py-4 text-center text-white text-lg rounded-md" colSpan="5">
-                                                <p>No Inactive Gigs Found!</p>
-                                            </td>
-                                        </tr>
+                                        {inactiveGigs.length > 0 ? (
+                                            inactiveGigs.map((gig, index) => (
+                                                <tr key={index} id="seller-inactive-gig" className="bg-cus-black-low border-b border-gray-500">
+                                                    <td className="px-6 py-4 rounded-tl-md rounded-bl-md">
+                                                        <div className="flex items-start justify-start gap-4">
+                                                            <div className="h-12 w-20 bg-white rounded-md overflow-hidden shrink-0">
+                                                                <img id="seller-inactive-gig-image" className="h-full w-full object-cover" src={gig.image} alt="gig-main-img" />
+                                                            </div>
+                                                            <p id="seller-inactive-gig-title" className="w-64 text-white text-xs lg:text-base text-left font-normal break-words line-clamp-3">{gig.title}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                            <p id="seller-inactive-gig-category">{gig.sub_Category.category.name}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                            <p id="seller-inactive-gig-subcategory">{gig.sub_Category.name}</p>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-6 py-4 rounded-tr-md rounded-br-md">
+                                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
+                                                            <button onClick={() => changeToActiveGig(setLoading, gig.id, activeGigs, setActiveGigs, inactiveGigs, setInactiveGigs)} id="change-inactive-gig-visible-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-white px-3 py-1 text-lg font-semibold text-black shadow-xs hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Change Visible</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        ) : (
+                                            <tr id="empty-seller-inactive-gigs" className="bg-cus-black-low border-b border-gray-500">
+                                                <td className="px-6 py-4 text-center text-white text-lg rounded-md" colSpan="5">
+                                                    <p>No Inactive Gigs Found!</p>
+                                                </td>
+                                            </tr>
+                                        )}
                                     </tbody>
                                 </table>
                             </div>
