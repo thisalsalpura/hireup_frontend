@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faStar, faHeart, faCircleLeft, faCircleRight, faPlus, faMinus, faRetweet, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faStar, faHeart, faCircleLeft, faCircleRight, faPlus, faMinus, faRetweet, faEye, faEyeSlash, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import SecondaryButton from "../components/SecondaryButton";
 import { paths } from "../constants/script";
 import Button from "../components/Button";
@@ -155,6 +155,10 @@ const Home = () => {
 
                                         <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
                                             <FontAwesomeIcon icon={faRetweet} className="text-xl text-black" />
+                                        </div>
+
+                                        <div className="h-8 w-8 bg-white flex items-center justify-center border border-gray-200 rounded-md cursor-pointer">
+                                            <FontAwesomeIcon icon={faCartShopping} className="text-xl text-black" />
                                         </div>
                                     </div>
                                 </div>

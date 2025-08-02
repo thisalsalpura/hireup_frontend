@@ -12,6 +12,7 @@ export async function loadSellerActiveGigsData(setLoading, setActiveGigs) {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
+                console.log(json);
                 const gigList = json.userGigsList.map((gig, i) => ({
                     ...gig,
                     image: json.userGigsImagesList[i]

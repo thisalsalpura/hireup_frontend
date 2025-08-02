@@ -18,7 +18,6 @@ export async function loadSingleGigData(setLoading, setGigBronzePackage, setGigS
             if (response.ok) {
                 const json = await response.json();
                 if (json.status) {
-                    console.log(json);
                     document.getElementById("category").innerHTML = json.singleGig.sub_Category.category.name;
                     document.getElementById("sub-category").innerHTML = json.singleGig.sub_Category.name;
                     document.getElementById("gig-title").innerHTML = json.singleGig.title;

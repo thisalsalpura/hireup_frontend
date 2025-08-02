@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShareNodes, faStar, faLeftLong, faRightLong, faEye, faEyeSlash, faCloudDownload, faClock, faCommentDollar } from "@fortawesome/free-solid-svg-icons";
+import { faShareNodes, faStar, faLeftLong, faRightLong, faEye, faEyeSlash, faCloudDownload, faClock } from "@fortawesome/free-solid-svg-icons";
 import { loadSingleGigData, changeMainImage } from "../api/LoadSingleGigData";
 import { Slab } from "react-loading-indicators";
 import { showPassword, setHideBtnIcon } from "../api/ShowPassword";
@@ -10,6 +10,7 @@ import FooterMain from "./Footer";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 import SecondaryButton from "../components/SecondaryButton";
+import { addToCart } from "../api/AddToCart";
 
 const SingleGigView = () => {
 
@@ -42,18 +43,27 @@ const SingleGigView = () => {
             document.getElementById("bronze-package-note").innerHTML = gigBronzePackage.extra_note;
             document.getElementById("bronze-package-delivery-time").innerHTML = gigBronzePackage.delivery_time;
             document.getElementById("bronze-package-price").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(gigBronzePackage.price);
+            document.getElementById("bronze-add-to-cart").addEventListener("click", () => {
+                addToCart(setLoading, gigBronzePackage);
+            });
         }
 
         if (selectedTab === 1 && gigSilverPackage) {
             document.getElementById("silver-package-note").innerHTML = gigSilverPackage.extra_note;
             document.getElementById("silver-package-delivery-time").innerHTML = gigSilverPackage.delivery_time;
             document.getElementById("silver-package-price").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(gigSilverPackage.price);
+            document.getElementById("silver-add-to-cart").addEventListener("click", () => {
+                addToCart(setLoading, gigSilverPackage);
+            });
         }
 
         if (selectedTab === 2 && gigGoldPackage) {
             document.getElementById("gold-package-note").innerHTML = gigGoldPackage.extra_note;
             document.getElementById("gold-package-delivery-time").innerHTML = gigGoldPackage.delivery_time;
             document.getElementById("gold-package-price").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(gigGoldPackage.price);
+            document.getElementById("gold-add-to-cart").addEventListener("click", () => {
+                addToCart(setLoading, gigGoldPackage);
+            });
         }
     }, [selectedTab, gigBronzePackage, gigSilverPackage, gigGoldPackage]);
 
@@ -295,7 +305,9 @@ const SingleGigView = () => {
                                             <p className="text-3xl font-semibold">$ <span id="bronze-package-price">####</span></p>
                                         </div>
 
-                                        <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                        <div id="bronze-add-to-cart" className="h-auto w-full">
+                                            <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                        </div>
                                     </div>
                                 </TabPanel>
                                 <TabPanel>
@@ -315,7 +327,9 @@ const SingleGigView = () => {
                                             <p className="text-3xl font-semibold">$ <span id="silver-package-price">####</span></p>
                                         </div>
 
-                                        <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                        <div id="silver-add-to-cart" className="h-auto w-full">
+                                            <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                        </div>
                                     </div>
                                 </TabPanel>
                                 <TabPanel>
@@ -335,7 +349,9 @@ const SingleGigView = () => {
                                             <p className="text-3xl font-semibold">$ <span id="gold-package-price">####</span></p>
                                         </div>
 
-                                        <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                        <div id="gold-add-to-cart" className="h-auto w-full">
+                                            <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                        </div>
                                     </div>
                                 </TabPanel>
                             </Tabs>
