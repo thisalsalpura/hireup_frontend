@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import Button from "../components/Button";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 

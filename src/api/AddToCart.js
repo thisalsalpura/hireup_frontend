@@ -1,8 +1,9 @@
 import { toast } from "react-toastify";
 
-export async function addToCart(setLoading, gigId) {
+export async function addToCart(setLoading, gigPackage) {
     const gigObject = {
-        gigId: gigId
+        gigId: gigPackage.gig.id,
+        gigPackageId: gigPackage.id
     };
 
     const gigJson = JSON.stringify(gigObject);

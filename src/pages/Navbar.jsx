@@ -26,7 +26,7 @@ const Navbar = ({ onShowModal, loadingClass, onShowLoading }) => {
                 <button onClick={() => navigate("/userLogin")} className="cus-btn-set w-full flex items-center justify-center md:hidden">
                     <a className="text-lg font-bold text-black">Login</a>
                 </button>
-                <button className="cus-btn-set w-full flex items-center justify-center">
+                <button onClick={() => navigate("/cart")} className="cus-btn-set w-full flex items-center justify-center">
                     <a className="text-lg font-bold text-black">Cart</a>
                 </button>
                 <button className="cus-btn-set w-full flex items-center justify-center">
