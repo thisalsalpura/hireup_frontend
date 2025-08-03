@@ -14,35 +14,76 @@ export async function loadCartData(setLoading) {
             let cartGigsMain = document.getElementById("cart-gigs-main");
             let cartGig = document.getElementById("cart-gig");
             let emptyCartGigs = document.getElementById("empty-cart-gigs");
+            let cardGigSeparator = document.getElementById("card-gig-separator");
             cartGigsMain.innerHTML = "";
+
+            let checkoutGigsListMain = document.getElementById("checkout-gigs-list-main");
+            let checkoutGig = document.getElementById("checkout-gig");
+            let emptyCheckoutGigs = document.getElementById("empty-checkout-gigs");
+            checkoutGigsListMain.innerHTML = "";
             if (json.status) {
                 if (json.message === "NEMPTY") {
                     json.userCartGigsList.forEach((gig, i) => {
                         let cartGigClone = cartGig.cloneNode(true);
                         cartGigClone.removeAttribute("id");
                         cartGigClone.classList.remove("hidden");
+                        cartGigClone.classList.add("grid");
                         emptyCartGigs.classList.add("hidden");
                         const imageURL = json.userCartGigsImagesList[i];
                         cartGigClone.querySelector("#cart-gig-image").src = imageURL;
-                        cartGigClone.querySelector("#cart-gig-seller").innerHTML = gig.gig_Has_Package.gig.user.fname + gig.gig_Has_Package.gig.user.lname;
+                        cartGigClone.querySelector("#cart-gig-seller").innerHTML = gig.gig_Has_Package.gig.user.fname + " " + gig.gig_Has_Package.gig.user.lname;
                         cartGigClone.querySelector("#cart-gig-title").innerHTML = gig.gig_Has_Package.gig.title;
                         cartGigClone.querySelector("#cart-gig-package-type").innerHTML = gig.gig_Has_Package.package_Type.name;
-                        cartGigClone.querySelector("#cart-gig-price").innerHTML = gig.gig_Has_Package.price;
+                        cartGigClone.querySelector("#cart-gig-price").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(gig.gig_Has_Package.price);
                         cartGigClone.querySelector("#remove-cart-gig").addEventListener("click", (e) => {
-                            removeFromCart(setLoading, gig.id);
+                            removeFromCart(setLoading, gig.id, gig.gig_Has_Package.id);
                         });
                         cartGigsMain.appendChild(cartGigClone);
+                        let cardGigSeparatorClone = cardGigSeparator.cloneNode(true);
+                        cardGigSeparatorClone.classList.remove("hidden");
+                        cartGigsMain.appendChild(cardGigSeparatorClone);
+
+                        let checkoutGigClone = checkoutGig.cloneNode(true);
+                        checkoutGigClone.removeAttribute("id");
+                        checkoutGigClone.classList.remove("hidden");
+                        checkoutGigClone.classList.add("grid");
+                        emptyCheckoutGigs.classList.add("hidden");
+                        emptyCheckoutGigs.classList.remove("grid");
+                        checkoutGigClone.querySelector("#ckekout-gig-number").innerHTML = i + 1;
+                        checkoutGigClone.querySelector("#checkout-gig-title").innerHTML = gig.gig_Has_Package.gig.title;
+                        checkoutGigClone.querySelector("#ckekout-gig-package-type").innerHTML = gig.gig_Has_Package.package_Type.name;
+                        checkoutGigClone.querySelector("#checkout-gig-package-price").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(gig.gig_Has_Package.price);
+                        checkoutGigsListMain.appendChild(checkoutGigClone);
                     });
                 } else {
-                    cartGigsMain.classList.add("hidden");
+                    checkoutGig.classList.add("hidden");
+                    checkoutGig.classList.remove("grid");
                     emptyCartGigs.classList.remove("hidden");
                     cartGigsMain.appendChild(emptyCartGigs);
+
+                    cartGig.classList.add("hidden");
+                    cartGig.classList.remove("grid");
+                    emptyCheckoutGigs.classList.remove("hidden");
+                    emptyCheckoutGigs.classList.add("grid");
+                    checkoutGigsListMain.appendChild(emptyCheckoutGigs);
                 }
-            } else if (json.message === "EMPTY") {
-                cartGigsMain.classList.add("hidden");
+            } else {
+                cartGig.classList.add("hidden");
+                cartGig.classList.remove("grid");
                 emptyCartGigs.classList.remove("hidden");
                 cartGigsMain.appendChild(emptyCartGigs);
+
+                cartGig.classList.add("hidden");
+                cartGig.classList.remove("grid");
+                emptyCheckoutGigs.classList.remove("hidden");
+                emptyCheckoutGigs.classList.add("grid");
+                checkoutGigsListMain.appendChild(emptyCheckoutGigs);
             }
+            cartGigsMain.appendChild(cartGig);
+            cartGigsMain.appendChild(emptyCartGigs);
+
+            checkoutGigsListMain.appendChild(checkoutGig);
+            checkoutGigsListMain.appendChild(emptyCheckoutGigs);
         }
     } catch (error) {
         console.log(error);
@@ -51,9 +92,10 @@ export async function loadCartData(setLoading) {
     }
 }
 
-async function removeFromCart(setLoading, id) {
+async function removeFromCart(setLoading, cartId, sessionCartId) {
     const cartGigObject = {
-        id: id
+        cartId: cartId,
+        sessionCartId: sessionCartId
     };
 
     const cartGigJson = JSON.stringify(cartGigObject);
@@ -73,7 +115,10 @@ async function removeFromCart(setLoading, id) {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-
+                toast.success(json.message);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             } else {
                 toast.error("Something went wrong! Please try again later.");
             }

@@ -23,8 +23,12 @@ export async function addToCart(setLoading, gigPackage) {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-
+                toast.success(json.message);
+            } else {
+                toast.error("Something went wrong! Please try again later.");
             }
+        } else {
+            toast.error("Something went wrong! Please try again later.");
         }
     } catch (error) {
         console.log(error);

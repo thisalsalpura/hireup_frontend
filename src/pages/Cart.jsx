@@ -113,29 +113,29 @@ const Cart = () => {
                 </div>
 
                 <div className="h-full w-full grid grid-cols-12 gap-5 mt-8">
-                    <div id="cart-gigs-main" className="col-span-12 lg:col-span-8 h-full flex flex-col items-center justify-start bg-white border border-gray-300 rounded-md shadow-md p-5 gap-5">
+                    <div id="cart-gigs-main" className="col-span-12 lg:col-span-8 h-full flex flex-col items-center justify-center bg-white border border-gray-300 rounded-md shadow-md p-5 gap-5">
 
-                        <div id="cart-gig" className="h-auto w-full hidden flex-col md:flex-row items-center justify-between gap-5">
-                            <div className="h-40 md:h-full w-full md:w-64 flex items-center justify-center rounded-md overflow-hidden flex-shrink-0">
+                        <div id="cart-gig" className="h-60 w-full hidden grid-cols-12 items-center justify-between gap-6 group">
+                            <div className="h-40 md:h-full col-span-12 md:col-span-5 flex items-center justify-center border border-gray-300 rounded-md overflow-hidden flex-shrink-0 group-hover:scale-105 transition-all duration-300 ease-in-out">
                                 <img id="cart-gig-image" src={emptyImg} alt="cart-gig-image" className="h-full w-full object-cover" />
                             </div>
 
-                            <div className="h-auto w-full flex flex-col items-start justify-between py-2 gap-4">
+                            <div className="h-full col-span-12 md:col-span-7 flex flex-col items-start justify-between py-2 gap-4">
                                 <div className="flex flex-row items-center justify-start gap-2.5">
                                     <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
                                         <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
                                     </div>
 
                                     <div className="flex items-center justify-center">
-                                        <a id="cart-gig-seller" className="text-base text-black font-semibold">Ben Stokes</a>
+                                        <a id="cart-gig-seller" className="text-base text-black font-semibold">############</a>
                                     </div>
                                 </div>
 
-                                <p id="cart-gig-title" className="text-black line-clamp-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, provident libero? Neque incidunt accusantium sint fugiat labore sunt enim veritatis rerum? Eaque iusto nisi autem explicabo obcaecati! Alias, odio iusto?</p>
+                                <p id="cart-gig-title" className="text-black line-clamp-2">############</p>
 
-                                <p id="cart-gig-package-type" className="text-black font-semibold">Gold Package</p>
+                                <p id="cart-gig-package-type" className="text-black font-semibold">############</p>
 
-                                <p id="cart-gig-price" className="text-black text-3xl font-semibold">$ 40.00</p>
+                                <p className="text-black text-3xl font-semibold">$ <span id="cart-gig-price">##.##</span></p>
 
                                 <div className="w-full flex items-center justify-end mt-2">
                                     <button id="remove-cart-gig" type="button" className="inline-flex justify-center rounded-md bg-red-400 px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-red-400 ring-inset w-auto cursor-pointer">Remove</button>
@@ -144,10 +144,10 @@ const Cart = () => {
                         </div>
 
                         <div id="empty-cart-gigs" className="hidden items-center justify-center">
-                            <p className="text-black text-2xl font-semibold">No Gigs in Cart.</p>
+                            <p className="text-black text-3xl font-black">No Gigs in Cart.</p>
                         </div>
 
-                        <hr className="border-gray-300 h-0.5 w-full" />
+                        <hr id="card-gig-separator" className="border-gray-300 h-0.5 w-full hidden" />
 
                     </div>
 
@@ -156,25 +156,17 @@ const Cart = () => {
                             <div className="h-full w-full flex-col items-center justify-center">
                                 <h2 className="text-white text-4xl text-center font-londrinasolid mb-2.5">Checkout</h2>
                                 <hr className="h-0.5 w-full bg-white opacity-10" />
-                                <div className="items-start justify-between grid grid-cols-12 mt-8 mb-5">
-                                    <p className="text-white text-base col-span-1 text-left">1</p>
-                                    <p className="text-white text-base col-span-8 text-left overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat id ligula facilisis lacinia.</p>
-                                    <p className="text-white text-base col-span-3 text-right">$6000</p>
-                                </div>
-                                <div className="items-start justify-between grid grid-cols-12 mb-5">
-                                    <p className="text-white text-base col-span-1 text-left">2</p>
-                                    <p className="text-white text-base col-span-8 text-left overflow-hidden">E-commerce Web Development</p>
-                                    <p className="text-white text-base col-span-3 text-right">$12000</p>
-                                </div>
-                                <div className="items-start justify-between grid grid-cols-12 mb-5">
-                                    <p className="text-white text-base col-span-1 text-left">3</p>
-                                    <p className="text-white text-base col-span-8 text-left overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <p className="text-white text-base col-span-3 text-right">$480</p>
-                                </div>
-                                <div className="items-start justify-between grid grid-cols-12 mb-5">
-                                    <p className="text-white text-base col-span-1 text-left">4</p>
-                                    <p className="text-white text-base col-span-8 text-left overflow-hidden">E-commerce Web</p>
-                                    <p className="text-white text-base col-span-3 text-right">$600</p>
+                                <div id="checkout-gigs-list-main" className="h-full w-full flex flex-col items-center justify-start">
+                                    <div id="checkout-gig" className="items-start justify-between hidden grid-cols-12 gap-2 mt-8 mb-5">
+                                        <p id="ckekout-gig-number" className="text-white text-base col-span-1 text-left">#</p>
+                                        <p id="checkout-gig-title" className="text-white text-base col-span-7 text-left line-clamp-2 overflow-hidden">######</p>
+                                        <p id="ckekout-gig-package-type" className="text-white text-base col-span-1 text-left">######</p>
+                                        <p className="text-white text-base col-span-3 text-right">$ <span id="checkout-gig-package-price">##.##</span></p>
+                                    </div>
+
+                                    <div id="empty-checkout-gigs" className="items-start justify-between hidden grid-cols-12 py-4 mt-8">
+                                        <p className="col-span-12 text-white text-xl font-semibold text-center">No Gigs in Cart.</p>
+                                    </div>
                                 </div>
                             </div>
 

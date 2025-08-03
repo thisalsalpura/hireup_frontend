@@ -246,7 +246,8 @@ const AdvancedSearch = () => {
                             <p className="text-white text-center text-2xl font-londrinasolid tracking-wide">No Gigs Found!</p>
                         </div>
                     </div>
-                    <Pagination id="pagination-container" count={totalPages} page={currentPage} onChange={(event, page) => { setCurrentPage(page); }} color="primary" className="mx-auto bg-white rounded-md shadow-md p-2.5 my-5" />
+
+                    <Pagination id="pagination-container" count={totalPages} page={currentPage} onChange={(event, page) => { setCurrentPage(page); }} color="primary" className="font-ropasans mx-auto bg-white rounded-md shadow-md p-2.5 my-5" sx={{ fontFamily: '"Ropa Sans", sans-serif', fontWeight: 'bold', '& .MuiPaginationItem-root': { fontFamily: '"Ropa Sans", sans-serif', fontWeight: 'bold' }, }} />
                 </div>
 
                 <FooterMain />
