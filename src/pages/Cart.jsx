@@ -7,12 +7,26 @@ import { Slab } from "react-loading-indicators";
 import { showPassword, setHideBtnIcon } from "../api/ShowPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { checkout } from "../api/Checkout";
 
 const Cart = () => {
 
     const [loading, setLoading] = useState(false);
 
     const [showFPModal, setShowFPModal] = useState(false);
+
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://www.payhere.lk/lib/payhere.js";
+        script.type = "text/javascript";
+        script.async = true;
+
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     useEffect(() => {
         (async () => {
@@ -115,12 +129,12 @@ const Cart = () => {
                 <div className="h-full w-full grid grid-cols-12 gap-5 mt-8">
                     <div id="cart-gigs-main" className="col-span-12 lg:col-span-8 h-full flex flex-col items-center justify-center bg-white border border-gray-300 rounded-md shadow-md p-5 gap-5">
 
-                        <div id="cart-gig" className="h-60 w-full hidden grid-cols-12 items-center justify-between gap-6 group">
-                            <div className="h-40 md:h-full col-span-12 md:col-span-5 flex items-center justify-center border border-gray-300 rounded-md overflow-hidden flex-shrink-0 group-hover:scale-105 transition-all duration-300 ease-in-out">
+                        <div id="cart-gig" className="h-full md:h-60 w-full hidden flex-col md:flex-row items-center justify-between gap-6 group">
+                            <div className="h-60 md:h-full w-full md:w-96 flex items-center justify-center border border-gray-300 rounded-md overflow-hidden group-hover:scale-105 transition-all duration-300 ease-in-out">
                                 <img id="cart-gig-image" src={emptyImg} alt="cart-gig-image" className="h-full w-full object-cover" />
                             </div>
 
-                            <div className="h-full col-span-12 md:col-span-7 flex flex-col items-start justify-between py-2 gap-4">
+                            <div className="h-full w-full flex flex-col items-start justify-between py-2 gap-0.5 md:gap-4">
                                 <div className="flex flex-row items-center justify-start gap-2.5">
                                     <div className="h-7 w-7 border-2 border-black rounded-full flex items-center justify-center p-0.5">
                                         <a className="h-full w-full rounded-full bg-cus-light-yellow-high"></a>
@@ -155,22 +169,31 @@ const Cart = () => {
                         <div className="h-full w-full flex flex-col items-center justify-between">
                             <div className="h-full w-full flex-col items-center justify-center">
                                 <h2 className="text-white text-4xl text-center font-londrinasolid mb-2.5">Checkout</h2>
-                                <hr className="h-0.5 w-full bg-white opacity-10" />
-                                <div id="checkout-gigs-list-main" className="h-full w-full flex flex-col items-center justify-start">
-                                    <div id="checkout-gig" className="items-start justify-between hidden grid-cols-12 gap-2 mt-8 mb-5">
-                                        <p id="ckekout-gig-number" className="text-white text-base col-span-1 text-left">#</p>
-                                        <p id="checkout-gig-title" className="text-white text-base col-span-7 text-left line-clamp-2 overflow-hidden">######</p>
-                                        <p id="ckekout-gig-package-type" className="text-white text-base col-span-1 text-left">######</p>
-                                        <p className="text-white text-base col-span-3 text-right">$ <span id="checkout-gig-package-price">##.##</span></p>
+                                <hr className="h-0.5 w-full bg-white opacity-25" />
+                                <div id="checkout-gigs-list-main" className="h-full w-full flex flex-col items-center justify-start py-2.5">
+                                    <div id="checkout-gig" className="w-full items-start justify-between hidden grid-cols-12 gap-2 mt-8 mb-5">
+                                        <p id="ckekout-gig-number" className="text-white text-xs md:text-base col-span-1 text-left">##</p>
+                                        <p id="checkout-gig-title" className="text-white text-xs md:text-base col-span-7 text-left line-clamp-2 overflow-hidden">######</p>
+                                        <p id="ckekout-gig-package-type" className="text-white text-xs md:text-base col-span-1 text-left">######</p>
+                                        <p className="text-white text-xs md:text-base col-span-3 text-right">$ <span id="checkout-gig-package-price">##.##</span></p>
                                     </div>
 
-                                    <div id="empty-checkout-gigs" className="items-start justify-between hidden grid-cols-12 py-4 mt-8">
+                                    <div id="checkout-total" className="w-full hidden flex-col items-end justify-center gap-4">
+                                        <hr className="h-0.5 w-full bg-white opacity-25" />
+                                        <p className="text-white text-2xl font-semibold">Total:&nbsp;&nbsp;&nbsp; $ <span id="checkout-amount-value">45.00</span></p>
+                                        <div className="w-full flex flex-col items-center justify-center gap-1.5">
+                                            <hr className="h-0.5 w-full bg-white opacity-25" />
+                                            <hr className="h-0.5 w-full bg-white opacity-25" />
+                                        </div>
+                                    </div>
+
+                                    <div id="empty-checkout-gigs" className="items-start justify-between hidden grid-cols-12 py-4 mt-10">
                                         <p className="col-span-12 text-white text-xl font-semibold text-center">No Gigs in Cart.</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <SecondaryButton href="/" containerClass="mt-16 sm:mt-10 w-full h-12 bg-white text-black" name="Checkout" />
+                            <SecondaryButton onClick={() => checkout(setLoading)} containerClass="mt-10 w-full h-12 bg-white text-black" name="Checkout" />
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,7 @@ export async function loadCartData(setLoading) {
 
             let checkoutGigsListMain = document.getElementById("checkout-gigs-list-main");
             let checkoutGig = document.getElementById("checkout-gig");
+            let checkoutTotal = document.getElementById("checkout-total");
             let emptyCheckoutGigs = document.getElementById("empty-checkout-gigs");
             checkoutGigsListMain.innerHTML = "";
             if (json.status) {
@@ -27,7 +28,7 @@ export async function loadCartData(setLoading) {
                         let cartGigClone = cartGig.cloneNode(true);
                         cartGigClone.removeAttribute("id");
                         cartGigClone.classList.remove("hidden");
-                        cartGigClone.classList.add("grid");
+                        cartGigClone.classList.add("flex");
                         emptyCartGigs.classList.add("hidden");
                         const imageURL = json.userCartGigsImagesList[i];
                         cartGigClone.querySelector("#cart-gig-image").src = imageURL;
@@ -47,34 +48,41 @@ export async function loadCartData(setLoading) {
                         checkoutGigClone.removeAttribute("id");
                         checkoutGigClone.classList.remove("hidden");
                         checkoutGigClone.classList.add("grid");
+                        checkoutTotal.classList.remove("hidden");
+                        checkoutTotal.classList.add("flex");
                         emptyCheckoutGigs.classList.add("hidden");
                         emptyCheckoutGigs.classList.remove("grid");
                         checkoutGigClone.querySelector("#ckekout-gig-number").innerHTML = i + 1;
                         checkoutGigClone.querySelector("#checkout-gig-title").innerHTML = gig.gig_Has_Package.gig.title;
                         checkoutGigClone.querySelector("#ckekout-gig-package-type").innerHTML = gig.gig_Has_Package.package_Type.name;
                         checkoutGigClone.querySelector("#checkout-gig-package-price").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(gig.gig_Has_Package.price);
+                        checkoutTotal.querySelector("#checkout-amount-value").innerHTML = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(json.checkoutAmount);
                         checkoutGigsListMain.appendChild(checkoutGigClone);
                     });
                 } else {
-                    checkoutGig.classList.add("hidden");
-                    checkoutGig.classList.remove("grid");
+                    cartGig.classList.add("hidden");
+                    cartGig.classList.remove("flex");
                     emptyCartGigs.classList.remove("hidden");
                     cartGigsMain.appendChild(emptyCartGigs);
 
-                    cartGig.classList.add("hidden");
-                    cartGig.classList.remove("grid");
+                    checkoutGig.classList.add("hidden");
+                    checkoutGig.classList.remove("grid");
+                    checkoutTotal.classList.add("hidden");
+                    checkoutTotal.classList.remove("flex");
                     emptyCheckoutGigs.classList.remove("hidden");
                     emptyCheckoutGigs.classList.add("grid");
                     checkoutGigsListMain.appendChild(emptyCheckoutGigs);
                 }
             } else {
                 cartGig.classList.add("hidden");
-                cartGig.classList.remove("grid");
+                cartGig.classList.remove("flex");
                 emptyCartGigs.classList.remove("hidden");
                 cartGigsMain.appendChild(emptyCartGigs);
 
-                cartGig.classList.add("hidden");
-                cartGig.classList.remove("grid");
+                checkoutGig.classList.add("hidden");
+                checkoutGig.classList.remove("grid");
+                checkoutTotal.classList.add("hidden");
+                checkoutTotal.classList.remove("flex");
                 emptyCheckoutGigs.classList.remove("hidden");
                 emptyCheckoutGigs.classList.add("grid");
                 checkoutGigsListMain.appendChild(emptyCheckoutGigs);
@@ -83,6 +91,7 @@ export async function loadCartData(setLoading) {
             cartGigsMain.appendChild(emptyCartGigs);
 
             checkoutGigsListMain.appendChild(checkoutGig);
+            checkoutGigsListMain.appendChild(checkoutTotal);
             checkoutGigsListMain.appendChild(emptyCheckoutGigs);
         }
     } catch (error) {
