@@ -19,4 +19,13 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5173
   },
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_debugger: true,
+        drop_console: true,
+      },
+    },
+  },
 })

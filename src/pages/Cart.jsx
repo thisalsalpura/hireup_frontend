@@ -16,16 +16,26 @@ const Cart = () => {
     const [showFPModal, setShowFPModal] = useState(false);
 
     useEffect(() => {
-        const script = document.createElement("script");
-        script.src = "https://www.payhere.lk/lib/payhere.js";
-        script.type = "text/javascript";
-        script.async = true;
+        (async () => {
+            setLoading(true);
 
-        document.body.appendChild(script);
+            try {
+                const script = document.createElement("script");
+                script.src = "https://www.payhere.lk/lib/payhere.js";
+                script.type = "text/javascript";
+                script.async = true;
 
-        return () => {
-            document.body.removeChild(script);
-        };
+                document.body.appendChild(script);
+
+                return () => {
+                    document.body.removeChild(script);
+                };
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false);
+            }
+        })();
     }, []);
 
     useEffect(() => {

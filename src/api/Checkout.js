@@ -4,7 +4,7 @@ export async function checkout(setLoading) {
     setLoading(true);
 
     try {
-        const response = await fetch("http://localhost:8080/hireup_backend/Checkout", {
+        const response = await fetch("http://localhost:8080/hireup_backend/CheckOut", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -29,9 +29,23 @@ export async function checkout(setLoading) {
                     console.log("Error:" + error);
                 };
 
-                window.payhere.startPayment(json.payhereJson);
+                window.payhere.startPayment(json.payHereJson);
             } else {
-                toast.error(json.message);
+                if (json.messageCode === "NLOGIN") {
+                    toast.error(json.message);
+                    setTimeout(() => {
+                        window.location.href = "/userLogin";
+                    }, 2000);
+                } else if (json.messageCode === "NVERIFY") {
+                    toast.error(json.message);
+                } else if (json.messageCode === "NPUPDATE") {
+                    toast.error(json.message);
+                    setTimeout(() => {
+                        window.location.href = "/userProfile";
+                    }, 2000);
+                } else if (json.messageCode === "ECART") {
+                    toast.error(json.message);
+                }
             }
         } else {
             toast.error("Something went wrong! Please try again later.");
