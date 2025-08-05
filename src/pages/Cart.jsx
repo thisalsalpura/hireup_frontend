@@ -20,16 +20,7 @@ const Cart = () => {
             setLoading(true);
 
             try {
-                const script = document.createElement("script");
-                script.src = "https://www.payhere.lk/lib/payhere.js";
-                script.type = "text/javascript";
-                script.async = true;
-
-                document.body.appendChild(script);
-
-                return () => {
-                    document.body.removeChild(script);
-                };
+                await loadCartData(setLoading);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -39,17 +30,20 @@ const Cart = () => {
     }, []);
 
     useEffect(() => {
-        (async () => {
-            setLoading(true);
+        try {
+            const script = document.createElement("script");
+            script.src = "https://www.payhere.lk/lib/payhere.js";
+            script.type = "text/javascript";
+            script.async = true;
 
-            try {
-                await loadCartData(setLoading);
-            } catch (error) {
-                console.log(error);
-            } finally {
-                setLoading(false);
-            }
-        })();
+            document.body.appendChild(script);
+
+            return () => {
+                document.body.removeChild(script);
+            };
+        } catch (error) {
+            console.log(error);
+        }
     }, []);
 
     useEffect(() => {

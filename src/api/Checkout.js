@@ -16,7 +16,7 @@ export async function checkout(setLoading) {
             const json = await response.json();
             if (json.status) {
                 window.payhere.onCompleted = function onCompleted(orderId) {
-                    toast.success("Payment Completed. Order ID:" + orderId);
+                    toast.success("Payment Completed. Order ID: " + orderId);
                 };
 
                 // Payment Window Closed
@@ -26,7 +26,7 @@ export async function checkout(setLoading) {
 
                 // Error Occurred
                 window.payhere.onError = function onError(error) {
-                    console.log("Error:" + error);
+                    console.log(error);
                 };
 
                 window.payhere.startPayment(json.payHereJson);
@@ -45,6 +45,8 @@ export async function checkout(setLoading) {
                     }, 2000);
                 } else if (json.messageCode === "ECART") {
                     toast.error(json.message);
+                } else {
+                    toast.error("Something went wrong! Please try again later.");
                 }
             }
         } else {
