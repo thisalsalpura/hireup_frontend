@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Slab } from "react-loading-indicators";
 import { showPassword, setHideBtnIcon } from "../api/ShowPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { registerAsSeller } from "../api/RegisterAsSeller";
+import Navbar from "./Navbar";
+import { loadInvoiceData } from "../api/LoadInvoiceData";
 
 const ReturnPayment = () => {
 
@@ -93,6 +95,8 @@ const ReturnPayment = () => {
                         <a href="/home" className="text-base text-blue-700 opacity-50 cursor-pointer">Back to Home</a>
                     </div>
                 </div>
+
+                <iframe id="invoice-pdf" title="Invoice PDF" width="100%" height="600px" className="mt-6 rounded-md border border-gray-300"></iframe>
 
             </div>
         </section>

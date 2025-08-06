@@ -18,6 +18,10 @@ export async function checkout(setLoading, setShowPaymentConfModal) {
                 window.payhere.onCompleted = function onCompleted(orderId) {
                     toast.success("Payment Completed. Order ID: " + orderId);
                     setShowPaymentConfModal(true);
+
+                    setTimeout(() => {
+                        window.location = "/returnPayment?orderId=" + orderId;
+                    }, 2000);
                 };
 
                 // Payment Window Closed

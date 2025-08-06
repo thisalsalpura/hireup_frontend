@@ -20,6 +20,9 @@ export async function loadInvoiceData(setLoading) {
             if (response.ok) {
                 const json = await response.json();
                 if (json.status) {
+                    document.getElementById("invoice-pdf").src = json.invoiceURL;
+                } else {
+                    window.location = "/home";
                 }
             } else {
                 toast.error("Something went wrong! Please try again later.");
