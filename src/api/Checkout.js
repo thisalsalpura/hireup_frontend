@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export async function checkout(setLoading) {
+export async function checkout(setLoading, setShowPaymentConfModal) {
     setLoading(true);
 
     try {
@@ -17,6 +17,7 @@ export async function checkout(setLoading) {
             if (json.status) {
                 window.payhere.onCompleted = function onCompleted(orderId) {
                     toast.success("Payment Completed. Order ID: " + orderId);
+                    setShowPaymentConfModal(true);
                 };
 
                 // Payment Window Closed

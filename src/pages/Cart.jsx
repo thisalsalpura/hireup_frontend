@@ -6,14 +6,17 @@ import { loadCartData } from "../api/LoadCartData";
 import { Slab } from "react-loading-indicators";
 import { showPassword, setHideBtnIcon } from "../api/ShowPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { checkout } from "../api/Checkout";
+import { registerAsSeller } from "../api/RegisterAsSeller";
 
 const Cart = () => {
 
     const [loading, setLoading] = useState(false);
 
     const [showFPModal, setShowFPModal] = useState(false);
+
+    const [showPaymentConfModal, setShowPaymentConfModal] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -101,6 +104,35 @@ const Cart = () => {
                                         <div className="bg-white flex flex-row-reverse pt-2 pb-6 px-6 gap-2.5">
                                             <button onClick={() => setShowFPModal(false)} type="button" className="inline-flex justify-center rounded-md bg-red-400 px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-red-400 ring-inset w-auto cursor-pointer">Cancel</button>
                                             <button onClick={() => registerAsSeller(setLoading, setShowFPModal)} type="button" className="inline-flex justify-center rounded-md bg-blur px-3 py-1 text-lg font-semibold text-black shadow-xs ring-1 ring-black ring-inset w-auto cursor-pointer">Register as Seller</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+
+                {showPaymentConfModal && (
+                    <>
+                        <div role="dialog" aria-modal="true" aria-labelledby="dialog-title" className="relative z-50">
+                            <div aria-hidden="true" className="fixed inset-0 bg-gray-500/75 transition-opacity"></div>
+
+                            <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                                <div className="flex min-h-full items-center justify-center p-4">
+                                    <div className="relative overflow-hidden rounded-lg bg-white">
+                                        <div className="bg-white p-6">
+                                            <div className="flex flex-col items-center justify-center gap-8">
+                                                <div className="h-full w-full flex flex-col items-center justify-center gap-5">
+                                                    <div className="h-16 w-16 bg-[#DBFCE7] flex items-center justify-center rounded-full p-2.5">
+                                                        <FontAwesomeIcon icon={faCheck} className="text-[#00A63E] text-4xl font-black" />
+                                                    </div>
+                                                    <h2 className="text-2xl font-londrinasolid font-medium tracking-wider">Payment Successful!</h2>
+                                                </div>
+                                                <p className="text-black font-medium">Your payment was successful. Thank you for your purchase!</p>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white flex pt-2 pb-6 px-6">
+                                            <button onClick={() => { setShowPaymentConfModal(false); window.location.reload(); }} type="button" className="inline-flex justify-center rounded-md bg-blue-600 px-3 py-1 text-lg font-semibold text-white shadow-xs ring-1 ring-blue-600 ring-inset w-full cursor-pointer">OK</button>
                                         </div>
                                     </div>
                                 </div>
@@ -197,7 +229,7 @@ const Cart = () => {
                                 </div>
                             </div>
 
-                            <SecondaryButton onClick={() => checkout(setLoading)} containerClass="mt-10 w-full h-12 bg-white text-black" name="Checkout" />
+                            <SecondaryButton onClick={() => checkout(setLoading, setShowPaymentConfModal)} containerClass="mt-10 w-full h-12 bg-white text-black" name="Checkout" />
                         </div>
                     </div>
                 </div>

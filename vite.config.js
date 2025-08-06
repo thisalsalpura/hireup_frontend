@@ -16,8 +16,9 @@ export default defineConfig({
     ]
   },
   server: {
-    host: '0.0.0.0',
-    port: 5173
+    host: true,
+    port: 5173,
+    allowedHosts: ['d4e907869e6d.ngrok-free.app']
   },
   build: {
     minify: 'terser',
