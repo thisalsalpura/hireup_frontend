@@ -15,23 +15,50 @@ export async function checkout(setLoading, setShowPaymentConfModal) {
         if (response.ok) {
             const json = await response.json();
             if (json.status) {
-                window.payhere.onCompleted = function onCompleted(orderId) {
+                window.payhere.onCompleted = async function onCompleted(orderId) {
                     toast.success("Payment Completed. Order ID: " + orderId);
                     setShowPaymentConfModal(true);
 
-                    setTimeout(() => {
-                        window.location = "/returnPayment?orderId=" + orderId;
-                    }, 2000);
+                    let retries = 0;
+                    const maxRetries = 10;
+                    const delay = 1000;
+
+                    async function checkStatus() {
+                        const response2 = await fetch("http://localhost:8080/hireup_backend/CheckPaymentStatus?orderId=" + orderId, {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            credentials: "include"
+                        });
+
+                        if (response2.ok) {
+                            const json2 = await response2.json();
+                            if (json2.status) {
+                                window.location = "/returnPayment?orderId=" + orderId;
+                            } else if (retries < maxRetries) {
+                                retries++;
+                                setTimeout(checkStatus, delay);
+                            } else {
+                                window.location = "/cancelPayment";
+                            }
+                        } else {
+                            window.location = "/cancelPayment";
+                        }
+                    }
+
+                    checkStatus();
                 };
 
                 // Payment Window Closed
                 window.payhere.onDismissed = function onDismissed() {
-                    console.log("Payment Dismissed!");
+                    window.location = "/cancelPayment";
                 };
 
                 // Error Occurred
                 window.payhere.onError = function onError(error) {
                     console.log(error);
+                    window.location = "/cancelPayment";
                 };
 
                 window.payhere.startPayment(json.payHereJson);

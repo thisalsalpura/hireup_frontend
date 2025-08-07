@@ -6,8 +6,12 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { registerAsSeller } from "../api/RegisterAsSeller";
 import Navbar from "./Navbar";
 import { loadInvoiceData } from "../api/LoadInvoiceData";
+import { Document, Page, pdfjs } from 'react-pdf';
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js`;
 
 const ReturnPayment = () => {
+
+    const [pdfUrl, setPdfUrl] = useState(null);
 
     const [loading, setLoading] = useState(false);
 
@@ -18,7 +22,7 @@ const ReturnPayment = () => {
             setLoading(true);
 
             try {
-                await loadInvoiceData(setLoading);
+                await loadInvoiceData(setLoading, setPdfUrl);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -96,7 +100,17 @@ const ReturnPayment = () => {
                     </div>
                 </div>
 
-                <iframe id="invoice-pdf" title="Invoice PDF" width="100%" height="600px" className="mt-6 rounded-md border border-gray-300"></iframe>
+                <div className="h-full w-full flex items-center justify-center mt-8">
+                    <div className="flex justify-center mt-8">
+                        {pdfUrl ? (
+                            <Document file={pdfUrl}>
+                                <Page pageNumber={1} />
+                            </Document>
+                        ) : (
+                            <p>Loading...</p>
+                        )}
+                    </div>
+                </div>
 
             </div>
         </section>

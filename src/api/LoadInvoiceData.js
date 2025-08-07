@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export async function loadInvoiceData(setLoading) {
+export async function loadInvoiceData(setLoading, setPdfUrl) {
     const searchParams = new URLSearchParams(window.location.search);
 
     setLoading(true);
@@ -20,7 +20,8 @@ export async function loadInvoiceData(setLoading) {
             if (response.ok) {
                 const json = await response.json();
                 if (json.status) {
-                    document.getElementById("invoice-pdf").src = json.invoiceURL;
+                    setPdfUrl(json.invoiceURL);
+                    console.log(json.invoiceURL);
                 } else {
                     window.location = "/home";
                 }

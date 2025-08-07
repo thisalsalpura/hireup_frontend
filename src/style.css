@@ -207,6 +207,10 @@ body.custom2::-webkit-scrollbar-track {
     animation: fadeInTransform 0.4s ease-in-out;
 }
 
+.loading-text {
+    animation: loading-text 2s infinite;
+}
+
 /* key frames */
 
 @keyframes fadeIn {
@@ -368,5 +372,19 @@ body.custom2::-webkit-scrollbar-track {
 
     100% {
         transform: translateX(0px) translateY(0px);
+    }
+}
+
+@keyframes loading-text {
+    0% {
+        opacity: 100%;
+    }
+
+    50% {
+        opacity: 20%;
+    }
+
+    100% {
+        opacity: 100%;
     }
 }

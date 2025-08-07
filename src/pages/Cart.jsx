@@ -131,8 +131,8 @@ const Cart = () => {
                                                 <p className="text-black font-medium">Your payment was successful. Thank you for your purchase!</p>
                                             </div>
                                         </div>
-                                        <div className="bg-white flex pt-2 pb-6 px-6">
-                                            <button onClick={() => { setShowPaymentConfModal(false); window.location.reload(); }} type="button" className="inline-flex justify-center rounded-md bg-blue-600 px-3 py-1 text-lg font-semibold text-white shadow-xs ring-1 ring-blue-600 ring-inset w-full cursor-pointer">OK</button>
+                                        <div className="bg-white flex items-center justify-center pt-2 pb-6 px-6">
+                                            <p className="text-lg font-semibold text-blue-600 text-center loading-text">Loading...</p>
                                         </div>
                                     </div>
                                 </div>
