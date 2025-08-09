@@ -237,7 +237,7 @@ const AdvancedSearch = () => {
                                 </div>
 
                                 <div className="flex items-center justify-start mt-3">
-                                    <p className="text-xl text-black font-semibold tracking-wider">From $<span id="gig-price">##.##</span></p>
+                                    <p className="text-xl text-black font-semibold tracking-wider">From $ <span id="gig-price">##.##</span></p>
                                 </div>
                             </div>
                         </div>
