@@ -5,6 +5,7 @@ import SellerProfile from "./SellerProfile";
 import SellerGigs from "./SellerGigs";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
+import FooterMain from "./Footer";
 
 const SellerDashboard = () => {
 
@@ -82,6 +83,8 @@ const SellerDashboard = () => {
                         </TabPanel>
                     </Tabs>
                 </div>
+
+                <FooterMain />
 
             </div>
 

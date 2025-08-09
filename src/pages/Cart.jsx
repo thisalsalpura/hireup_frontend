@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { checkout } from "../api/Checkout";
 import { registerAsSeller } from "../api/RegisterAsSeller";
+import FooterMain from "./Footer";
 
 const Cart = () => {
 
@@ -233,6 +234,8 @@ const Cart = () => {
                         </div>
                     </div>
                 </div>
+
+                <FooterMain />
 
             </div>
 

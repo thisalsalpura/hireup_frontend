@@ -9,6 +9,7 @@ import logo from "../assets/icons/logo.svg";
 import { saveGig } from "../api/SaveGig";
 import Button from "../components/Button";
 import { addSearchTag, addFAQ } from "../api/AddSearchTagAndFAQ";
+import FooterMain from "./Footer";
 
 const GigRegister = () => {
 
@@ -458,6 +459,8 @@ const GigRegister = () => {
                         </div>
                     </div>
                 </div>
+
+                <FooterMain />
             </div>
         </section>
     )
