@@ -1,6 +1,4 @@
-import { toast } from "react-toastify";
-
-export async function loadInvoiceData(setLoading, setPdfUrl) {
+export async function loadInvoiceData(setLoading, setInvoiceURL) {
     const searchParams = new URLSearchParams(window.location.search);
 
     setLoading(true);
@@ -19,14 +17,16 @@ export async function loadInvoiceData(setLoading, setPdfUrl) {
 
             if (response.ok) {
                 const json = await response.json();
+                console.log(json);
                 if (json.status) {
-                    setPdfUrl(json.invoiceURL);
-                    console.log(json.invoiceURL);
+                    document.getElementById("order-id").innerHTML = json.invoice.order_id;
+                    document.getElementById("order-datetime").innerHTML = json.invoice.placed_date;
+                    setInvoiceURL(json.invoiceURL);
                 } else {
                     window.location = "/home";
                 }
             } else {
-                toast.error("Something went wrong! Please try again later.");
+                window.location = "/home";
             }
         } catch (error) {
             console.log(error);

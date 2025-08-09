@@ -12,9 +12,6 @@ import { loadHomeData } from "../api/LoadHomeData";
 import Pagination from '@mui/material/Pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination as SwiperPagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/autoplay';
-import 'swiper/css/pagination';
 
 const Home = () => {
 
@@ -316,14 +313,13 @@ const Home = () => {
                         spaceBetween={30}
                         centeredSlides={true}
                         autoplay={{ delay: 2500, disableOnInteraction: false }}
-                        pagination={{ clickable: true }}
                         modules={[Autoplay, SwiperPagination]}
                         className="h-auto w-full rounded-md"
                     >
                         {popularGigs.map((gig, i) => (
                             <SwiperSlide
                                 key={gig.id}
-                                className="h-auto w-full flex flex-col items-center justify-center bg-cus-black-transparent border border-gray-300  rounded-md p-6 cursor-pointer"
+                                className="h-auto w-full flex flex-col items-center justify-center bg-white border border-gray-300 rounded-md p-6 cursor-pointer"
                                 onClick={() => window.location.href = `singleGigView?id=${gig.id}`}
                             >
                                 <div className="w-full h-56 bg-cus-light-yellow-high border border-gray-300 rounded-md overflow-hidden">
@@ -341,7 +337,7 @@ const Home = () => {
                                             <p className="text-lg text-black font-semibold text-left"><FontAwesomeIcon icon={faStar} className="text-base mr-2" />4.9</p>
                                         </div>
                                     </div>
-                                    <p className="text-sm line-clamp-3">{gig.title}</p>
+                                    <p className="line-clamp-3">{gig.title}</p>
                                     <p className="text-3xl text-black font-black tracking-wider">From $ <span>{new Intl.NumberFormat("en-US", { minimumFractionDigits: 2 }).format(popularGigPrices[i])}</span></p>
                                 </div>
                             </SwiperSlide>

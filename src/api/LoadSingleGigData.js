@@ -1,4 +1,4 @@
-export async function loadSingleGigData(setLoading, setGigBronzePackage, setGigSilverPackage, setGigGoldPackage) {
+export async function loadSingleGigData(setLoading, setGigBronzePackage, setGigSilverPackage, setGigGoldPackage, setbpCartStatus, setspCartStatus, setgpCartStatus) {
     const searchParams = new URLSearchParams(window.location.search);
 
     setLoading(true);
@@ -64,6 +64,9 @@ export async function loadSingleGigData(setLoading, setGigBronzePackage, setGigS
                     setGigBronzePackage(json.gigBronzePackage);
                     setGigSilverPackage(json.gigSilverPackage);
                     setGigGoldPackage(json.gigGoldPackage);
+                    setbpCartStatus(json.bpCartStatus);
+                    setspCartStatus(json.spCartStatus);
+                    setgpCartStatus(json.gpCartStatus);
                 } else {
                     window.location = "/home";
                 }

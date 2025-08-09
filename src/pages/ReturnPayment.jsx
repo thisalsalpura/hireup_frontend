@@ -6,23 +6,24 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { registerAsSeller } from "../api/RegisterAsSeller";
 import Navbar from "./Navbar";
 import { loadInvoiceData } from "../api/LoadInvoiceData";
-import { Document, Page, pdfjs } from 'react-pdf';
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js`;
+import SecondaryButton from "../components/SecondaryButton";
+import FooterMain from "./Footer";
+import { toast } from "react-toastify";
 
 const ReturnPayment = () => {
-
-    const [pdfUrl, setPdfUrl] = useState(null);
 
     const [loading, setLoading] = useState(false);
 
     const [showFPModal, setShowFPModal] = useState(false);
+
+    const [invoiceURL, setInvoiceURL] = useState('');
 
     useEffect(() => {
         (async () => {
             setLoading(true);
 
             try {
-                await loadInvoiceData(setLoading, setPdfUrl);
+                await loadInvoiceData(setLoading, setInvoiceURL);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -30,6 +31,14 @@ const ReturnPayment = () => {
             }
         })();
     }, []);
+
+    const handleDownload = () => {
+        if (invoiceURL) {
+            window.open(invoiceURL, '_blank');
+        } else {
+            toast.error("Invoice URL not Available!");
+        }
+    };
 
     useEffect(() => {
         document.body.classList.add("custom2");
@@ -101,16 +110,32 @@ const ReturnPayment = () => {
                 </div>
 
                 <div className="h-full w-full flex items-center justify-center mt-8">
-                    <div className="flex justify-center mt-8">
-                        {pdfUrl ? (
-                            <Document file={pdfUrl}>
-                                <Page pageNumber={1} />
-                            </Document>
-                        ) : (
-                            <p>Loading...</p>
-                        )}
+                    <div className="h-auto w-full grid grid-cols-12 bg-cus-black-low border border-gray-300 rounded-md shadow-md p-6 gap-4">
+                        <div className="h-auto col-span-7 flex flex-col gap-4">
+                            <div className="h-auto w-full">
+                                <p className="text-white text-2xl tracking-wide font-black">Order ID: &nbsp;&nbsp;<span id="order-id" className="opacity-70">#########</span></p>
+                            </div>
+
+                            <div className="h-auto w-full">
+                                <p className="text-white text-2xl tracking-wide font-black">Placed Date: &nbsp;&nbsp;<span id="order-datetime" className="opacity-70">#########</span></p>
+                            </div>
+                        </div>
+
+                        <div className="h-auto col-span-5">
+                            <SecondaryButton onClick={handleDownload} containerClass="w-full bg-white text-black" name="Download Invoice" />
+                        </div>
+
+                        <div className="h-auto col-span-12 flex flex-col items-center justify-center mt-4">
+                            <hr className="border-white h-0.5 w-full opacity-20" />
+
+                            <p className="text-white font-semibold text-lg tracking-wide py-2.5">Thank You for Purchasing!</p>
+
+                            <hr className="border-white h-0.5 w-full opacity-20" />
+                        </div>
                     </div>
                 </div>
+
+                <FooterMain />
 
             </div>
         </section>

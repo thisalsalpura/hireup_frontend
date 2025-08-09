@@ -24,12 +24,18 @@ const SingleGigView = () => {
 
     const [gigGoldPackage, setGigGoldPackage] = useState(null);
 
+    const [bpCartStatus, setbpCartStatus] = useState("");
+
+    const [spCartStatus, setspCartStatus] = useState("");
+
+    const [gpCartStatus, setgpCartStatus] = useState("");
+
     useEffect(() => {
         (async () => {
             setLoading(true);
 
             try {
-                await loadSingleGigData(setLoading, setGigBronzePackage, setGigSilverPackage, setGigGoldPackage);
+                await loadSingleGigData(setLoading, setGigBronzePackage, setGigSilverPackage, setGigGoldPackage, setbpCartStatus, setspCartStatus, setgpCartStatus);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -306,7 +312,7 @@ const SingleGigView = () => {
                                         </div>
 
                                         <div id="bronze-add-to-cart" className="h-auto w-full">
-                                            <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                            <SecondaryButton containerClass={`w-full ${bpCartStatus === "HAVE" ? "bg-red-300 text-black" : "bg-black text-white"}`} name={`${bpCartStatus === "HAVE" ? "Remove from Cart" : "Add to Cart"}`} />
                                         </div>
                                     </div>
                                 </TabPanel>
@@ -328,7 +334,7 @@ const SingleGigView = () => {
                                         </div>
 
                                         <div id="silver-add-to-cart" className="h-auto w-full">
-                                            <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                            <SecondaryButton containerClass={`w-full ${spCartStatus === "HAVE" ? "bg-red-300 text-black" : "bg-black text-white"}`} name={`${spCartStatus === "HAVE" ? "Remove from Cart" : "Add to Cart"}`} />
                                         </div>
                                     </div>
                                 </TabPanel>
@@ -350,7 +356,7 @@ const SingleGigView = () => {
                                         </div>
 
                                         <div id="gold-add-to-cart" className="h-auto w-full">
-                                            <SecondaryButton containerClass="w-full bg-black text-white" name="Add to Cart" />
+                                            <SecondaryButton containerClass={`w-full ${gpCartStatus === "HAVE" ? "bg-red-300 text-black" : "bg-black text-white"}`} name={`${gpCartStatus === "HAVE" ? "Remove from Cart" : "Add to Cart"}`} />
                                         </div>
                                     </div>
                                 </TabPanel>

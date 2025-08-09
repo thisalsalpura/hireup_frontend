@@ -24,6 +24,9 @@ export async function addToCart(setLoading, gigPackage) {
             const json = await response.json();
             if (json.status) {
                 toast.success(json.message);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
             } else {
                 toast.error("Something went wrong! Please try again later.");
             }
