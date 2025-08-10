@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Button from "../components/Button";
-import signinImg from "../assets/images/signin.svg";
+import Button from "../../components/Button";
+import signinImg from "../../assets/images/signin.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import { Slab } from "react-loading-indicators";
-import { showPassword, setHideBtnIcon } from "../api/ShowPassword";
+import { showPassword, setHideBtnIcon } from "../../api/ShowPassword";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { adminLogin } from "../api/AdminLogin";
-import { adminVerification } from "../api/AdminVerification";
+import { adminLogin } from "../../api/AdminLogin";
+import { adminVerification } from "../../api/AdminVerification";
 
 const AdminLogin = () => {
 

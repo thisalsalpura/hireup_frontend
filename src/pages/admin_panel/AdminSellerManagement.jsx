@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/icons/logo-white.svg";
+import logo from "../../assets/icons/logo-white.svg";
 import { Slab } from "react-loading-indicators";
-import { loadPendingGigs } from "../api/AdminGigManagement";
-import emptyImg from "../assets/images/empty-img.svg";
+import { loadPendingSellers } from "../../api/AdminSellerManagement";
 
-const AdminGigManagement = () => {
+const AdminSellerManagement = () => {
 
     const [loading, setLoading] = useState(false);
 
@@ -13,7 +12,7 @@ const AdminGigManagement = () => {
             setLoading(true);
 
             try {
-                await loadPendingGigs(setLoading);
+                await loadPendingSellers(setLoading);
             } catch (error) {
                 console.log(error);
             } finally {
@@ -60,7 +59,7 @@ const AdminGigManagement = () => {
                 <div className="flex items-center justify-start">
                     <div className="flex flex-wrap md:flex-row items-center justify-start md:justify-center">
                         <a href="/adminDashboard" className="text-base text-blue-700 opacity-50 cursor-pointer">Dashboard &nbsp;{">"}&nbsp;</a>
-                        <a href="/adminGigManagement" className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; GigManagement</a>
+                        <a href="/adminSellerManagement" className="text-base text-blue-700 opacity-100 cursor-pointer">&nbsp; CustomerManagement</a>
                     </div>
                 </div>
 
@@ -68,61 +67,52 @@ const AdminGigManagement = () => {
                     <div className="h-full w-full relative overflow-x-auto cusxscroll">
                         <table className="h-full w-full border-separate border-spacing-y-1">
                             <caption className="p-5 bg-cus-black-low rounded-md">
-                                <h2 className="text-3xl text-white text-left font-londrinasolid tracking-wide">Gig Registration Requests</h2>
+                                <h2 className="text-3xl text-white text-left font-londrinasolid tracking-wide">Seller Registration Requests</h2>
                             </caption>
 
                             <thead className="bg-gray-500">
                                 <tr>
                                     <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tl-md rounded-bl-md">
-                                        Gig
-                                    </th>
-                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left">
-                                        Category
-                                    </th>
-                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left">
-                                        Sub Category
-                                    </th>
-                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left">
                                         Seller
                                     </th>
-                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tr-md rounded-br-md">                                    </th>
+                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                        Name
+                                    </th>
+                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left">
+                                        Email
+                                    </th>
+                                    <th className="px-6 py-3 text-black text-lg font-semibold text-left rounded-tr-md rounded-br-md"></th>
                                 </tr>
                             </thead>
 
-                            <tbody id="pending-gigs-main">
-                                <tr id="pending-gig" className="bg-cus-black-low hidden border-b border-gray-500">
+                            <tbody id="pending-sellers-main">
+                                <tr id="pending-seller" className="bg-cus-black-low hidden border-b border-gray-500">
                                     <td className="px-6 py-4 rounded-tl-md rounded-bl-md">
                                         <div className="flex items-start justify-start gap-4">
-                                            <div className="h-12 w-20 bg-white rounded-md overflow-hidden shrink-0">
-                                                <img id="pending-gig-image" className="h-full w-full object-cover" src={emptyImg} alt="gig-main-img" />
+                                            <div className="h-20 w-20 bg-white rounded-full shrink-0">
+
                                             </div>
-                                            <p id="pending-gig-title" className="w-64 text-white text-xs lg:text-base text-left font-normal break-words line-clamp-3"></p>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                            <p id="pending-gig-category"></p>
+                                        <div className="flex items-center justify-start text-white text-xs lg:text-base h-full w-full">
+                                            <p id="pending-seller-name"></p>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
-                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                            <p id="pending-gig-subcategory"></p>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                            <p id="pending-gig-seller"></p>
+                                        <div className="flex items-center justify-start text-white text-xs lg:text-base h-full w-full">
+                                            <p id="pending-seller-email"></p>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 rounded-tr-md rounded-br-md">
-                                        <div className="flex items-start justify-start text-white text-xs lg:text-base h-full w-full">
-                                            <button id="verify-gig-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-white px-3 py-1 text-lg font-semibold text-black shadow-xs hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Verify</button>
+                                        <div className="flex items-center justify-start text-white text-xs lg:text-base h-full w-full">
+                                            <button id="verify-seller-btn" type="button" className="w-full inline-flex justify-center rounded-md bg-white px-3 py-1 text-lg font-semibold text-black shadow-xs hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer">Verify</button>
                                         </div>
                                     </td>
                                 </tr>
 
-                                <tr id="empty-pending-gigs" className="bg-cus-black-low border-b border-gray-500">
-                                    <td className="px-6 py-4 text-center text-white text-lg rounded-md" colSpan="5">
+                                <tr id="empty-pending-sellers" className="bg-cus-black-low hidden border-b border-gray-500">
+                                    <td className="px-6 py-4 text-center text-white text-lg rounded-md" colSpan="4">
                                         <p>No Pending Requests Found!</p>
                                     </td>
                                 </tr>
@@ -135,4 +125,4 @@ const AdminGigManagement = () => {
     )
 }
 
-export default AdminGigManagement;
+export default AdminSellerManagement;

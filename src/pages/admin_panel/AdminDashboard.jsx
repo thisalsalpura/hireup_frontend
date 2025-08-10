@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import logo from "../assets/icons/logo-white.svg";
+import logo from "../../assets/icons/logo-white.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGauge, faChartSimple, faUser, faStore, faBellConcierge } from "@fortawesome/free-solid-svg-icons";
-import BarChart from "../components/BarChart";
+import { faGauge, faCookieBite, faUser, faStore, faBellConcierge } from "@fortawesome/free-solid-svg-icons";
+import BarChart from "../../components/BarChart";
 
 const AdminDashboard = () => {
 
@@ -51,23 +51,23 @@ const AdminDashboard = () => {
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faGauge} />
                             </a>
 
-                            <a className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
-                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Analytics</p>
-                                <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faChartSimple} />
-                            </a>
-
-                            <a className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
-                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Customer Management</p>
+                            <a href="/adminAllUsersPanel" className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
+                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">User Management</p>
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faUser} />
                             </a>
 
+                            <a href="/adminAllGigsPanel" className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
+                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Gig Management</p>
+                                <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faCookieBite} />
+                            </a>
+
                             <a href="/adminSellerManagement" className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
-                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Seller Management</p>
+                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Seller Requests</p>
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faStore} />
                             </a>
 
                             <a href="/adminGigManagement" className="cus-btn-set_2 h-fit w-full flex flex-row items-center justify-between border border-gray-300 rounded-2xl px-4 py-2 gap-2.5 group">
-                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Gig Management</p>
+                                <p className="text-sm md:text-base text-black group-hover:text-white font-londrinasolid tracking-wide transition-all duration-300 ease-linear">Gig Requests</p>
                                 <FontAwesomeIcon className="text-sm md:text-base text-black group-hover:text-white transition-all duration-300 ease-linear" icon={faBellConcierge} />
                             </a>
                         </div>
