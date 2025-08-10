@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import logo from "../../assets/icons/logo-white.svg";
+import logo from "../assets/icons/logo-white.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGauge, faCookieBite, faUser, faStore, faBellConcierge } from "@fortawesome/free-solid-svg-icons";
-import BarChart from "../../components/BarChart";
+import BarChart from "../components/BarChart";
 
 const AdminDashboard = () => {
 

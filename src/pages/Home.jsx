@@ -74,6 +74,11 @@ const Home = () => {
         })();
     }, []);
 
+    const handleSearch = () => {
+        setCurrentPage(1);
+        fetchGigs(1);
+    };
+
     useEffect(() => {
         document.body.classList.add("custom2");
         return () => document.body.classList.remove("custom2");
@@ -145,10 +150,10 @@ const Home = () => {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center h-full w-full -translate-y-1/2 relative gap-2 sm:gap-0">
                     <div className="flex flex-row h-fit w-full sm:w-auto">
-                        <input type="text" className="bg-cus-black-low px-5 h-16 w-full sm:w-[400px] rounded-tl-lg rounded-bl-lg outline-none text-sm md:text-lg lg:text-2xl text-white" placeholder="What service are you looking for today?" />
+                        <input id="search-text" type="text" className="bg-cus-black-low px-5 h-16 w-full sm:w-[400px] rounded-tl-lg rounded-bl-lg outline-none text-sm md:text-lg lg:text-2xl text-white" placeholder="What service are you looking for today?" />
 
                         <div className="-ml-0.5 bg-cus-black-low px-4 h-16 flex items-center justify-center rounded-tr-lg rounded-br-lg">
-                            <FontAwesomeIcon icon={faMagnifyingGlass} className="text-base md:text-lg lg:text-2xl text-white cursor-pointer" />
+                            <FontAwesomeIcon onClick={handleSearch} icon={faMagnifyingGlass} className="text-base md:text-lg lg:text-2xl text-white cursor-pointer" />
                         </div>
                     </div>
 
