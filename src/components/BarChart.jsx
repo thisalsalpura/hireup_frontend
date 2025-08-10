@@ -3,10 +3,13 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-const BarChart = () => {
+const BarChart = ({ name, data }) => {
+
     const chartRef = useRef(null);
 
     useEffect(() => {
+        if (!data || data.length === 0) return;
+
         const root = am5.Root.new(chartRef.current);
 
         // Apply theme
@@ -50,7 +53,7 @@ const BarChart = () => {
         const xAxis = chart.xAxes.push(
             am5xy.CategoryAxis.new(root, {
                 maxDeviation: 0.3,
-                categoryField: "country",
+                categoryField: name,
                 renderer: xRenderer,
                 tooltip: am5.Tooltip.new(root, {})
             })
@@ -76,7 +79,7 @@ const BarChart = () => {
 
         // Add axis titles
         xAxis.set("title", am5.Label.new(root, {
-            text: "Country",
+            text: name,
             fontFamily: "Ropa Sans, sans-serif",
             fontSize: 14,
             fontWeight: "bold",
@@ -101,7 +104,7 @@ const BarChart = () => {
                 yAxis: yAxis,
                 valueYField: "value",
                 sequencedInterpolation: true,
-                categoryXField: "country",
+                categoryXField: name,
                 tooltip: am5.Tooltip.new(root, {
                     labelText: "{valueY}"
                 })
@@ -130,21 +133,6 @@ const BarChart = () => {
             chart.get("colors").getIndex(series.columns.indexOf(target))
         );
 
-        // Data
-        const data = [
-            { country: "USA", value: 2025 },
-            { country: "China", value: 1882 },
-            { country: "Japan", value: 1809 },
-            { country: "Germany", value: 1322 },
-            { country: "UK", value: 1122 },
-            { country: "France", value: 1114 },
-            { country: "India", value: 984 },
-            { country: "Spain", value: 711 },
-            { country: "Netherlands", value: 665 },
-            { country: "South Korea", value: 443 },
-            { country: "Canada", value: 441 }
-        ];
-
         xAxis.data.setAll(data);
         series.data.setAll(data);
 
@@ -154,7 +142,7 @@ const BarChart = () => {
         return () => {
             root.dispose();
         };
-    }, []);
+    }, [data]);
 
     return (
         <div id="chartdiv" ref={chartRef} className="h-full w-full" />
